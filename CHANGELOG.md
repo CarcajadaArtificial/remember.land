@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.3
+## v0.0.4
 
-- Updated `docs/spec.md`.
+- Added Deno SaasKit boilerplate project.
 
 ## Roadmap
 
@@ -14,5 +14,5 @@
 - [x] Plan the interface.
   - [x] Define components and their properties.
   - [x] Define pages.
-- [ ] Create blank project
+- [x] Create blank project
   - [ ] Include authentication method.
