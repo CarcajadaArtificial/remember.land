@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.4
+## v0.0.5
 
-- Added Deno SaasKit boilerplate project.
+- Added `.vscode` configuration
 
 ## Roadmap
 
