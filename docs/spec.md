@@ -79,6 +79,30 @@ Not a model, simple strings inside every note.
 
 ---
 
+## Services
+
+### Authentication
+- Create a user with a GitHub account.
+- When a new user is created, create a JSON file with the user id.
+
+### Get Notes
+- Returns an array of notes.
+- **Id**: `number?` - It would match with 1 or 0 notes.
+- **Created before**: `datetime?` - Notes created before that date.
+- **Created after**: `datetime?` - Notes created after that date.
+- **Has tags**: `string[]?` - Notes that contain all the tags listed.
+- **Has reference**: `boolean?` - Notes that contain any reference.
+- Has relation: `boolean?` - True for notes that contain any type of relation, false if it has none.
+
+### Get Contributions
+- Returns an array of pair values:
+	- **Day**: `datetime`
+	- **Contributions**: `number`
+- **Created before**: `datetime?` - Counts the notes created per day before that date.
+- **Created after**: `datetime?` - Counts the notes created per day after that date.
+
+---
+
 ## Future Pages
 
 ### Year view - `/past/[year]`
@@ -90,3 +114,5 @@ Not a model, simple strings inside every note.
 ### Questions view - `/questions`
 
 ### Search view - `/search`
+
+### Profile view - `/profile`

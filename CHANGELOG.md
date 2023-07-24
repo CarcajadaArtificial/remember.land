@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.2
+## v0.0.3
 
-- Added `docs/spec.md`.
+- Updated `docs/spec.md`.
 
 ## Roadmap
 
@@ -10,7 +10,7 @@
 
 - [x] Finish planning phase.
   - [x] BD schema.
-  - [ ] Services that will access the information.
+  - [x] Services that will access the information.
 - [x] Plan the interface.
   - [x] Define components and their properties.
   - [x] Define pages.
