@@ -1,19 +1,18 @@
 # Changelog
 
-## v0.0.1
+## v0.0.2
 
-- Added `docs/about.md`.
-- Added `.gitignore` for obsidian.
+- Added `docs/spec.md`.
 
 ## Roadmap
 
 ### v0.1.0
 
-- [ ] Finish planning phase.
-  - [ ] BD schema.
+- [x] Finish planning phase.
+  - [x] BD schema.
   - [ ] Services that will access the information.
-- [ ] Design the interface.
-  - [ ] Define components and their properties.
-  - [ ] Define pages.
+- [x] Plan the interface.
+  - [x] Define components and their properties.
+  - [x] Define pages.
 - [ ] Create blank project
   - [ ] Include authentication method.
