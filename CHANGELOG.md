@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.6
+## v0.0.7
 
-- Removed blank project because Supabase is preferable to Deno KV, it is too early for it.
+- Added Deno SaasKit Supabase boilerplate.
 
 ## Roadmap
 
@@ -14,5 +14,5 @@
 - [x] Plan the interface.
   - [x] Define components and their properties.
   - [x] Define pages.
-- [ ] Create blank project
+- [x] Create blank project
   - [ ] Include authentication method.
