@@ -11,8 +11,11 @@
 - **South noted**: `number[]` - The ids of the notes that originated from this one.
 - **West notes**: `number[]` - The ids of the notes that are similar to this one.
 - **East notes**: `number[]` - The ids of the notes that are opposite to this one.
-- **Tags**: `string[]` - The tags that categorize the note. The tags "task", "done", "event", "permanent", and "question" are hardcoded to have different colors and special extra native uses.
-- **Reference**: `string` - This string is meant to be one of two things: Firstly a string that references something in particular, like a chapter in a book or a scene in a movie or really anything of the such. Lastly, it can be a valid URL that adds a link to the note.
+- **Tags**: `string[]` - The tags that categorize the note. The tags "task", "done", "event",
+  "permanent", and "question" are hardcoded to have different colors and special extra native uses.
+- **Reference**: `string` - This string is meant to be one of two things: Firstly a string that
+  references something in particular, like a chapter in a book or a scene in a movie or really
+  anything of the such. Lastly, it can be a valid URL that adds a link to the note.
 
 ### Tags
 
@@ -41,9 +44,13 @@ Not a model, simple strings inside every note.
 
 - The note's content is visible and clickable to edit it in place.
 - A type indicator with:
-  - A '`☐`' [(U+2610)](https://www.compart.com/en/unicode/U+2610) character indicates tasks and a '`☑`' [(U+2611)](https://www.compart.com/en/unicode/U+2611) marks it as done.
-  - A '`○`' [(U+25CB)](https://www.compart.com/en/unicode/U+25CB) character indicates future or present events and a '`●`' [(U+25CF)](https://www.compart.com/en/unicode/U+25CF) character for past events.
-  - A '`-`' [(U+002D)](https://www.compart.com/en/unicode/U+002D) character (the common dash or "Hyphen-Minus") for a common note.
+  - A '`☐`' [(U+2610)](https://www.compart.com/en/unicode/U+2610) character indicates tasks and a
+    '`☑`' [(U+2611)](https://www.compart.com/en/unicode/U+2611) marks it as done.
+  - A '`○`' [(U+25CB)](https://www.compart.com/en/unicode/U+25CB) character indicates future or
+    present events and a '`●`' [(U+25CF)](https://www.compart.com/en/unicode/U+25CF) character for
+    past events.
+  - A '`-`' [(U+002D)](https://www.compart.com/en/unicode/U+002D) character (the common dash or
+    "Hyphen-Minus") for a common note.
   - A '`*`' [(U+002A)](https://www.compart.com/en/unicode/U+002A) character for a permanent note.
 - A checkbox (if it is a task) to add or remove the "done" tag.
 - Tags are clickable and take you to their tag view.
@@ -51,7 +58,8 @@ Not a model, simple strings inside every note.
 - The length of the content is visible as a number of characters.
 - The intended navigation is using the keyboard, but the mouse could also work.
   - Every note starts only with the content and type indicator visible.
-  - Every note must have a tab index, and when focused, displays the tags, length, reference, and related notes.
+  - Every note must have a tab index, and when focused, displays the tags, length, reference, and
+    related notes.
 
 ### ContributionCalendar - `<ContributionCalendar/>`
 
@@ -73,14 +81,16 @@ Not a model, simple strings inside every note.
 
 ### Tag view - `/tag/[tag-name]`
 
-- Shows a chronological list of notes that includes notes created this week and permanent notes with that tag.
+- Shows a chronological list of notes that includes notes created this week and permanent notes
+  with that tag.
 - Input field for a new note, with the current tag set by default.
 
 ### Month view - `/past/[year]/[month]`
 
 - This page is meant to display the most important information of the month.
 - A git-like timeline of the month.
-- A vertical list of the days in the month with a weekday abbreviated to two characters and the events scheduled every day.
+- A vertical list of the days in the month with a weekday abbreviated to two characters and the
+  events scheduled every day.
 - A list of all remaining tasks that are open.
 - A list of the permanent notes that were created in the past 30 days.
 - A list of all tags without tags or relations that were created in the past 15 days.
