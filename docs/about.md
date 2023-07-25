@@ -1,6 +1,7 @@
 # What is this project about?
 
 ### TL;DR
+
 Influenced by bullet journaling and the Zettelkasten method of note-taking, the system manages atomic notes that can be journaled daily. Notes can be tasks, with a "done" status. Notes can be promoted to permanent or archived and tasks can be reviewed during migrations. Notes can be tagged to form collections. Questions are specially marked as such. Notes can be related to others by similarity or origin.
 
 ---
@@ -22,4 +23,3 @@ This kind of thought is what intersects with my second influence, the Zettelkast
 The third kind, "Literature" notes are things you are consuming content for knowledge, they are the true notes. Things you learn in classes, conferences, courses, books, etc. Questions must be labeled as such because they, by themselves, are important pieces of information. Knowledge frequently comes in the form of a question and its answers.
 
 The directional system of relating notes to each other is also present. Notes "west" to others are similar. Notes "east" of others are opposite. Notes on the "north" are the ones that originated this one. And the notes on the "south" are the ones this note leads to. It is an extremely clever and visual system that will be used in this system.
-
