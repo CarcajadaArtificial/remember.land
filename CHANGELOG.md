@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.11
+## v0.0.12
 
-- Removed the second boilerplate too because fuck this incomplete ass boilerplates. Well then... Imma go build my own app with blackjack and hookers!
+- Removed the rest of the files now that I've verified a clear cache.
 
 ## Roadmap
 
