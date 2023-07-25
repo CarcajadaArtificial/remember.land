@@ -2,7 +2,7 @@
 
 ## v0.0.6
 
-- Added missing dotfiles.
+- Removed blank project because Supabase is preferable to Deno KV, it is too early for it.
 
 ## Roadmap
 
@@ -14,5 +14,5 @@
 - [x] Plan the interface.
   - [x] Define components and their properties.
   - [x] Define pages.
-- [x] Create blank project
+- [ ] Create blank project
   - [ ] Include authentication method.
