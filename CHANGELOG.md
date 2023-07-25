@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.10
+## v0.0.11
 
-- Formatting hotfix
+- Removed the second boilerplate too because fuck this incomplete ass boilerplates. Well then... Imma go build my own app with blackjack and hookers!
 
 ## Roadmap
 
@@ -14,5 +14,5 @@
 - [x] Plan the interface.
   - [x] Define components and their properties.
   - [x] Define pages.
-- [x] Create blank project
+- [ ] Create blank project
   - [ ] Include authentication method.
