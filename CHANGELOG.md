@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.12
+## v0.0.13
 
-- Removed the rest of the files now that I've verified a clear cache.
+- Added a blank fresh project.
 
 ## Roadmap
 
@@ -14,5 +14,5 @@
 - [x] Plan the interface.
   - [x] Define components and their properties.
   - [x] Define pages.
-- [ ] Create blank project
+- [x] Create blank project
   - [ ] Include authentication method.

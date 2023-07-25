@@ -1,5 +1,10 @@
-.obsidian
+# dotenv environment variable files
 .env
+.env.development.local
+.env.test.local
+.env.production.local
+.env.local
+# others
 *.DS_Store
 cov/
 cov.lcov

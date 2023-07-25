@@ -1,0 +1,174 @@
+{
+  "main": {
+    "id": "f57f7807f26ad931",
+    "type": "split",
+    "children": [
+      {
+        "id": "b3c80d0c1094be7a",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "ffc628eec756b306",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "docs/spec.md",
+                "mode": "source",
+                "source": false
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "2f20e0c69e2f20a5",
+    "type": "split",
+    "children": [
+      {
+        "id": "e1d8a4179a2ffa2c",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "c1c0fdfa9e058dd1",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "45f6d9fce7794224",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          },
+          {
+            "id": "05da6be3f25773e7",
+            "type": "leaf",
+            "state": {
+              "type": "bookmarks",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "b34586f6e0f137f9",
+    "type": "split",
+    "children": [
+      {
+        "id": "7510622ede5d2962",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "9d0d31c119ff40a3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "docs/spec.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "fb6dcb8fa7e73139",
+            "type": "leaf",
+            "state": {
+              "type": "outgoing-link",
+              "state": {
+                "file": "docs/spec.md",
+                "linksCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "35a1068ba2360c74",
+            "type": "leaf",
+            "state": {
+              "type": "tag",
+              "state": {
+                "sortOrder": "frequency",
+                "useHierarchy": true
+              }
+            }
+          },
+          {
+            "id": "67edf6ef27316506",
+            "type": "leaf",
+            "state": {
+              "type": "outline",
+              "state": {
+                "file": "docs/spec.md"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "left-ribbon": {
+    "hiddenItems": {
+      "switcher:Open quick switcher": false,
+      "graph:Open graph view": false,
+      "canvas:Create new canvas": false,
+      "daily-notes:Open today's daily note": false,
+      "templates:Insert template": false,
+      "command-palette:Open command palette": false
+    }
+  },
+  "active": "ffc628eec756b306",
+  "lastOpenFiles": [
+    "cov/b445a1e7-b2d6-4858-acbe-ac8c44dcaf1b.json",
+    "cov/b059975e-1323-4a78-9477-9227fe1fd9d8.json",
+    "cov/bacfe208-c181-4a64-bcbc-d8901df8b03c.json",
+    "cov/055d8e37-5564-4779-95c0-4e6795af5dbd.json",
+    "cov/0674c221-b7fd-4612-9756-fa6bee0abfd3.json",
+    "cov/49cf1995-0181-4033-acd7-e6a740bd5298.json",
+    "cov/721f1741-3b74-4992-95c6-d38ec3d2e2b2.json",
+    "cov/ac0a0770-a10f-4bf1-a3ff-bab38d3c0dbc.json",
+    "cov/915d43f5-2d14-4978-af9c-3a491224819f.json",
+    "cov/1fa1eb56-80e9-4bac-997a-783328aa4663.json",
+    "cov/4dfb0958-6891-4db9-ae3a-a139d77d136f.json",
+    "static/logo.webp",
+    "README.md",
+    "data/posts/second-post.md",
+    "data/posts/first-post.md",
+    "docs/spec.md",
+    "docs/about.md",
+    "2023-07-24.md",
+    "docs/What is this project?.md",
+    "CHANGELOG.md",
+    "docs/CHANGELOG.md",
+    "Untitled.md"
+  ]
+}
