@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.5
+## v0.0.6
 
-- Added `.vscode` configuration
+- Added missing dotfiles.
 
 ## Roadmap
 
