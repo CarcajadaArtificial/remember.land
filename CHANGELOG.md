@@ -1,8 +1,22 @@
 # Changelog
 
-## v0.0.13
+## v0.0.14
 
-- Added a blank fresh project.
+### Added the `ContributionCalendar` component.
+
+- `/components/ContributionCalendar/index.tsx`
+- `/components/ContributionCalendar/style.scss`
+
+### Added an index resset
+
+- `/routes/_app.tsx`
+- `/routes/index.tsx`
+
+### Minor updates
+
+- `/deno.json`
+- `/.gitignore`
+- `/static/style.css`
 
 ## Roadmap
 

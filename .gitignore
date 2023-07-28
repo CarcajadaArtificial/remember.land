@@ -9,3 +9,4 @@
 cov/
 cov.lcov
 .idea
+*.css.map
