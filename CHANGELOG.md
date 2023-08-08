@@ -1,28 +1,9 @@
 # Changelog
 
-## v0.0.15
+## v0.0.16
 
-### Configured `deno.json` for proper fmt and import_map settings
-  - `/deno.json`
-  - `/import_map.json`
-  - `/.vscode/extensions.json`
-
-### Added the project's stylesheet index
-  - `/index.scss`
-
-### Started the InputNote component
-  - `/islands/InputNote/index.tsx`
-  - `/islands/InputNote/style.scss`
-  - `/routes/index.tsx`
-
-### Removed files to be ignored
-  - `/.obsidian/*`
-  - `/static/style.css`
-
-### Minor updates
+### Updated .gitignore
   - `/.gitignore`
-  - `/utils/db/note.ts`
-  - `/fresh.gen.ts`
 
 ## Roadmap
 

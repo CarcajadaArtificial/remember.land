@@ -9,6 +9,6 @@
 cov/
 cov.lcov
 .idea
+static/style.css
 *.css.map
-# .obsidian
-# static/style.css
+.obsidian
