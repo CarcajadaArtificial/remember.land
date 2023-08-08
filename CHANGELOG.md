@@ -1,22 +1,28 @@
 # Changelog
 
-## v0.0.14
+## v0.0.15
 
-### Added the `ContributionCalendar` component.
+### Configured `deno.json` for proper fmt and import_map settings
+  - `/deno.json`
+  - `/import_map.json`
+  - `/.vscode/extensions.json`
 
-- `/components/ContributionCalendar/index.tsx`
-- `/components/ContributionCalendar/style.scss`
+### Added the project's stylesheet index
+  - `/index.scss`
 
-### Added an index resset
+### Started the InputNote component
+  - `/islands/InputNote/index.tsx`
+  - `/islands/InputNote/style.scss`
+  - `/routes/index.tsx`
 
-- `/routes/_app.tsx`
-- `/routes/index.tsx`
+### Removed files to be ignored
+  - `/.obsidian/*`
+  - `/static/style.css`
 
 ### Minor updates
-
-- `/deno.json`
-- `/.gitignore`
-- `/static/style.css`
+  - `/.gitignore`
+  - `/utils/db/note.ts`
+  - `/fresh.gen.ts`
 
 ## Roadmap
 
@@ -30,3 +36,7 @@
   - [x] Define pages.
 - [x] Create blank project
   - [ ] Include authentication method.
+- [ ] Components
+  - [ ] ⏳ Contribution Calendar
+  - [ ] Note
+  - [ ] ⏳ Input Note

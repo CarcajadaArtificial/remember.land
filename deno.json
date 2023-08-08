@@ -3,28 +3,20 @@
   "tasks": {
     "start": "deno run -A --watch=static/,routes/ dev.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "sass": "sass -w components/**/style.scss static/style.css"
+    "sass": "sass -w index.scss static/style.css"
   },
   "lint": {
     "rules": {
       "tags": ["fresh", "recommended"]
     }
   },
-  "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.3.1/",
-    "preact": "https://esm.sh/preact@10.15.1",
-    "preact/": "https://esm.sh/preact@10.15.1/",
-    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.0",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
-    "twind": "https://esm.sh/twind@0.16.19",
-    "twind/": "https://esm.sh/twind@0.16.19/",
-    "$std/": "https://deno.land/std@0.193.0/",
-    "lunchbox": "../lunchbox/mod.ts",
-    "datetime": "https://deno.land/std@0.196.0/datetime/mod.ts"
-  },
+  "importMap": "./import_map.json",
   "compilerOptions": {
     "jsx": "react-jsx",
     "jsxImportSource": "preact"
+  },
+  "fmt": {
+    "exclude": ["*.md", "**/*.md"],
+    "singleQuote": true
   }
 }

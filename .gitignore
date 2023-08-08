@@ -10,3 +10,5 @@ cov/
 cov.lcov
 .idea
 *.css.map
+# .obsidian
+# static/style.css
