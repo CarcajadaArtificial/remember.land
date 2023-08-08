@@ -1,28 +1,28 @@
-import { difference, format } from "datetime";
+import { difference, format } from 'datetime';
 
 const MONTHS = [
-  "jan",
-  "feb",
-  "mar",
-  "apr",
-  "may",
-  "jun",
-  "jul",
-  "aug",
-  "sep",
-  "oct",
-  "nov",
-  "dec",
+  'jan',
+  'feb',
+  'mar',
+  'apr',
+  'may',
+  'jun',
+  'jul',
+  'aug',
+  'sep',
+  'oct',
+  'nov',
+  'dec',
 ];
 
 const WEEKDAYS = [
-  "mon",
-  "tue",
-  "wed",
-  "thu",
-  "fri",
-  "sat",
-  "sun",
+  'mon',
+  'tue',
+  'wed',
+  'thu',
+  'fri',
+  'sat',
+  'sun',
 ];
 
 interface iContributionCalendar {
@@ -32,17 +32,17 @@ interface iContributionCalendar {
 function groupContributionsByMonth(startDate: Date, endDate: Date) {
   const days: { [key: string]: string[] } = {};
 
-  const diff = difference(startDate, endDate, { units: ["days"] }).days;
+  const diff = difference(startDate, endDate, { units: ['days'] }).days;
 
   for (let i = 0; i < (diff ? diff : 0); i++) {
     const currentDate = new Date(startDate.setDate(startDate.getDate() + 1));
     const groupKey = `${MONTHS[currentDate.getMonth()]}${
-      format(currentDate, "yy")
+      format(currentDate, 'yy')
     }`;
     if (!days[groupKey]) {
       days[groupKey] = [];
     }
-    days[groupKey].push(format(currentDate, "dd-MM-yy"));
+    days[groupKey].push(format(currentDate, 'dd-MM-yy'));
   }
 
   return days;

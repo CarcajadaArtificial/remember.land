@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.0.16
+## v0.0.17
 
-### Updated .gitignore
-  - `/.gitignore`
+### Code format update
 
 ## Roadmap
 
