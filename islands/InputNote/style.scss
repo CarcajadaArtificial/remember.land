@@ -1,3 +1,32 @@
 .isl-inputNote {
   display: block;
+
+  &-container {
+    display: grid;
+    grid-template-columns: var(--s-one-and-half) 1fr;
+    padding: var(--s-three-quarters) var(--s-three-quarters) var(--s-three-quarters) var(--s-quarter);
+  }
+
+  &-textarea {
+    background: transparent;
+    resize: none;
+    outline: none;
+  }
+
+  &-characterIndicator {
+    height: var(--s-quarter);
+
+    &_progress {
+      background-color: var(--clr-txt-personality);
+      height: inherit;
+      max-width: 100%;
+    }
+
+    &_excess {
+      background-color: var(--clr-txt-error);
+      height: inherit;
+      width: 0%;
+      max-width: 100%;
+    }
+  }
 }

@@ -10,6 +10,9 @@
     "twind/": "https://esm.sh/twind@0.16.19/",
     "$std/": "https://deno.land/std@0.193.0/",
     "lunchbox": "https://deno.land/x/lunchbox@v0.2.4/mod.ts",
-    "datetime": "https://deno.land/std@0.196.0/datetime/mod.ts"
+    "datetime": "https://deno.land/std@0.196.0/datetime/mod.ts",
+    "types": "./utils/types.ts",
+    "db/": "./utils/db/",
+    "components/": "./components/"
   }
 }

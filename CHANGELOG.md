@@ -1,8 +1,19 @@
 # Changelog
 
-## v0.0.17
+## v0.0.18
 
-### Code format update
+### Added an indicator of the type of entry.
+  - `/components/NoteTypeIndicator/index.tsx`
+
+### Updated the InputNote island
+  - `/islands/InputNote/index.tsx`
+  - `/islands/InputNote/style.tsx`
+
+### Minor updates
+  - `/routes/_app.tsx`
+  - `/routes/index.tsx`
+  - `/utils/types.ts`
+  - `/import_map.json`
 
 ## Roadmap
 
@@ -20,3 +31,4 @@
   - [ ] ⏳ Contribution Calendar
   - [ ] Note
   - [ ] ⏳ Input Note
+- [ ] Rename "Note" to "Entry"
