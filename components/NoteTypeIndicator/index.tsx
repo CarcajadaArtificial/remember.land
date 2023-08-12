@@ -1,29 +1,27 @@
 import { Text } from 'lunchbox';
-import { NoteTypes } from 'types';
 
 interface iNoteTypeIndicator {
-  type: NoteTypes;
+  tags: string[];
 }
 
-function typeToIndicator(type: NoteTypes) {
-  switch (type) {
-    case 'note':
-      return ' - ';
-    case 'event':
-      return ' ○ ';
-    case 'task':
-      return ' ☐ ';
-    case 'permanent':
-      return ' * ';
-    default:
-      return ' ? ';
+function tagsToIndicator(tags: string[]): string {
+  if (tags.includes('permanent')) {
+    return ' * ';
+  } else if (tags.includes('event')) {
+    return ' ○ ';
+  } else if (tags.includes('task') && !tags.includes('done')) {
+    return ' ☐ ';
+  } else if (tags.includes('task') && tags.includes('done')) {
+    return ' ☑ ';
+  } else {
+    return ' - ';
   }
 }
 
 export function NoteTypeIndicator(props: iNoteTypeIndicator) {
   return (
     <Text class='text-center cursor-default select-none'>
-      {typeToIndicator(props.type)}
+      {tagsToIndicator(props.tags)}
     </Text>
   );
 }

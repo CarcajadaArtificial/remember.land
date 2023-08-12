@@ -8,7 +8,7 @@ export default function App({ Component }: AppProps) {
         <title>remember.land</title>
         <link
           rel='stylesheet'
-          href='https://cdn.jsdelivr.net/gh/CarcajadaArtificial/lunchbox@0.1.1/static/style.css'
+          href='https://cdn.jsdelivr.net/gh/CarcajadaArtificial/lunchbox@0.2.6/static/style.css'
         />
         <link rel='stylesheet' href='style.css' />
       </Head>

@@ -1,19 +1,17 @@
 # Changelog
 
-## v0.0.18
+## v0.0.19
 
-### Added an indicator of the type of entry.
+### Added tags to the InputNote island
+  - `/islands/InputNote/index.tsx`
   - `/components/NoteTypeIndicator/index.tsx`
 
-### Updated the InputNote island
-  - `/islands/InputNote/index.tsx`
-  - `/islands/InputNote/style.tsx`
+### Added the `useTagList()` hook for managing tag arrays.
+   - `/utils/hooks.ts`
 
 ### Minor updates
-  - `/routes/_app.tsx`
-  - `/routes/index.tsx`
-  - `/utils/types.ts`
   - `/import_map.json`
+  - `/routes/_app.tsx`
 
 ## Roadmap
 
