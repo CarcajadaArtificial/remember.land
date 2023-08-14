@@ -1,17 +1,18 @@
 # Changelog
 
-## v0.0.19
+## v0.0.20
 
-### Added tags to the InputNote island
+### Refactored the `<InputNote/>` island handlers to their own file.
   - `/islands/InputNote/index.tsx`
-  - `/components/NoteTypeIndicator/index.tsx`
+  - `/utils/handlers/InputNote.ts`
 
-### Added the `useTagList()` hook for managing tag arrays.
-   - `/utils/hooks.ts`
+### Added focus styles to the `<InputNote/>` island input fields.
 
-### Minor updates
+### Created the `<NoteLengthIndicator/>` component.
+  - `/components/NoteLengthIndicator/index.tsx`
+
+### Minor updates.
   - `/import_map.json`
-  - `/routes/_app.tsx`
 
 ## Roadmap
 

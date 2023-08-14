@@ -1,105 +1,44 @@
-import { useState } from 'preact/hooks';
-import { certainKeyPressed, Chiplist, Panel } from 'lunchbox';
+import { Chiplist, Panel } from 'lunchbox';
 import { NoteTypeIndicator } from 'components/NoteTypeIndicator/index.tsx';
-import { iNote } from 'db/note.ts';
-import { useTagList } from 'hooks';
+import { NoteLengthIndicator } from 'components/NoteLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';
+import Handlers from 'handlers/InputNote.ts';
 
-export type iInputNote = Partial<iNote>;
+// import { iNote } from 'db/note.ts';
+// export type iInputNote = Partial<iNote>;
 
-export function InputNote(props: iInputNote) {
-  const [tags, updateTags] = useTagList();
-  const [noteValue, setNoteValue] = useState<string>('');
-
-  const charIndicatorProgress = `${(noteValue.length / 280) * 100}%`;
-  const charIndicatorExcess = `${((noteValue.length - 280) / 280) * 100}%`;
-
-  function handleNoteInput(ev: Event) {
-    const value = (ev.target as HTMLTextAreaElement).value;
-
-    if (
-      value.at(0) === ' ' && value.length >= 3 &&
-      [' - ', ' * ', ' x ', ' o '].includes(value.substring(0, 3))
-    ) {
-      const shortcut = value.substring(0, 3);
-      switch (shortcut) {
-        case ' - ':
-          updateTags([], ['permanent', 'event', 'done', 'task']);
-          break;
-        case ' * ':
-          updateTags(['permanent'], ['event', 'done', 'task']);
-          break;
-        case ' x ':
-          if (tags.includes('done')) {
-            updateTags([], ['permanent', 'event', 'done']);
-          } else if (tags.includes('task')) {
-            updateTags(['done'], ['permanent', 'event']);
-          } else {
-            updateTags(['task'], ['permanent', 'event']);
-          }
-          break;
-        case ' o ':
-          updateTags(['event'], ['permanent', 'task', 'done']);
-          break;
-
-        default:
-          break;
-      }
-
-      const shortcutRemoved = value.substring(3);
-      (ev.target as HTMLTextAreaElement).value = shortcutRemoved;
-      setNoteValue(shortcutRemoved);
-    } else {
-      setNoteValue(value);
-    }
-  }
+export function InputNote(/* props: iInputNote */) {
+  const { handleRemovetag, handleTagInput, handleNoteInput, tags, noteValue } =
+    Handlers();
 
   return (
     <Panel>
       <div class='isl-inputNote-container'>
         <NoteTypeIndicator tags={tags} />
         <textarea
-          class='isl-inputNote-textarea'
+          class='isl-inputNote-textarea transition-focus-input-bg'
           rows={5}
           onKeyUp={handleNoteInput}
         />
         <IconTag class='w-5' stroke={1} />
+        <input
+          type='text'
+          class='comp-input isl-inputNote-input transition-focus-input-bg'
+        />
+        <IconTag class='w-5' stroke={1} />
         <div>
           <input
-            onKeyUp={(ev) =>
-              certainKeyPressed(ev, ['Enter', 'Spacebar', ' '], (ev) => {
-                const newValue = (ev.target as HTMLInputElement).value;
-                if (newValue.replace(' ', '').length > 0) {
-                  updateTags([newValue], []);
-                }
-                (ev.target as HTMLInputElement).value = '';
-              })}
+            onKeyUp={handleTagInput}
             type='text'
-            class='comp-input w-full mb-3'
+            class='comp-input isl-inputNote-input transition-focus-input-bg'
           />
           <Chiplist
             values={tags}
-            onRemove={(ev: Event) => {
-              const target = ev.target as HTMLButtonElement;
-              const chipValue =
-                (target.previousSibling as HTMLElement).innerHTML;
-              updateTags([], [chipValue]);
-            }}
+            onRemove={handleRemovetag}
           />
         </div>
       </div>
-      {/* @todo [!!] Turn this into a component. */}
-      <div class='isl-inputNote-characterIndicator'>
-        <div
-          style={{ width: charIndicatorProgress }}
-          class='isl-inputNote-characterIndicator_progress'
-        >
-          <div
-            style={{ width: charIndicatorExcess }}
-            class='isl-inputNote-characterIndicator_excess'
-          />
-        </div>
-      </div>
+      <NoteLengthIndicator length={noteValue.length} />
     </Panel>
   );
 }

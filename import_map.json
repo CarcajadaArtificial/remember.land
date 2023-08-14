@@ -15,6 +15,7 @@
     "types": "./utils/types.ts",
     "hooks": "./utils/hooks.ts",
     "db/": "./utils/db/",
-    "components/": "./components/"
+    "components/": "./components/",
+    "handlers/": "./utils/handlers/"
   }
 }
