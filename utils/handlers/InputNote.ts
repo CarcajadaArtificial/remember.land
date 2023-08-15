@@ -5,7 +5,8 @@ import { iNote } from 'db/note.ts';
 
 export default function (props: iNote) {
   const [tags, updateTags] = useTagList(props.tags);
-  const [noteValue, setNoteValue] = useState<string>('');
+  const [noteValue, setNoteValue] = useState<string>(props.content);
+  const [noteMark, setNoteMark] = useState<string>(props.entry_mark);
 
   function handleNoteInput(ev: Event) {
     const value = (ev.target as HTMLTextAreaElement).value;
@@ -67,7 +68,27 @@ export default function (props: iNote) {
     updateTags([], [chipValue]);
   }
 
-  // function handleInputFocus()
+  function handleCreateNote(ev: Event) {
+    localStorage.setItem(
+      String(localStorage.length),
+      JSON.stringify({
+        id: localStorage.length,
+        created_at: new Date(),
+        content: noteValue,
+        tags: tags,
+        entry_mark: noteMark,
+      }),
+    );
+  }
 
-  return { handleNoteInput, handleTagInput, handleRemoveTag, noteValue, tags };
+  return {
+    handleNoteInput,
+    handleTagInput,
+    handleRemoveTag,
+    handleCreateNote,
+    setNoteMark,
+    noteMark,
+    noteValue,
+    tags,
+  };
 }

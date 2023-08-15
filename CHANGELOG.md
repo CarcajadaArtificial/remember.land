@@ -1,20 +1,11 @@
 # Changelog
 
-## v0.0.21
+## v0.0.22
 
-### Added the `<InputNoteField/>` component
-  - `/components/InputNoteField/index.tsx`
+### Added a button that publishes a new note into the local storage
   - `/islands/InputNote/index.tsx`
-  - `/islands/InputNote/style.scss`
-
-### Added prop values to the `<InputNote/>` island
-  - `/islands/InputNote/index.tsx`
-  - `/utils/hooks.ts`
-  - `/utils/db/note.ts`
+  - `/routes/index.tsx`
   - `/utils/handlers/InputNote.ts`
-
-### Minor updates.
-  - `/components/NoteLengthIndicator/index.tsx`
 
 ## Roadmap
 
