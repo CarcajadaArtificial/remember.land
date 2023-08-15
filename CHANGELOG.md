@@ -1,18 +1,20 @@
 # Changelog
 
-## v0.0.20
+## v0.0.21
 
-### Refactored the `<InputNote/>` island handlers to their own file.
+### Added the `<InputNoteField/>` component
+  - `/components/InputNoteField/index.tsx`
   - `/islands/InputNote/index.tsx`
+  - `/islands/InputNote/style.scss`
+
+### Added prop values to the `<InputNote/>` island
+  - `/islands/InputNote/index.tsx`
+  - `/utils/hooks.ts`
+  - `/utils/db/note.ts`
   - `/utils/handlers/InputNote.ts`
 
-### Added focus styles to the `<InputNote/>` island input fields.
-
-### Created the `<NoteLengthIndicator/>` component.
-  - `/components/NoteLengthIndicator/index.tsx`
-
 ### Minor updates.
-  - `/import_map.json`
+  - `/components/NoteLengthIndicator/index.tsx`
 
 ## Roadmap
 

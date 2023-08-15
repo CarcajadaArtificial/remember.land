@@ -2,9 +2,18 @@
   display: block;
 
   &-container {
+    padding: var(--s-three-quarters) 0 var(--s-three-quarters) var(--s-quarter);
+  }
+
+  &-row_hidden,
+  &-row {
     display: grid;
     grid-template-columns: var(--s-one-and-half) 1fr;
-    padding: var(--s-three-quarters) 0 var(--s-three-quarters) var(--s-quarter);
+  }
+
+  &-row_hidden {
+    max-height: 0px;
+    overflow: hidden;
   }
 
   &-textarea {
@@ -13,7 +22,7 @@
     outline: none;
   }
 
-  &-input {
+  &-field {
     box-sizing: border-box;
 
     &:focus {
@@ -22,7 +31,7 @@
   }
 
   &-textarea,
-  &-input {
+  &-field {
     border-radius: var(--s-eighth) 0 0 var(--s-eighth);
     padding: var(--s-quarter) var(--s-half);
     width: 100%;

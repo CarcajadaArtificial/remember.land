@@ -20,7 +20,7 @@ function tagsToIndicator(tags: string[]): string {
 
 export function NoteTypeIndicator(props: iNoteTypeIndicator) {
   return (
-    <Text class='text-center cursor-default select-none'>
+    <Text class='text-center cursor-default select-none pt-1'>
       {tagsToIndicator(props.tags)}
     </Text>
   );

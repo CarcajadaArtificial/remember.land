@@ -2,10 +2,18 @@ export interface iNote {
   id: number;
   created_at: Date;
   content: string;
-  north_ids: number[];
-  south_ids: number[];
-  west_ids: number[];
-  east_ids: number[];
   tags: string[];
-  reference: string;
+  entry_mark: string;
+  // north_ids: number[];
+  // south_ids: number[];
+  // west_ids: number[];
+  // east_ids: number[];
 }
+
+export const def_Note: iNote = {
+  id: -1,
+  created_at: new Date(),
+  content: '',
+  tags: [],
+  entry_mark: '',
+};

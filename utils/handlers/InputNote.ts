@@ -1,9 +1,10 @@
 import { certainKeyPressed } from 'lunchbox';
 import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
+import { iNote } from 'db/note.ts';
 
-export default function () {
-  const [tags, updateTags] = useTagList();
+export default function (props: iNote) {
+  const [tags, updateTags] = useTagList(props.tags);
   const [noteValue, setNoteValue] = useState<string>('');
 
   function handleNoteInput(ev: Event) {
@@ -51,7 +52,7 @@ export default function () {
   }
 
   function handleTagInput(ev: Event) {
-    return certainKeyPressed(ev, ['Enter', 'Spacebar', ' '], (ev) => {
+    return certainKeyPressed(ev, ['Enter'], (ev) => {
       const newValue = (ev.target as HTMLInputElement).value;
       if (newValue.replace(' ', '').length > 0) {
         updateTags([newValue], []);
@@ -60,11 +61,13 @@ export default function () {
     });
   }
 
-  function handleRemovetag(ev: Event) {
+  function handleRemoveTag(ev: Event) {
     const target = ev.target as HTMLButtonElement;
     const chipValue = (target.previousSibling as HTMLElement).innerHTML;
     updateTags([], [chipValue]);
   }
 
-  return { handleNoteInput, handleTagInput, handleRemovetag, noteValue, tags };
+  // function handleInputFocus()
+
+  return { handleNoteInput, handleTagInput, handleRemoveTag, noteValue, tags };
 }
