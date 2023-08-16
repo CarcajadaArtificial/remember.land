@@ -1,14 +1,10 @@
 # Changelog
 
-## v0.0.23
+## v0.0.24
 
-### Added interactive animation in the `<InputNoteField/>` component
-  - `/islands/InputNote/index.tsx`
-  - `/islands/InputNote/style.scss`
-  - `/components/InputNoteField/index.tsx`
-
-### Minor updates
-  - `/style.scss`
+### Removed boilerplate Deno Fresh components.
+  - `/fresh.gen.ts`
+  - `/routes/_404.tsx`
 
 ## Roadmap
 
@@ -25,5 +21,5 @@
 - [ ] Components
   - [ ] ⏳ Contribution Calendar
   - [ ] Note
-  - [ ] ⏳ Input Note
+  - [ ] ✅ Input Note
 - [ ] Rename "Note" to "Entry"
