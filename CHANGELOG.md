@@ -1,11 +1,14 @@
 # Changelog
 
-## v0.0.22
+## v0.0.23
 
-### Added a button that publishes a new note into the local storage
+### Added interactive animation in the `<InputNoteField/>` component
   - `/islands/InputNote/index.tsx`
-  - `/routes/index.tsx`
-  - `/utils/handlers/InputNote.ts`
+  - `/islands/InputNote/style.scss`
+  - `/components/InputNoteField/index.tsx`
+
+### Minor updates
+  - `/style.scss`
 
 ## Roadmap
 

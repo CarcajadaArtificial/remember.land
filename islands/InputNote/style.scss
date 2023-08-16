@@ -3,6 +3,8 @@
 
   &-container {
     padding: var(--s-three-quarters) 0 var(--s-three-quarters) var(--s-quarter);
+    // display: grid;
+    // gap: var(--s-quarter);
   }
 
   &-row_hidden,
@@ -12,8 +14,13 @@
   }
 
   &-row_hidden {
-    max-height: 0px;
+    max-height: 0rem;
     overflow: hidden;
+
+    &.transition-appears-maxheight {
+      max-height: var(--s-double);
+      transition: max-height 0.1 ease-in-out;
+    }
   }
 
   &-textarea {
@@ -35,7 +42,6 @@
     border-radius: var(--s-eighth) 0 0 var(--s-eighth);
     padding: var(--s-quarter) var(--s-half);
     width: 100%;
-    margin-bottom: var(--s-three-quarters);
   }
 
   &-characterIndicator {
@@ -53,14 +59,5 @@
       width: 0%;
       max-width: 100%;
     }
-  }
-}
-
-.transition-focus-input-bg {
-  transition: background-color 0.1s ease-in-out;
-  background-color: transparent;
-
-  &:focus {
-    background-color: var(--clr-bg-input);
   }
 }

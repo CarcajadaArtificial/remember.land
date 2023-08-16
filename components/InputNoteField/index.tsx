@@ -11,7 +11,11 @@ export function InputNoteField(props: iInputNoteField) {
   const { icon, shown, onKeyUp, onFocus } = props;
 
   return (
-    <div class={!shown ? 'isl-inputNote-row_hidden' : 'isl-inputNote-row'}>
+    <div
+      class={!shown
+        ? 'isl-inputNote-row_hidden'
+        : 'isl-inputNote-row_hidden transition-appears-maxheight'}
+    >
       <>{icon}</>
       <input
         type='text'

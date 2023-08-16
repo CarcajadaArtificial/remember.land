@@ -8,6 +8,9 @@ import Handlers from 'handlers/InputNote.ts';
 import { useState } from 'preact/hooks';
 import { def_Note, iNote } from 'db/note.ts';
 
+/**
+ * @todo [!!] Add a cmd+enter / ctr+enter that executes `handleCreateNote()`.
+ */
 export function InputNote(props: Partial<iNote>) {
   const p = applyDefaults<iNote>(def_Note, props);
 
@@ -22,10 +25,21 @@ export function InputNote(props: Partial<iNote>) {
     noteValue,
   } = Handlers(p);
 
+  type Steps = 'notemark' | 'tags';
+
   const [
     inputStep,
     setInputStep,
-  ] = useState<undefined | 'notemark' | 'tags'>(undefined);
+  ] = useState<(Steps)[]>([]);
+
+  const handleFieldFocus = (step: Steps) => (ev: Event) => {
+    console.log('test');
+    if (inputStep.includes(step)) {
+      return;
+    } else {
+      setInputStep([...inputStep, step]);
+    }
+  };
 
   return (
     <Panel>
@@ -39,18 +53,32 @@ export function InputNote(props: Partial<iNote>) {
           />
         </div>
         <InputNoteField
-          shown={inputStep === 'notemark' || noteMark !== ''}
-          onFocus={(ev) => setInputStep('notemark')}
+          shown={inputStep.includes('notemark') || noteMark !== ''}
+          onFocus={(ev: Event) => {
+            console.log('notemark');
+            if (inputStep.includes('notemark')) {
+              return;
+            } else {
+              setInputStep([...inputStep, 'notemark']);
+            }
+          }}
           onKeyUp={(ev) => setNoteMark((ev.target as HTMLInputElement).value)}
           icon={<Bookmark class='w-5 pt-1.5' stroke={1} />}
         />
         <InputNoteField
-          shown={inputStep === 'tags'}
-          onFocus={(ev) => setInputStep('tags')}
+          shown={inputStep.includes('tags')}
+          onFocus={(ev: Event) => {
+            console.log('tags');
+            if (inputStep.includes('tags')) {
+              return;
+            } else {
+              setInputStep([...inputStep, 'tags']);
+            }
+          }}
           onKeyUp={handleTagInput}
           icon={<IconTag class='w-5 pt-1.5' stroke={1} />}
         />
-        <div class='isl-inputNote-row'>
+        <footer class='isl-inputNote-row'>
           <div />
           <Button
             onClick={handleCreateNote}
@@ -58,8 +86,8 @@ export function InputNote(props: Partial<iNote>) {
           >
             Create Note
           </Button>
-        </div>
-        <div class='isl-inputNote-row mt-2'>
+        </footer>
+        <div class='isl-inputNote-row'>
           <div />
           <Chiplist
             values={tags}
