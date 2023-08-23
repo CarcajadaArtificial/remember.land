@@ -1,10 +1,12 @@
 # Changelog
 
-## v0.0.24
+## v0.0.25
 
-### Removed boilerplate Deno Fresh components.
-  - `/fresh.gen.ts`
-  - `/routes/_404.tsx`
+### Update to Deno 1.4.2
+  - `/deno.json`
+  - Removed
+    - `/fresh.gen.ts`
+    - `/import_map.json`
 
 ## Roadmap
 
