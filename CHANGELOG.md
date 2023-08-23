@@ -1,12 +1,9 @@
 # Changelog
 
-## v0.0.25
+## v0.0.26
 
-### Update to Deno 1.4.2
-  - `/deno.json`
-  - Removed
-    - `/fresh.gen.ts`
-    - `/import_map.json`
+### Updated gitignore
+  - `/.gitignore`
 
 ## Roadmap
 

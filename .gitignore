@@ -4,11 +4,14 @@
 .env.test.local
 .env.production.local
 .env.local
-# others
-*.DS_Store
-cov/
-cov.lcov
-.idea
+# generated style sheets
 static/style.css
 *.css.map
+# generated test coverage
+cov/
+cov.lcov
+# generated fresh files
+fresh.gen.ts
+# others
+*.DS_Store
 .obsidian
