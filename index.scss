@@ -5,11 +5,16 @@
 @import 'islands/InputNote/style.scss';
 @import 'islands/Entry/style.scss';
 
-.transition-focus-input-bg {
-  transition: background-color 0.1s ease-in-out;
-  background-color: transparent;
+:root {
+  --clr-bg-panel-10: rgba(0, 0, 0, 0.1);
+  --clr-bg-panel-20: rgba(0, 0, 0, 0.2);
+  --clr-bg-panel-30: rgba(0, 0, 0, 0.3);
+}
 
-  &:focus {
-    background-color: var(--clr-bg-input);
+@media (prefers-color-scheme: light) {
+  :root {
+    --clr-bg-panel-10: rgba(255, 255, 255, 0.1);
+    --clr-bg-panel-20: rgba(255, 255, 255, 0.2);
+    --clr-bg-panel-30: rgba(255, 255, 255, 0.3);
   }
 }

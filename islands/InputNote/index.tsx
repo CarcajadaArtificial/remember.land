@@ -41,7 +41,7 @@ export function InputNote(props: iInputNote) {
         <div class='isl-inputNote-row'>
           <NoteTypeIndicator tags={tags} />
           <textarea
-            class='isl-inputNote-textarea transition-focus-input-bg'
+            class='isl-inputNote-textarea'
             rows={5}
             onKeyUp={handleNoteInput}
             value={noteValue}
@@ -59,7 +59,7 @@ export function InputNote(props: iInputNote) {
           onKeyUp={handleTagInput}
           icon={<IconTag class='w-5 pt-1.5' stroke={1} />}
         />
-        <div class='isl-inputNote-row'>
+        <div class='isl-inputNote-row mt-1.5'>
           <div />
           <Chiplist
             values={tags}

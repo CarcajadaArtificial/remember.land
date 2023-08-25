@@ -1,38 +1,50 @@
 .isl-entry {
   &-container {
-    display: grid;
-    grid-template-columns: var(--s-single) 1fr;
-    align-items: center;
-    gap: 0 var(--s-single);
     border-radius: var(--s-eighth);
     outline: 0;
-    transition: margin 0.1s ease-in-out;
     margin: 0rem 0rem;
+    padding: 0rem 0rem;
+    background-color: transparent;
+    transition: padding 0.1s ease-in-out;
+    transition: background-color 0.1s ease-in-out;
+    cursor: pointer;
 
-    &:focus-within {
-      margin: var(--s-one-and-half) 0rem;
-
-      .isl-entry-detail {
-        max-height: max-content;
-      }
+    .comp-chiplist {
+      margin-top: var(--s-half);
+      display: none;
     }
 
     .comp-chip {
       padding-right: var(--s-half);
+
       &_remove {
         display: none;
       }
     }
+
+    &:hover {
+      background-color: var(--clr-bg-panel-10);
+    }
+
+    &:focus,
+    &:focus-within {
+      padding: var(--s-half) var(--s-half);
+      background-color: var(--clr-bg-panel-20);
+
+      &:hover {
+        background-color: var(--clr-bg-panel-30);
+      }
+
+      .comp-chiplist {
+        display: flex;
+      }
+    }
   }
 
-  &-detail {
-    max-height: 0rem;
-    overflow-y: hidden;
-
-    &_overflow {
-      white-space: nowrap;
-      display: flex;
-      justify-content: end;
-    }
+  &-row {
+    display: grid;
+    grid-template-columns: var(--s-single) 1fr;
+    align-items: center;
+    gap: 0 var(--s-single);
   }
 }

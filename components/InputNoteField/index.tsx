@@ -19,7 +19,7 @@ export function InputNoteField(props: iInputNoteField) {
       <>{icon}</>
       <input
         type='text'
-        class='comp-input isl-inputNote-field transition-focus-input-bg'
+        class='comp-input isl-inputNote-field'
         onKeyUp={onKeyUp}
         onFocus={onFocus}
       />
