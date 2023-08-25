@@ -1,0 +1,38 @@
+.isl-entry {
+  &-container {
+    display: grid;
+    grid-template-columns: var(--s-single) 1fr;
+    align-items: center;
+    gap: 0 var(--s-single);
+    border-radius: var(--s-eighth);
+    outline: 0;
+    transition: margin 0.1s ease-in-out;
+    margin: 0rem 0rem;
+
+    &:focus-within {
+      margin: var(--s-one-and-half) 0rem;
+
+      .isl-entry-detail {
+        max-height: max-content;
+      }
+    }
+
+    .comp-chip {
+      padding-right: var(--s-half);
+      &_remove {
+        display: none;
+      }
+    }
+  }
+
+  &-detail {
+    max-height: 0rem;
+    overflow-y: hidden;
+
+    &_overflow {
+      white-space: nowrap;
+      display: flex;
+      justify-content: end;
+    }
+  }
+}

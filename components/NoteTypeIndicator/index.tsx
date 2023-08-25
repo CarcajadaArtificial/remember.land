@@ -1,11 +1,13 @@
 import { Text } from 'lunchbox';
 
 interface iNoteTypeIndicator {
-  tags: string[];
+  tags?: string[];
 }
 
-function tagsToIndicator(tags: string[]): string {
-  if (tags.includes('permanent')) {
+function tagsToIndicator(tags?: string[]): string {
+  if (!tags) {
+    return ' - ';
+  } else if (tags.includes('permanent')) {
     return ' * ';
   } else if (tags.includes('event')) {
     return ' ○ ';

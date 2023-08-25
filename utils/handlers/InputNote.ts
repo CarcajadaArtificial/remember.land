@@ -3,10 +3,16 @@ import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
 import { iNote } from 'db/note.ts';
 
+type Steps = 'notemark' | 'tags';
+
 export default function (props: iNote) {
   const [tags, updateTags] = useTagList(props.tags);
   const [noteValue, setNoteValue] = useState<string>(props.content);
   const [noteMark, setNoteMark] = useState<string>(props.entry_mark);
+  const [
+    inputStep,
+    setInputStep,
+  ] = useState<(Steps)[]>([]);
 
   function handleNoteInput(ev: Event) {
     const value = (ev.target as HTMLTextAreaElement).value;
@@ -68,27 +74,43 @@ export default function (props: iNote) {
     updateTags([], [chipValue]);
   }
 
-  function handleCreateNote(ev: Event) {
-    localStorage.setItem(
-      String(localStorage.length),
-      JSON.stringify({
-        id: localStorage.length,
-        created_at: new Date(),
-        content: noteValue,
-        tags: tags,
-        entry_mark: noteMark,
-      }),
-    );
-  }
+  const handleFieldFocus = (step: Steps) => (_ev: Event) => {
+    if (inputStep.includes(step)) {
+      return;
+    } else {
+      setInputStep([...inputStep, step]);
+    }
+  };
+
+  const handleCreateNoteShortcut = (ev: KeyboardEvent) => {
+    if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
+      localStorage.setItem(
+        String(localStorage.length),
+        JSON.stringify({
+          id: localStorage.length,
+          created_at: new Date(),
+          content: noteValue,
+          tags: tags,
+          entry_mark: noteMark,
+        }),
+      );
+      setNoteValue('');
+      setNoteMark('');
+      updateTags([], tags);
+      setInputStep([]);
+    }
+  };
 
   return {
     handleNoteInput,
     handleTagInput,
     handleRemoveTag,
-    handleCreateNote,
+    handleFieldFocus,
+    handleCreateNoteShortcut,
     setNoteMark,
     noteMark,
     noteValue,
     tags,
+    inputStep,
   };
 }
