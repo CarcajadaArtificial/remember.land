@@ -83,22 +83,20 @@ export default function (props: iNote) {
   };
 
   const handleCreateNoteShortcut = (ev: KeyboardEvent) => {
-    if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
-      localStorage.setItem(
-        String(localStorage.length),
-        JSON.stringify({
-          id: localStorage.length,
-          created_at: new Date(),
-          content: noteValue,
-          tags: tags,
-          entry_mark: noteMark,
-        }),
-      );
-      setNoteValue('');
-      setNoteMark('');
-      updateTags([], tags);
-      setInputStep([]);
-    }
+    localStorage.setItem(
+      String(props.id),
+      JSON.stringify({
+        id: props.id,
+        created_at: props.created_at,
+        content: noteValue,
+        tags: tags,
+        entry_mark: noteMark,
+      }),
+    );
+    setNoteValue('');
+    setNoteMark('');
+    updateTags([], tags);
+    setInputStep([]);
   };
 
   return {

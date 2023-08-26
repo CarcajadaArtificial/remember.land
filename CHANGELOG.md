@@ -1,20 +1,21 @@
 # Changelog
 
-## v0.0.28
+## v0.0.29
 
-### Added better focus and hover states for the Entry and InputNote islands
-  - `/islands/Entry/style.scss`
-  - `/islands/InputNote/style.scss`
-
-### Removed NoteMark, id and created_at Texts from the Entry island
-  - `/islands/Entry/index.tsx`
-
-### Added global color variables
+### Added background color utility classes
   - `/index.scss`
+
+### Added feature to edit entries
+  - `/islands/Entry/index.tsx`
+  - `/islands/EntryList/index.tsx`
+  - `/islands/InputNote/index.tsx` An artificial focus was added for a better experience.
+  - `/utils/handlers/InputNote.ts`
 
 ### Minor updates
   - `/components/InputNoteField/index.tsx`
-  - `/islands/InputNote/index.tsx`
+  - `/components/NoteTypeIndicator/index.tsx`
+  - `/routes/index.tsx`
+  - `/islands/Entry/style.scss`
 
 ## Roadmap
 
@@ -32,7 +33,7 @@
 - [ ] Components
   - [ ] ⏳ Contribution Calendar
   - [ ] ⏳ Note
-    - [ ] Add an update note information functionality onclick and onkeyup enter.
+    - [x] Add an update note information functionality onclick and onkeyup enter.
     - [x] Remove id and created_at Texts.
     - [ ] Relocate NoteMark
     - [x] Focus and hover must change background.

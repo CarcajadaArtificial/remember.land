@@ -9,7 +9,9 @@ export default function Home() {
   return (
     <Main>
       <Layout type='full'>
-        <InputNote updateLocalStorage={updateLocalStorage} />
+        <Panel>
+          <InputNote updateLocalStorage={updateLocalStorage} />
+        </Panel>
       </Layout>
       <Layout class='py-6' type='full'>
         <EntryList updateLocalStorage={updateLocalStorage} />

@@ -2,7 +2,7 @@
   &-container {
     border-radius: var(--s-eighth);
     outline: 0;
-    margin: 0rem 0rem;
+    margin: var(--s-eighth) 0rem;
     padding: 0rem 0rem;
     background-color: transparent;
     transition: padding 0.1s ease-in-out;
@@ -11,6 +11,7 @@
 
     .comp-chiplist {
       margin-top: var(--s-half);
+      padding: 0 var(--s-half);
       display: none;
     }
 
@@ -28,7 +29,7 @@
 
     &:focus,
     &:focus-within {
-      padding: var(--s-half) var(--s-half);
+      padding: var(--s-half) var(--s-half) var(--s-half) 0rem;
       background-color: var(--clr-bg-panel-20);
 
       &:hover {
@@ -44,7 +45,8 @@
   &-row {
     display: grid;
     grid-template-columns: var(--s-single) 1fr;
-    align-items: center;
-    gap: 0 var(--s-single);
+    align-items: start;
+    gap: 0 var(--s-half);
+    padding-left: var(--s-half);
   }
 }

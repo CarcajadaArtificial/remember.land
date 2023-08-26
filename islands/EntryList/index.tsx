@@ -32,6 +32,7 @@ export function EntryList(props: iEntryList) {
           content={entry.content}
           tags={entry.tags}
           entry_mark={entry.entry_mark}
+          updateLocalStorage={updateLocalStorage}
         />
       ))}
     </div>
