@@ -47,6 +47,13 @@ export function Entry(props: iEntryComponent) {
       tabIndex={0}
       class='isl-entry-container'
     >
+      {props.entry_mark
+        ? (
+          <div className='isl-entry-hidden'>
+            <Text noMargins class='ml-8' type='small'>{props.entry_mark}</Text>
+          </div>
+        )
+        : null}
       <div class='isl-entry-row'>
         <NoteTypeIndicator tags={props.tags} />
         {isMarkUrl
@@ -68,7 +75,11 @@ export function Entry(props: iEntryComponent) {
           )}
       </div>
       {props.tags && props.tags.length > 0
-        ? <Chiplist values={props.tags} />
+        ? (
+          <div className='isl-entry-hidden'>
+            <Chiplist class='ml-6' values={props.tags} />
+          </div>
+        )
         : null}
     </div>
   );

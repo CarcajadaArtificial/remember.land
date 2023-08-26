@@ -11,7 +11,6 @@
     .comp-chiplist {
       margin-top: var(--s-half);
       padding: 0 var(--s-half);
-      display: none;
     }
 
     .comp-chip {
@@ -35,8 +34,8 @@
         background-color: var(--clr-bg-panel-30);
       }
 
-      .comp-chiplist {
-        display: flex;
+      .isl-entry-hidden {
+        display: block;
       }
     }
   }
@@ -51,5 +50,10 @@
 
   &-link {
     text-decoration: underline;
+  }
+
+  &-hidden {
+    filter: opacity(0.6);
+    display: none;
   }
 }
