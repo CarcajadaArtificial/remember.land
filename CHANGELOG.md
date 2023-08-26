@@ -1,13 +1,10 @@
 # Changelog
 
-## v0.0.31
+## v0.0.32
 
-### Refactored the localStorage DB
+### Added the remove entry feature
   - `/islands/Entry/index.tsx`
-  - `/islands/EntryList/index.tsx`
-  - `/islands/InputNote/index.tsx`
   - `/routes/index.tsx`
-  - `/utils/handlers/InputNote.ts`
   - `/utils/db/middleware.ts`
 
 ## Roadmap
@@ -25,15 +22,18 @@
     - [ ] Instructions for first time users.
     - [ ] Limit notes to only the ones today.
     - [ ] Navigation bar for accessing other routes.
+  - [ ] ⏳ Archive
+    - [ ] Contribution calendar
+    - [ ] Query builder
 - [ ] Components
   - [ ] ⏳ Contribution Calendar
-  - [ ] ⏳ Note
+  - [x] ✅ Note
     - [x] Add an update note information functionality onclick and onkeyup enter.
     - [x] Remove id and created_at Texts.
     - [x] Relocate NoteMark
     - [x] Focus and hover must change background.
     - [x] Add the URL NoteMark interaction.
-    - [ ] Press backspace to delete a note.
+    - [x] Press backspace to delete a note.
   - [ ] ⏳ Input Note
     - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
       - [ ] Make the icon an invisible button that changes onlcick as well.
@@ -41,13 +41,15 @@
     - [x] Better focus background.
     - [x] Add a hover state.
 - [ ] Rename "Note" to "Entry"
-- [x] Create a database middleware file.
+- [ ] Create a database middleware file.
   - Controls if the projet stores entries on the client's localstorage or on a server db.
   - [x] Function that gets the next id for a new Entry.
   - [x] Function that sets new information for an Entry, it can create or update.
   - [x] Function that deletes an Entry.
+  - [ ] Function that searches for entries given a query object.
 
 ### v0.2.0
 
   - [ ] Include single password authentication method.
   - [ ] Include FileDB database.
+  - [ ] Parse the EntryMark as a possible date for events and tasks.

@@ -5,6 +5,7 @@ import { NoteTypeIndicator } from '../../components/NoteTypeIndicator/index.tsx'
 import { InputNote } from '../InputNote/index.tsx';
 import { useState } from 'preact/hooks';
 import { Signal } from '@preact/signals';
+import { deleteEntry } from 'db/middleware.ts';
 
 interface iEntryComponent extends Partial<iNote> {
   updateEntriesSignal: Signal<number>;
@@ -41,6 +42,12 @@ export function Entry(props: iEntryComponent) {
           setEditMode(true);
         } else if (isMarkUrl && ev.key === 'Enter') {
           window.open(props.entry_mark, '_blank');
+        } else if (
+          props.id && ev.key === 'Backspace' &&
+          window.confirm('Are you sure you want to delete this note?')
+        ) {
+          deleteEntry(props.id);
+          props.updateEntriesSignal.value++;
         }
       }}
       tabIndex={0}

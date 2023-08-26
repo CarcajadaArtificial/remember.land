@@ -13,7 +13,7 @@ export default function Home() {
           <InputNote updateEntriesSignal={updateEntriesSignal} />
         </Panel>
       </Layout>
-      <Layout class='py-6' type='full'>
+      <Layout class='pt-6' type='full'>
         <EntryList updateEntriesSignal={updateEntriesSignal} />
       </Layout>
     </Main>

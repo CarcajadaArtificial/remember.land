@@ -16,10 +16,15 @@ export const setEntry = (entry: iNote) =>
     }),
   );
 
+export const deleteEntry = (id: number) => localStorage.removeItem(String(id));
+
 function localStorageToArray<T>() {
   const result = [];
   for (let i = 1; i < localStorage.length; i++) {
-    result.push(JSON.parse(localStorage.getItem(String(i))!) as T);
+    const storedItem = localStorage.getItem(String(i));
+    if (storedItem !== null) {
+      result.push(JSON.parse(storedItem) as T);
+    }
   }
   return result;
 }
