@@ -4,17 +4,17 @@ import { InputNote } from '../islands/InputNote/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
 
 export default function Home() {
-  const updateLocalStorage = useSignal<number>(0);
+  const updateEntriesSignal = useSignal<number>(0);
 
   return (
     <Main>
       <Layout type='full'>
         <Panel>
-          <InputNote updateLocalStorage={updateLocalStorage} />
+          <InputNote updateEntriesSignal={updateEntriesSignal} />
         </Panel>
       </Layout>
       <Layout class='py-6' type='full'>
-        <EntryList updateLocalStorage={updateLocalStorage} />
+        <EntryList updateEntriesSignal={updateEntriesSignal} />
       </Layout>
     </Main>
   );

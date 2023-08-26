@@ -2,6 +2,7 @@ import { certainKeyPressed } from 'lunchbox';
 import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
 import { iNote } from 'db/note.ts';
+import { setEntry } from 'db/middleware.ts';
 
 type Steps = 'notemark' | 'tags';
 
@@ -83,16 +84,13 @@ export default function (props: iNote) {
   };
 
   const handleCreateNoteShortcut = (_ev: KeyboardEvent) => {
-    localStorage.setItem(
-      String(props.id),
-      JSON.stringify({
-        id: props.id,
-        created_at: props.created_at,
-        content: noteValue,
-        tags: tags,
-        entry_mark: noteMark,
-      }),
-    );
+    setEntry({
+      id: props.id,
+      created_at: props.created_at,
+      content: noteValue,
+      tags: tags,
+      entry_mark: noteMark,
+    });
     setNoteValue('');
     setNoteMark('');
     updateTags([], tags);

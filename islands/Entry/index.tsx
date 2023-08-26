@@ -7,7 +7,7 @@ import { useState } from 'preact/hooks';
 import { Signal } from '@preact/signals';
 
 interface iEntryComponent extends Partial<iNote> {
-  updateLocalStorage: Signal<number>;
+  updateEntriesSignal: Signal<number>;
 }
 
 export function Entry(props: iEntryComponent) {
@@ -23,13 +23,12 @@ export function Entry(props: iEntryComponent) {
           onFocusOut={() => {
             setEditMode(false);
           }}
-          updateOnSubmit
           id={props.id}
           created_at={props.created_at}
           content={props.content}
           tags={props.tags}
           entry_mark={props.entry_mark}
-          updateLocalStorage={props.updateLocalStorage}
+          updateEntriesSignal={props.updateEntriesSignal}
         />
       </div>
     );

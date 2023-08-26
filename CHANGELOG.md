@@ -2,9 +2,13 @@
 
 ## v0.0.31
 
-### Relocated the NoteMark
+### Refactored the localStorage DB
   - `/islands/Entry/index.tsx`
-  - `/islands/Entry/style.scss`
+  - `/islands/EntryList/index.tsx`
+  - `/islands/InputNote/index.tsx`
+  - `/routes/index.tsx`
+  - `/utils/handlers/InputNote.ts`
+  - `/utils/db/middleware.ts`
 
 ## Roadmap
 
@@ -37,8 +41,11 @@
     - [x] Better focus background.
     - [x] Add a hover state.
 - [ ] Rename "Note" to "Entry"
-- [ ] Make a localStorage middleware file.
-  - [ ] Make it trivial to change to another database.
+- [x] Create a database middleware file.
+  - Controls if the projet stores entries on the client's localstorage or on a server db.
+  - [x] Function that gets the next id for a new Entry.
+  - [x] Function that sets new information for an Entry, it can create or update.
+  - [x] Function that deletes an Entry.
 
 ### v0.2.0
 

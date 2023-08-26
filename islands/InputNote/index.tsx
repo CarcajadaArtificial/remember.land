@@ -7,20 +7,20 @@ import Handlers from 'handlers/InputNote.ts';
 import { def_Note, iNote } from 'db/note.ts';
 import { Signal } from '@preact/signals';
 import { Ref, useEffect, useRef } from 'preact/hooks';
+import { nextEntryId } from 'db/middleware.ts';
 
 interface iInputNote extends Partial<iNote> {
-  updateLocalStorage?: Signal<number>;
+  updateEntriesSignal?: Signal<number>;
   onFocusOut?: () => void;
-  updateOnSubmit?: boolean;
 }
 
 export function InputNote(props: iInputNote) {
-  const { updateLocalStorage, onFocusOut, updateOnSubmit } = props;
+  const { updateEntriesSignal, onFocusOut } = props;
   const p = applyDefaults<iNote>(def_Note, props);
   const refTextarea = useRef<HTMLTextAreaElement>();
 
-  if (!updateOnSubmit) {
-    p.id = localStorage.length;
+  if (p.id === -1) {
+    p.id = nextEntryId();
   }
 
   const {
@@ -43,8 +43,8 @@ export function InputNote(props: iInputNote) {
       if (onFocusOut) {
         onFocusOut();
       }
-      if (updateLocalStorage) {
-        updateLocalStorage.value++;
+      if (updateEntriesSignal) {
+        updateEntriesSignal.value++;
       }
     }
     if (ev.key === 'Escape' && onFocusOut) {
