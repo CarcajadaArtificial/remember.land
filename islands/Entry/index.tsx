@@ -1,4 +1,4 @@
-import { Chiplist, Text } from 'lunchbox';
+import { Chiplist, Link, Text } from 'lunchbox';
 // import { format } from 'datetime';
 import { iNote } from 'db/note.ts';
 import { NoteTypeIndicator } from '../../components/NoteTypeIndicator/index.tsx';
@@ -12,6 +12,9 @@ interface iEntryComponent extends Partial<iNote> {
 
 export function Entry(props: iEntryComponent) {
   const [editMode, setEditMode] = useState<boolean>(false);
+  const isMarkUrl = props.entry_mark &&
+    (props.entry_mark?.substring(0, 8) === 'https://' ||
+      props.entry_mark?.substring(0, 7) === 'http://');
 
   if (editMode) {
     return (
@@ -34,10 +37,11 @@ export function Entry(props: iEntryComponent) {
 
   return (
     <div
-      onClick={(_ev) => setEditMode(true)}
       onKeyUp={(ev) => {
-        if (ev.key === 'Enter') {
+        if (ev.shiftKey && ev.key === 'Enter') {
           setEditMode(true);
+        } else if (isMarkUrl && ev.key === 'Enter') {
+          window.open(props.entry_mark, '_blank');
         }
       }}
       tabIndex={0}
@@ -45,9 +49,23 @@ export function Entry(props: iEntryComponent) {
     >
       <div class='isl-entry-row'>
         <NoteTypeIndicator tags={props.tags} />
-        <div>
-          <Text noMargins>{props.content}</Text>
-        </div>
+        {isMarkUrl
+          ? (
+            <Link
+              tabIndex={-1}
+              target='_blank'
+              nostyle
+              class='isl-entry-link'
+              href={props.entry_mark}
+            >
+              {props.content}
+            </Link>
+          )
+          : (
+            <div>
+              <Text noMargins>{props.content}</Text>
+            </div>
+          )}
       </div>
       {props.tags && props.tags.length > 0
         ? <Chiplist values={props.tags} />

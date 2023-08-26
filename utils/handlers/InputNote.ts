@@ -82,7 +82,7 @@ export default function (props: iNote) {
     }
   };
 
-  const handleCreateNoteShortcut = (ev: KeyboardEvent) => {
+  const handleCreateNoteShortcut = (_ev: KeyboardEvent) => {
     localStorage.setItem(
       String(props.id),
       JSON.stringify({
@@ -99,13 +99,17 @@ export default function (props: iNote) {
     setInputStep([]);
   };
 
+  const handleNoteMarkInput = (ev: KeyboardEvent) => {
+    setNoteMark((ev.target as HTMLInputElement).value);
+  };
+
   return {
     handleNoteInput,
     handleTagInput,
+    handleNoteMarkInput,
     handleRemoveTag,
     handleFieldFocus,
     handleCreateNoteShortcut,
-    setNoteMark,
     noteMark,
     noteValue,
     tags,

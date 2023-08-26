@@ -1,7 +1,6 @@
 import { applyDefaults, Chiplist } from 'lunchbox';
 import { NoteTypeIndicator } from 'components/NoteTypeIndicator/index.tsx';
 import { NoteLengthIndicator } from 'components/NoteLengthIndicator/index.tsx';
-import { InputNoteField } from 'components/InputNoteField/index.tsx';
 import IconTag from 'icons/tag.tsx';
 import Bookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/InputNote.ts';
@@ -26,16 +25,32 @@ export function InputNote(props: iInputNote) {
 
   const {
     handleRemoveTag,
+    handleNoteMarkInput,
     handleTagInput,
     handleNoteInput,
     handleFieldFocus,
     handleCreateNoteShortcut,
-    setNoteMark,
     noteMark,
     tags,
     noteValue,
     inputStep,
   } = Handlers(p);
+
+  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
+  const handleConatinerKeyDown = (ev: KeyboardEvent) => {
+    if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
+      handleCreateNoteShortcut(ev);
+      if (onFocusOut) {
+        onFocusOut();
+      }
+      if (updateLocalStorage) {
+        updateLocalStorage.value++;
+      }
+    }
+    if (ev.key === 'Escape' && onFocusOut) {
+      onFocusOut();
+    }
+  };
 
   useEffect(() => {
     refTextarea.current?.focus();
@@ -44,22 +59,12 @@ export function InputNote(props: iInputNote) {
   return (
     <div>
       <div
-        onKeyDown={(ev) => {
-          if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
-            handleCreateNoteShortcut(ev);
-            if (onFocusOut) {
-              onFocusOut();
-            }
-            if (updateLocalStorage) {
-              updateLocalStorage.value++;
-            }
-          }
-          if (ev.key === 'Escape' && onFocusOut) {
-            onFocusOut();
-          }
-        }}
         class='isl-inputNote-container'
+        onKeyDown={handleConatinerKeyDown}
       >
+        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
+        {/* Textarea Row */}
+        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         <div class='isl-inputNote-row'>
           <div class='pt-1'>
             <NoteTypeIndicator tags={tags} />
@@ -72,26 +77,44 @@ export function InputNote(props: iInputNote) {
             ref={refTextarea as Ref<HTMLTextAreaElement>}
           />
         </div>
-        <InputNoteField
-          shown={inputStep.includes('notemark') || noteMark !== ''}
-          onFocus={handleFieldFocus('notemark')}
-          onKeyUp={(ev) => setNoteMark((ev.target as HTMLInputElement).value)}
-          icon={<Bookmark class='w-5 pt-1.5' stroke={1} />}
-          value={noteMark}
-        />
-        <InputNoteField
-          shown={inputStep.includes('tags')}
-          onFocus={handleFieldFocus('tags')}
-          onKeyUp={handleTagInput}
-          icon={<IconTag class='w-5 pt-1.5' stroke={1} />}
-        />
-        <div class='isl-inputNote-row mt-1.5'>
-          <div />
-          <Chiplist
-            values={tags}
-            onRemove={handleRemoveTag}
+        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
+        {/* NoteMark Row */}
+        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
+        <div
+          class={!(inputStep.includes('notemark') || noteMark !== '')
+            ? 'isl-inputNote-row_hidden'
+            : 'isl-inputNote-row_hidden transition-appears-maxheight'}
+        >
+          <Bookmark class='w-5 pt-1.5' stroke={1} />
+          <input
+            type='text'
+            class='comp-input isl-inputNote-field'
+            onKeyUp={handleNoteMarkInput}
+            onFocus={handleFieldFocus('notemark')}
+            value={noteMark}
           />
         </div>
+        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
+        {/* Tags Row */}
+        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
+        <div
+          class={!inputStep.includes('tags')
+            ? 'isl-inputNote-row_hidden'
+            : 'isl-inputNote-row_hidden transition-appears-maxheight'}
+        >
+          <IconTag class='w-5 pt-1.5' stroke={1} />
+          <input
+            type='text'
+            class='comp-input isl-inputNote-field'
+            onFocus={handleFieldFocus('tags')}
+            onKeyUp={handleTagInput}
+          />
+        </div>
+        <Chiplist
+          values={tags}
+          onRemove={handleRemoveTag}
+          class='ml-6 mt-1.5'
+        />
       </div>
       <NoteLengthIndicator length={noteValue.length} />
     </div>

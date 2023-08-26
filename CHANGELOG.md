@@ -1,20 +1,20 @@
 # Changelog
 
-## v0.0.29
+## v0.0.30
 
-### Added background color utility classes
-  - `/index.scss`
+### Removed the InputNoteField component
+  - `/components/InputNoteField/index.tsx`
 
-### Added feature to edit entries
-  - `/islands/Entry/index.tsx`
-  - `/islands/EntryList/index.tsx`
-  - `/islands/InputNote/index.tsx` An artificial focus was added for a better experience.
+### `/islands/InputNote/index.tsx`
+  - Refactored the InputNoteField component.
+  - Added a default focus interaction.
+  - Added the handleNoteMarkInput handler.
+
+### Added the handleNoteMarkInput handler
   - `/utils/handlers/InputNote.ts`
 
-### Minor updates
-  - `/components/InputNoteField/index.tsx`
-  - `/components/NoteTypeIndicator/index.tsx`
-  - `/routes/index.tsx`
+### Added a URL NoteMark interaction feature
+  - `/islands/Entry/index.tsx`
   - `/islands/Entry/style.scss`
 
 ## Roadmap
@@ -37,6 +37,7 @@
     - [x] Remove id and created_at Texts.
     - [ ] Relocate NoteMark
     - [x] Focus and hover must change background.
+    - [x] Add the URL NoteMark interaction.
   - [ ] ⏳ Input Note
     - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
       - [ ] Make the icon an invisible button that changes onlcick as well.
