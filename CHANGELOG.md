@@ -1,11 +1,12 @@
 # Changelog
 
-## v0.0.32
+## v0.0.33
 
-### Added the remove entry feature
-  - `/islands/Entry/index.tsx`
+### Added a navbar to the home page
   - `/routes/index.tsx`
-  - `/utils/db/middleware.ts`
+
+### Added a better date formatter
+  - `/deno.json`
 
 ## Roadmap
 
