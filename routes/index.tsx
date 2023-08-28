@@ -3,6 +3,7 @@ import { datetime } from 'ptera';
 import { useSignal } from '@preact/signals';
 import { InputNote } from '../islands/InputNote/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
+import { findEntries, iQueryEntries } from 'db/middleware.ts';
 
 export default function Home() {
   const updateEntriesSignal = useSignal<number>(0);
@@ -12,7 +13,7 @@ export default function Home() {
     <div>
       <Navigation class='py-3'>
         <Text>{today.format('MMMM-dd')}</Text>
-        <Link>Archive</Link>
+        <Link href='/archive'>Archive</Link>
       </Navigation>
       <Main>
         <Layout type='full'>
