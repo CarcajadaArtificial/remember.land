@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Entry } from '../Entry/index.tsx';
-import { iNote } from 'db/note.ts';
+import { iEntry } from 'db/note.ts';
 import { getEntries } from 'db/middleware.ts';
 import { Signal } from '@preact/signals';
 
@@ -10,7 +10,7 @@ interface iEntryList {
 
 export function EntryList(props: iEntryList) {
   const { updateEntriesSignal } = props;
-  const [entries, setEntries] = useState<iNote[]>([]);
+  const [entries, setEntries] = useState<iEntry[]>([]);
 
   useEffect(() => {
     setEntries(getEntries());

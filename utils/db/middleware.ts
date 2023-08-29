@@ -1,10 +1,10 @@
-import { iNote } from 'db/note.ts';
+import { iEntry } from 'db/note.ts';
 
 export const nextEntryId = (): number => localStorage.length;
 
-export const getEntries = (): iNote[] => localStorageToArray<iNote>();
+export const getEntries = (): iEntry[] => localStorageToArray<iEntry>();
 
-export const setEntry = (entry: iNote): void =>
+export const setEntry = (entry: iEntry): void =>
   localStorage.setItem(
     String(entry.id),
     JSON.stringify({
@@ -28,12 +28,12 @@ export interface iQueryEntries {
   // include_all_tags: boolean
 }
 
-export const findEntries = (query?: Partial<iQueryEntries>): iNote[] => {
+export const findEntries = (query?: Partial<iQueryEntries>): iEntry[] => {
   if (
     !query ||
     Object.values(query).every((querySetting) => querySetting === undefined)
   ) {
-    return localStorageToArray<iNote>();
+    return localStorageToArray<iEntry>();
   }
 
   const {
@@ -44,11 +44,11 @@ export const findEntries = (query?: Partial<iQueryEntries>): iNote[] => {
     // excludes_tags,
   } = query;
 
-  return localStorageToArray<iNote>().filter((note) => {
+  return localStorageToArray<iEntry>().filter((entry) => {
     // Content query logic
     if (
       contains_text && contains_text !== '' &&
-      note.content.search(contains_text)
+      entry.content.search(contains_text)
     ) {
       return true;
     }

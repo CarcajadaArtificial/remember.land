@@ -1,13 +1,12 @@
 import { Chiplist, Link, Text } from 'lunchbox';
-// import { format } from 'datetime';
-import { iNote } from 'db/note.ts';
-import { NoteTypeIndicator } from '../../components/NoteTypeIndicator/index.tsx';
+import { iEntry } from 'db/note.ts';
+import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { InputNote } from '../InputNote/index.tsx';
 import { useState } from 'preact/hooks';
 import { Signal } from '@preact/signals';
 import { deleteEntry } from 'db/middleware.ts';
 
-interface iEntryComponent extends Partial<iNote> {
+interface iEntryComponent extends Partial<iEntry> {
   updateEntriesSignal: Signal<number>;
 }
 
@@ -44,7 +43,7 @@ export function Entry(props: iEntryComponent) {
           window.open(props.entry_mark, '_blank');
         } else if (
           props.id && ev.key === 'Backspace' &&
-          window.confirm('Are you sure you want to delete this note?')
+          window.confirm('Are you sure you want to delete this entry?')
         ) {
           deleteEntry(props.id);
           props.updateEntriesSignal.value++;
@@ -61,7 +60,7 @@ export function Entry(props: iEntryComponent) {
         )
         : null}
       <div class='isl-entry-row'>
-        <NoteTypeIndicator tags={props.tags} />
+        <EntryTypeIndicator tags={props.tags} />
         {isMarkUrl
           ? (
             <Link

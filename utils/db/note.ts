@@ -1,4 +1,4 @@
-export interface iNote {
+export interface iEntry {
   id: number;
   created_at: Date;
   content: string;
@@ -10,7 +10,7 @@ export interface iNote {
   // east_ids: number[];
 }
 
-export const def_Note: iNote = {
+export const def_Note: iEntry = {
   id: -1,
   created_at: new Date(),
   content: '',

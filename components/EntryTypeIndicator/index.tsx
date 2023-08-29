@@ -1,6 +1,6 @@
 import { Text } from 'lunchbox';
 
-interface iNoteTypeIndicator {
+interface iEntryTypeIndicator {
   tags?: string[];
 }
 
@@ -20,7 +20,7 @@ function tagsToIndicator(tags?: string[]): string {
   }
 }
 
-export function NoteTypeIndicator(props: iNoteTypeIndicator) {
+export function EntryTypeIndicator(props: iEntryTypeIndicator) {
   return (
     <Text class='text-center cursor-default select-none'>
       {tagsToIndicator(props.tags)}

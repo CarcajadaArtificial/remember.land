@@ -34,10 +34,12 @@
     "lunchbox": "https://deno.land/x/lunchbox@v0.2.6/mod.ts",
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
     "icons/": "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/",
+    "localdb": "https://deno.land/x/localdb@0.0.2/mod.ts",
     "types": "./utils/types.ts",
     "hooks": "./utils/hooks.ts",
+    "signals": "./utils/signals.ts",
+    "handlers/": "./utils/handlers/",
     "db/": "./utils/db/",
-    "components/": "./components/",
-    "handlers/": "./utils/handlers/"
+    "components/": "./components/"
   }
 }

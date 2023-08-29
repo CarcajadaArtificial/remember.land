@@ -1,12 +1,12 @@
 import { certainKeyPressed } from 'lunchbox';
 import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
-import { iNote } from 'db/note.ts';
+import { iEntry } from 'db/note.ts';
 import { setEntry } from 'db/middleware.ts';
 
 type Steps = 'notemark' | 'tags';
 
-export default function (props: iNote) {
+export default function (props: iEntry) {
   const [tags, updateTags] = useTagList(props.tags);
   const [noteValue, setNoteValue] = useState<string>(props.content);
   const [noteMark, setNoteMark] = useState<string>(props.entry_mark);

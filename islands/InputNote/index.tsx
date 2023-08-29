@@ -1,22 +1,22 @@
 import { applyDefaults, Chiplist } from 'lunchbox';
-import { NoteTypeIndicator } from 'components/NoteTypeIndicator/index.tsx';
-import { NoteLengthIndicator } from 'components/NoteLengthIndicator/index.tsx';
+import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
+import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';
 import Bookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/InputNote.ts';
-import { def_Note, iNote } from 'db/note.ts';
+import { def_Note, iEntry } from 'db/note.ts';
 import { Signal } from '@preact/signals';
 import { Ref, useEffect, useRef } from 'preact/hooks';
 import { nextEntryId } from 'db/middleware.ts';
 
-interface iInputNote extends Partial<iNote> {
+interface iInputNote extends Partial<iEntry> {
   updateEntriesSignal?: Signal<number>;
   onFocusOut?: () => void;
 }
 
 export function InputNote(props: iInputNote) {
   const { updateEntriesSignal, onFocusOut } = props;
-  const p = applyDefaults<iNote>(def_Note, props);
+  const p = applyDefaults<iEntry>(def_Note, props);
   const refTextarea = useRef<HTMLTextAreaElement>();
 
   if (p.id === -1) {
@@ -67,7 +67,7 @@ export function InputNote(props: iInputNote) {
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         <div class='isl-inputNote-row'>
           <div class='pt-1'>
-            <NoteTypeIndicator tags={tags} />
+            <EntryTypeIndicator tags={tags} />
           </div>
           <textarea
             class='isl-inputNote-textarea'
@@ -116,7 +116,7 @@ export function InputNote(props: iInputNote) {
           class='ml-6 mt-1.5'
         />
       </div>
-      <NoteLengthIndicator length={noteValue.length} />
+      <EntryLengthIndicator length={noteValue.length} />
     </div>
   );
 }

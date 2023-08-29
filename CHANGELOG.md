@@ -1,18 +1,8 @@
 # Changelog
 
-## v0.0.34
+## v0.0.35
 
-### Added Archive Page with the EntryQuery island
-  - `/routes/archive.tsx`
-  - `/islands/EntryQuery/index.tsx`
-  - `/islands/EntryQuery/style.scss`
-
-### Added the specification of the findEntries function
-  - `/utils/db/middleware.ts`
-
-### Minor updates
-  - `/routes/index.tsx`
-  - `/index.scss`
+### Renamed Note to Entry
 
 ## Roadmap
 
@@ -65,3 +55,4 @@
   - [ ] Parse the EntryMark as a possible date for events and tasks.
   - [ ] Save entry search queries for future uses.
   - [ ] Implement parsing a date somewhere in an entry.
+  - [ ] Download DB as JSON.

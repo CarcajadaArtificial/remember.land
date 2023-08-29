@@ -3,7 +3,6 @@ import { datetime } from 'ptera';
 import { useSignal } from '@preact/signals';
 import { InputNote } from '../islands/InputNote/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
-import { findEntries, iQueryEntries } from 'db/middleware.ts';
 
 export default function Home() {
   const updateEntriesSignal = useSignal<number>(0);

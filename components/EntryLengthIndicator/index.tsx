@@ -1,8 +1,8 @@
-interface iNoteLengthIndicator {
+interface iEntryLengthIndicator {
   length: number;
 }
 
-export function NoteLengthIndicator(props: iNoteLengthIndicator) {
+export function EntryLengthIndicator(props: iEntryLengthIndicator) {
   const { length } = props;
   const maxLength = 280;
 
