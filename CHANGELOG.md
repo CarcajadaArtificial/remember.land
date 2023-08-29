@@ -1,30 +1,13 @@
 # Changelog
 
-## v0.0.42
+## v0.0.43
 
-### Added Entry DB Access API
+### Added an authentication access wall for the API.
   - `/routes/api/entries/create.tsx`
   - `/routes/api/entries/find.tsx`
   - `/routes/api/entries/[id]/delete.tsx`
   - `/routes/api/entries/[id]/index.tsx`
   - `/routes/api/entries/[id]/update.tsx`
-
-### Added tilia db
-  - `/.gitignore`
-  - `/deno.json`
-  - `/utils/db/middleware.ts`
-  - `/utils/db/entry.ts`
-
-### Added fetch functions to access points for the API
-  - `/islands/Entry/index.tsx`
-  - `/islands/EntryList/index.tsx`
-  - `/utils/handlers/EntryInput.ts`
-
-### Minor updates
-  - `/utils/utils.ts`
-  - `/utils/types.ts`
-  - `/routes/index.tsx`
-  - `/routes/archive.tsx`
 
 ## Roadmap
 
@@ -54,23 +37,27 @@
     - [x] Focus and hover must change background.
     - [x] Add the URL NoteMark interaction.
     - [x] Press backspace to delete a note.
-    - [ ] Strikethrough notes with past events and done tasks.
+    - [ ] Strikethrough entries that contain the "task" and "done" tags.
     - [ ] Move handlers to their own file.
-  - [ ] ⏳ Input Note
+  - [x] ✅ Input Note
     - [x] Better focus background.
     - [x] Add a hover state.
     - [x] Add tag "link" if the entry mark is a url.
 - [x] Rename "Note" to "Entry"
-- [ ] Rename middleware.ts to localstorage.ts
+- [ ] Move /db/middleware.ts to /db/entry.ts
 - [x] Solve the iEntry id conundrum.
 - [ ] Change updateEntriesSignal to the one in ./utils/signals.ts.
-- [ ] Create a database middleware file.
+- [x] Put API behind a authentication wall that always redirects to /signin.
+- [ ] Implement quick day created indexing.
+  - [ ] On signing in, create the file data/app.json if not already created.
+  - [ ] Register the date of first sign in inside data/app.json
+  - [ ] Add daycount to iEntry that keeps track of the day number relative to the first day of use.
+- [x] Create a database middleware file.
   - Controls if the projet stores entries on the client's localstorage or on a server db.
   - [x] Function that gets the next id for a new Entry.
   - [x] Function that sets new information for an Entry, it can create or update.
   - [x] Function that deletes an Entry.
-  - [ ] Function that searches for entries given a query object.
-  - [ ] Implement LocalDB for the local storage.
+  - [x] Function that searches for entries given a query object.
 
 ### v0.2.0
 
