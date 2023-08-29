@@ -4,18 +4,18 @@ import { useTagList } from 'hooks';
 import { iEntry } from 'db/entry.ts';
 import { setEntry } from 'db/middleware.ts';
 
-type Steps = 'notemark' | 'tags';
+type Steps = 'entrymark' | 'tags';
 
 export default function (props: iEntry) {
   const [tags, updateTags] = useTagList(props.tags);
-  const [noteValue, setNoteValue] = useState<string>(props.content);
-  const [noteMark, setNoteMark] = useState<string>(props.entry_mark);
+  const [entryValue, setEntryValue] = useState<string>(props.content);
+  const [entryMark, setEntryMark] = useState<string>(props.entry_mark);
   const [
     inputStep,
     setInputStep,
   ] = useState<(Steps)[]>([]);
 
-  function handleNoteInput(ev: Event) {
+  function handleEntryInput(ev: Event) {
     const value = (ev.target as HTMLTextAreaElement).value;
 
     if (
@@ -47,9 +47,9 @@ export default function (props: iEntry) {
       }
       const shortcutRemoved = value.substring(3);
       (ev.target as HTMLTextAreaElement).value = shortcutRemoved;
-      setNoteValue(shortcutRemoved);
+      setEntryValue(shortcutRemoved);
     } else {
-      setNoteValue(value);
+      setEntryValue(value);
     }
 
     if (value.includes('?')) {
@@ -83,33 +83,33 @@ export default function (props: iEntry) {
     }
   };
 
-  const handleCreateNoteShortcut = (_ev: KeyboardEvent) => {
+  const handleCreateEntryShortcut = (_ev: KeyboardEvent) => {
     setEntry({
       id: props.id,
       created_at: props.created_at,
-      content: noteValue,
+      content: entryValue,
       tags: tags,
-      entry_mark: noteMark,
+      entry_mark: entryMark,
     });
-    setNoteValue('');
-    setNoteMark('');
+    setEntryValue('');
+    setEntryMark('');
     updateTags([], tags);
     setInputStep([]);
   };
 
-  const handleNoteMarkInput = (ev: KeyboardEvent) => {
-    setNoteMark((ev.target as HTMLInputElement).value);
+  const handleEntryMarkInput = (ev: KeyboardEvent) => {
+    setEntryMark((ev.target as HTMLInputElement).value);
   };
 
   return {
-    handleNoteInput,
+    handleEntryInput,
     handleTagInput,
-    handleNoteMarkInput,
+    handleEntryMarkInput,
     handleRemoveTag,
     handleFieldFocus,
-    handleCreateNoteShortcut,
-    noteMark,
-    noteValue,
+    handleCreateEntryShortcut,
+    entryMark,
+    entryValue,
     tags,
     inputStep,
   };

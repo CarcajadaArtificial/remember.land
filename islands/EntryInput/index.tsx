@@ -25,21 +25,21 @@ export function EntryInput(props: iEntryInput) {
 
   const {
     handleRemoveTag,
-    handleNoteMarkInput,
+    handleEntryMarkInput,
     handleTagInput,
-    handleNoteInput,
+    handleEntryInput,
     handleFieldFocus,
-    handleCreateNoteShortcut,
-    noteMark,
+    handleCreateEntryShortcut,
+    entryMark,
     tags,
-    noteValue,
+    entryValue,
     inputStep,
   } = Handlers(p);
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   const handleConatinerKeyDown = (ev: KeyboardEvent) => {
     if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
-      handleCreateNoteShortcut(ev);
+      handleCreateEntryShortcut(ev);
       if (onFocusOut) {
         onFocusOut();
       }
@@ -72,16 +72,16 @@ export function EntryInput(props: iEntryInput) {
           <textarea
             class='isl-EntryInput-textarea'
             rows={5}
-            onKeyUp={handleNoteInput}
-            value={noteValue}
+            onKeyUp={handleEntryInput}
+            value={entryValue}
             ref={refTextarea as Ref<HTMLTextAreaElement>}
           />
         </div>
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        {/* NoteMark Row */}
+        {/* Entry Mark Row */}
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         <div
-          class={!(inputStep.includes('notemark') || noteMark !== '')
+          class={!(inputStep.includes('entrymark') || entryMark !== '')
             ? 'isl-EntryInput-row_hidden'
             : 'isl-EntryInput-row_hidden transition-appears-maxheight'}
         >
@@ -89,9 +89,9 @@ export function EntryInput(props: iEntryInput) {
           <input
             type='text'
             class='comp-input isl-EntryInput-field'
-            onKeyUp={handleNoteMarkInput}
-            onFocus={handleFieldFocus('notemark')}
-            value={noteMark}
+            onKeyUp={handleEntryMarkInput}
+            onFocus={handleFieldFocus('entrymark')}
+            value={entryMark}
           />
         </div>
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
@@ -116,7 +116,7 @@ export function EntryInput(props: iEntryInput) {
           class='ml-6 mt-1.5'
         />
       </div>
-      <EntryLengthIndicator length={noteValue.length} />
+      <EntryLengthIndicator length={entryValue.length} />
     </div>
   );
 }

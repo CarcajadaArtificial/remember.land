@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.36
+## v0.0.37
 
-### Renamed Note to Entry
+### Finished renaming Note to Entry
 
 ## Roadmap
 
@@ -40,13 +40,15 @@
     - [x] Better focus background.
     - [x] Add a hover state.
     - [ ] Add tag "link" if the entry mark is a url.
-- [ ] Rename "Note" to "Entry"
+- [x] Rename "Note" to "Entry"
 - [ ] Create a database middleware file.
   - Controls if the projet stores entries on the client's localstorage or on a server db.
   - [x] Function that gets the next id for a new Entry.
   - [x] Function that sets new information for an Entry, it can create or update.
   - [x] Function that deletes an Entry.
   - [ ] Function that searches for entries given a query object.
+  - [ ] Implement LocalDB for the local storage.
+  - [ ] Rename middleware.ts to localstorage.ts.
 
 ### v0.2.0
 
