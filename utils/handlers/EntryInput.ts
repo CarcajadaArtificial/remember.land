@@ -1,16 +1,18 @@
 import { certainKeyPressed } from 'lunchbox';
 import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
-import { iEntry } from 'db/entry.ts';
 import { setEntry } from 'db/middleware.ts';
 import { isURL } from 'utils';
+import { iEntryInput } from '../../islands/EntryInput/index.tsx';
 
 type Steps = 'entrymark' | 'tags';
 
-export default function (props: iEntry) {
-  const [tags, updateTags] = useTagList(props.tags);
-  const [entryValue, setEntryValue] = useState<string>(props.content);
-  const [entryMark, setEntryMark] = useState<string>(props.entry_mark);
+export default function (props: iEntryInput) {
+  const { entry, updateEntriesSignal, onFocusOut } = props;
+
+  const [tags, updateTags] = useTagList(entry.tags);
+  const [entryValue, setEntryValue] = useState<string>(entry.content);
+  const [entryMark, setEntryMark] = useState<string>(entry.entry_mark);
   const [
     inputStep,
     setInputStep,
@@ -86,8 +88,8 @@ export default function (props: iEntry) {
 
   const handleCreateEntryShortcut = (_ev: KeyboardEvent) => {
     setEntry({
-      id: props.id,
-      created_at: props.created_at,
+      id: entry.id,
+      created_at: entry.created_at,
       content: entryValue,
       tags: tags,
       entry_mark: entryMark,
@@ -111,13 +113,28 @@ export default function (props: iEntry) {
     setEntryMark(entry_mark);
   };
 
+  const handleConatinerKeyDown = (ev: KeyboardEvent) => {
+    if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
+      handleCreateEntryShortcut(ev);
+      if (onFocusOut) {
+        onFocusOut();
+      }
+      if (updateEntriesSignal) {
+        updateEntriesSignal.value++;
+      }
+    }
+    if (ev.key === 'Escape' && onFocusOut) {
+      onFocusOut();
+    }
+  };
+
   return {
     handleEntryInput,
     handleTagInput,
     handleEntryMarkInput,
     handleRemoveTag,
     handleFieldFocus,
-    handleCreateEntryShortcut,
+    handleConatinerKeyDown,
     entryMark,
     entryValue,
     tags,

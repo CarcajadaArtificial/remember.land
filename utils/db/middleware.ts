@@ -1,7 +1,5 @@
 import { dbEntry } from 'db/entry.ts';
 
-export const nextEntryId = (): string => String(localStorage.length);
-
 export const getEntries = (): dbEntry[] => localStorageToArray<dbEntry>();
 
 export const setEntry = (entry: dbEntry): void =>

@@ -1,4 +1,4 @@
-import { applyDefaults, Chiplist } from 'lunchbox';
+import { Chiplist } from 'lunchbox';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';
@@ -7,21 +7,15 @@ import Handlers from 'handlers/EntryInput.ts';
 import { dbEntry } from 'db/entry.ts';
 import { Signal } from '@preact/signals';
 import { Ref, useEffect, useRef } from 'preact/hooks';
-import { nextEntryId } from 'db/middleware.ts';
 
-interface iEntryInput {
+export interface iEntryInput {
   entry: dbEntry;
   updateEntriesSignal?: Signal<number>;
   onFocusOut: () => void;
 }
 
 export function EntryInput(props: iEntryInput) {
-  const { updateEntriesSignal, onFocusOut } = props;
   const refTextarea = useRef<HTMLTextAreaElement>();
-
-  if (props.entry.id === '-1') {
-    props.entry.id = nextEntryId();
-  }
 
   const {
     handleRemoveTag,
@@ -29,28 +23,12 @@ export function EntryInput(props: iEntryInput) {
     handleTagInput,
     handleEntryInput,
     handleFieldFocus,
-    handleCreateEntryShortcut,
+    handleConatinerKeyDown,
     entryMark,
     tags,
     entryValue,
     inputStep,
-  } = Handlers(props.entry);
-
-  // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
-  const handleConatinerKeyDown = (ev: KeyboardEvent) => {
-    if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
-      handleCreateEntryShortcut(ev);
-      if (onFocusOut) {
-        onFocusOut();
-      }
-      if (updateEntriesSignal) {
-        updateEntriesSignal.value++;
-      }
-    }
-    if (ev.key === 'Escape' && onFocusOut) {
-      onFocusOut();
-    }
-  };
+  } = Handlers(props);
 
   useEffect(() => {
     refTextarea.current?.focus();

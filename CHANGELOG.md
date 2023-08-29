@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.39
+## v0.0.40
 
-### Removed the `id` property from `iEntry` and instead created the generic `dbItem` for items with id.
+### Moved `handleConatinerKeyDown` to `utils/handlers/EntryInput.ts`
 
 ## Roadmap
 
