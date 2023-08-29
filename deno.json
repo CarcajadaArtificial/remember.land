@@ -35,6 +35,7 @@
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
     "icons/": "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/",
     "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts",
+    "tilia/": "https://deno.land/x/tilia@0.1.2/",
     "types": "./utils/types.ts",
     "hooks": "./utils/hooks.ts",
     "signals": "./utils/signals.ts",
@@ -42,6 +43,7 @@
     "utils": "./utils/utils.ts",
     "handlers/": "./utils/handlers/",
     "db/": "./utils/db/",
+    "islands/": "./islands/",
     "components/": "./components/"
   }
 }

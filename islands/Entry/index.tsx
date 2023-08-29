@@ -4,7 +4,6 @@ import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryInput } from '../EntryInput/index.tsx';
 import { useState } from 'preact/hooks';
 import { Signal } from '@preact/signals';
-import { deleteEntry } from 'db/middleware.ts';
 import { isURL } from 'utils';
 
 interface iEntryComponent {
@@ -14,7 +13,7 @@ interface iEntryComponent {
 
 export function Entry(props: iEntryComponent) {
   const { entry, updateEntriesSignal } = props;
-  const { id, content, tags, entry_mark } = entry;
+  const { _id, content, tags, entry_mark } = entry;
   const [editMode, setEditMode] = useState<boolean>(false);
   const isMarkUrl = entry_mark && isURL(entry_mark);
 
@@ -40,11 +39,21 @@ export function Entry(props: iEntryComponent) {
         } else if (isMarkUrl && ev.key === 'Enter') {
           window.open(entry_mark, '_blank');
         } else if (
-          id && ev.key === 'Backspace' &&
+          _id && ev.key === 'Backspace' &&
           window.confirm('Are you sure you want to delete this entry?')
         ) {
-          deleteEntry(id);
-          updateEntriesSignal.value++;
+          fetch(`/api/entries/${_id}/delete`, {
+            method: 'POST',
+            mode: 'no-cors',
+            body: JSON.stringify({}),
+          })
+            .then(() => {
+              updateEntriesSignal.value++;
+            })
+            .catch((e) => {
+              alert('Delete entry error.');
+              console.error('Delete entry error:', e);
+            });
         }
       }}
       tabIndex={0}

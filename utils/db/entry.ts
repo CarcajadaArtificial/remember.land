@@ -1,10 +1,11 @@
-import { dbItem } from 'types';
+import { dbItem, docItem } from 'types';
 
 export interface iEntry {
-  created_at: Date;
+  utc_created_at: string;
   content: string;
   tags: string[];
   entry_mark: string;
+  // day_count: number;
   // north_ids: number[];
   // south_ids: number[];
   // west_ids: number[];
@@ -12,3 +13,5 @@ export interface iEntry {
 }
 
 export type dbEntry = dbItem<iEntry, string>;
+
+export type docEntry = docItem<iEntry>;

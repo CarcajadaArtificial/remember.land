@@ -24,7 +24,7 @@ export const handler: Handlers<
 
 export default function Home() {
   const updateEntriesSignal = useSignal<number>(0);
-  const today = datetime(new Date(), { timezone: 'America/Mexico_City' });
+  const today = datetime(new Date());
 
   return (
     <div>
@@ -37,11 +37,11 @@ export default function Home() {
           <Panel>
             <EntryInput
               entry={{
-                id: '',
+                _id: '',
                 content: '',
                 entry_mark: '',
                 tags: [],
-                created_at: new Date(),
+                utc_created_at: new Date().toUTCString(),
               }}
               updateEntriesSignal={updateEntriesSignal}
               onFocusOut={() => {}}

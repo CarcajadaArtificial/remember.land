@@ -7,6 +7,8 @@
 # generated style sheets
 static/style.css
 *.css.map
+# generated database
+data/db/entries.json.db
 # generated test coverage
 cov/
 cov.lcov

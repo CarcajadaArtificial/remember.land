@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Entry } from '../Entry/index.tsx';
 import { dbEntry } from 'db/entry.ts';
-import { getEntries } from 'db/middleware.ts';
+// import { getEntries } from 'db/middleware.ts';
 import { Signal } from '@preact/signals';
 
 interface iEntryList {
@@ -13,7 +13,18 @@ export function EntryList(props: iEntryList) {
   const [entries, setEntries] = useState<dbEntry[]>([]);
 
   useEffect(() => {
-    setEntries(getEntries());
+    fetch('/api/entries/find', {
+      method: 'POST',
+      mode: 'no-cors',
+      body: JSON.stringify({}),
+    })
+      .then(async (res) => {
+        setEntries(await res.json());
+      })
+      .catch((e) => {
+        alert('Find entries error.');
+        console.error('Find entries error:', e);
+      });
   }, [updateEntriesSignal.value]);
 
   return (

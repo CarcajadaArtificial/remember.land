@@ -21,7 +21,7 @@ export const handler: Handlers<
 };
 
 export default function Archive() {
-  const today = datetime(new Date(), { timezone: 'America/Mexico_City' });
+  const today = datetime(new Date());
 
   return (
     <div>

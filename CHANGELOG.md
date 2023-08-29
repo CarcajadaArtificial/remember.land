@@ -1,8 +1,30 @@
 # Changelog
 
-## v0.0.41
+## v0.0.42
 
-### Added .env PASSWORD authentication
+### Added Entry DB Access API
+  - `/routes/api/entries/create.tsx`
+  - `/routes/api/entries/find.tsx`
+  - `/routes/api/entries/[id]/delete.tsx`
+  - `/routes/api/entries/[id]/index.tsx`
+  - `/routes/api/entries/[id]/update.tsx`
+
+### Added tilia db
+  - `/.gitignore`
+  - `/deno.json`
+  - `/utils/db/middleware.ts`
+  - `/utils/db/entry.ts`
+
+### Added fetch functions to access points for the API
+  - `/islands/Entry/index.tsx`
+  - `/islands/EntryList/index.tsx`
+  - `/utils/handlers/EntryInput.ts`
+
+### Minor updates
+  - `/utils/utils.ts`
+  - `/utils/types.ts`
+  - `/routes/index.tsx`
+  - `/routes/archive.tsx`
 
 ## Roadmap
 
