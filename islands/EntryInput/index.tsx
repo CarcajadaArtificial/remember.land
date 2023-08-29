@@ -3,18 +3,18 @@ import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';
 import Bookmark from 'icons/bookmark.tsx';
-import Handlers from 'handlers/InputNote.ts';
-import { def_Note, iEntry } from 'db/note.ts';
+import Handlers from 'handlers/EntryInput.ts';
+import { def_Note, iEntry } from 'db/entry.ts';
 import { Signal } from '@preact/signals';
 import { Ref, useEffect, useRef } from 'preact/hooks';
 import { nextEntryId } from 'db/middleware.ts';
 
-interface iInputNote extends Partial<iEntry> {
+interface iEntryInput extends Partial<iEntry> {
   updateEntriesSignal?: Signal<number>;
   onFocusOut?: () => void;
 }
 
-export function InputNote(props: iInputNote) {
+export function EntryInput(props: iEntryInput) {
   const { updateEntriesSignal, onFocusOut } = props;
   const p = applyDefaults<iEntry>(def_Note, props);
   const refTextarea = useRef<HTMLTextAreaElement>();
@@ -59,18 +59,18 @@ export function InputNote(props: iInputNote) {
   return (
     <div>
       <div
-        class='isl-inputNote-container'
+        class='isl-EntryInput-container'
         onKeyDown={handleConatinerKeyDown}
       >
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         {/* Textarea Row */}
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        <div class='isl-inputNote-row'>
+        <div class='isl-EntryInput-row'>
           <div class='pt-1'>
             <EntryTypeIndicator tags={tags} />
           </div>
           <textarea
-            class='isl-inputNote-textarea'
+            class='isl-EntryInput-textarea'
             rows={5}
             onKeyUp={handleNoteInput}
             value={noteValue}
@@ -82,13 +82,13 @@ export function InputNote(props: iInputNote) {
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         <div
           class={!(inputStep.includes('notemark') || noteMark !== '')
-            ? 'isl-inputNote-row_hidden'
-            : 'isl-inputNote-row_hidden transition-appears-maxheight'}
+            ? 'isl-EntryInput-row_hidden'
+            : 'isl-EntryInput-row_hidden transition-appears-maxheight'}
         >
           <Bookmark class='w-5 pt-1.5' stroke={1} />
           <input
             type='text'
-            class='comp-input isl-inputNote-field'
+            class='comp-input isl-EntryInput-field'
             onKeyUp={handleNoteMarkInput}
             onFocus={handleFieldFocus('notemark')}
             value={noteMark}
@@ -99,13 +99,13 @@ export function InputNote(props: iInputNote) {
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         <div
           class={!inputStep.includes('tags')
-            ? 'isl-inputNote-row_hidden'
-            : 'isl-inputNote-row_hidden transition-appears-maxheight'}
+            ? 'isl-EntryInput-row_hidden'
+            : 'isl-EntryInput-row_hidden transition-appears-maxheight'}
         >
           <IconTag class='w-5 pt-1.5' stroke={1} />
           <input
             type='text'
-            class='comp-input isl-inputNote-field'
+            class='comp-input isl-EntryInput-field'
             onFocus={handleFieldFocus('tags')}
             onKeyUp={handleTagInput}
           />

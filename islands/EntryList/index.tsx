@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Entry } from '../Entry/index.tsx';
-import { iEntry } from 'db/note.ts';
+import { iEntry } from 'db/entry.ts';
 import { getEntries } from 'db/middleware.ts';
 import { Signal } from '@preact/signals';
 

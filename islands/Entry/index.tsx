@@ -1,7 +1,7 @@
 import { Chiplist, Link, Text } from 'lunchbox';
-import { iEntry } from 'db/note.ts';
+import { iEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
-import { InputNote } from '../InputNote/index.tsx';
+import { EntryInput } from '../EntryInput/index.tsx';
 import { useState } from 'preact/hooks';
 import { Signal } from '@preact/signals';
 import { deleteEntry } from 'db/middleware.ts';
@@ -19,7 +19,7 @@ export function Entry(props: iEntryComponent) {
   if (editMode) {
     return (
       <div class='clr-bg-panel-30'>
-        <InputNote
+        <EntryInput
           onFocusOut={() => {
             setEditMode(false);
           }}

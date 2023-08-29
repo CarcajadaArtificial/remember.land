@@ -1,4 +1,4 @@
-import { iEntry } from 'db/note.ts';
+import { iEntry } from 'db/entry.ts';
 
 export const nextEntryId = (): number => localStorage.length;
 

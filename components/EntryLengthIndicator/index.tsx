@@ -14,14 +14,14 @@ export function EntryLengthIndicator(props: iEntryLengthIndicator) {
     : '0%';
 
   return (
-    <div class='isl-inputNote-characterIndicator'>
+    <div class='isl-EntryInput-characterIndicator'>
       <div
         style={{ width: charIndicatorProgress }}
-        class='isl-inputNote-characterIndicator_progress'
+        class='isl-EntryInput-characterIndicator_progress'
       >
         <div
           style={{ width: charIndicatorExcess }}
-          class='isl-inputNote-characterIndicator_excess'
+          class='isl-EntryInput-characterIndicator_excess'
         />
       </div>
     </div>

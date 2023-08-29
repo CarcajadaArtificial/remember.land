@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.0.35
+## v0.0.36
 
 ### Renamed Note to Entry
 

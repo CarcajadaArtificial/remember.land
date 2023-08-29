@@ -1,7 +1,7 @@
 import { certainKeyPressed } from 'lunchbox';
 import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
-import { iEntry } from 'db/note.ts';
+import { iEntry } from 'db/entry.ts';
 import { setEntry } from 'db/middleware.ts';
 
 type Steps = 'notemark' | 'tags';

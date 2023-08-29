@@ -1,7 +1,7 @@
 import { Layout, Link, Main, Navigation, Panel, Text } from 'lunchbox';
 import { datetime } from 'ptera';
 import { useSignal } from '@preact/signals';
-import { InputNote } from '../islands/InputNote/index.tsx';
+import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
       <Main>
         <Layout type='full'>
           <Panel>
-            <InputNote updateEntriesSignal={updateEntriesSignal} />
+            <EntryInput updateEntriesSignal={updateEntriesSignal} />
           </Panel>
         </Layout>
         <Layout class='pt-6' type='full'>

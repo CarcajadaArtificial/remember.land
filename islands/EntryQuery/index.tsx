@@ -22,7 +22,7 @@ export function EntryQuery() {
         <Layout type='full'>
           <div class='py-3'>
             <input
-              class='comp-input clr-bg-panel-10 isl-inputNote-field'
+              class='comp-input clr-bg-panel-10 isl-EntryInput-field'
               type='text'
               ref={containsTextInputRef as Ref<HTMLInputElement>}
             />
