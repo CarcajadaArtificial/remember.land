@@ -1,14 +1,11 @@
 # Changelog
 
-## v0.0.45
+## v0.0.46
 
-### Moved /db/middleware.ts to /db/entry.ts
-  - `/routes/api/entries/create.tsx`
-  - `/routes/api/entries/find.tsx`
-  - `/routes/api/entries/[id]/delete.tsx`
-  - `/routes/api/entries/[id]/index.tsx`
-  - `/routes/api/entries/[id]/update.tsx`
-  - `/utils/db/entry.ts`
+### Moved Entry island handlers to their own file.
+  - `/islands/Entry/index.tsx`
+  - `/utils/handlers/Entry.ts`
+  - `/utils/handlers/EntryInput.ts`
 
 ## Roadmap
 
@@ -39,7 +36,7 @@
     - [x] Add the URL NoteMark interaction.
     - [x] Press backspace to delete a note.
     - [ ] Strikethrough entries that contain the "task" and "done" tags.
-    - [ ] Move handlers to their own file.
+    - [x] Move handlers to their own file.
   - [x] ✅ Input Note
     - [x] Better focus background.
     - [x] Add a hover state.

@@ -9,7 +9,6 @@ type Steps = 'entrymark' | 'tags';
 
 export default function (props: iEntryInput) {
   const { entry, onFocusOut } = props;
-
   const [tags, updateTags] = useTagList(entry.tags);
   const [entryValue, setEntryValue] = useState<string>(entry.content);
   const [entryMark, setEntryMark] = useState<string>(entry.entry_mark);
@@ -114,7 +113,7 @@ export default function (props: iEntryInput) {
     }
   };
 
-  const handleEntryMarkInput = (ev: KeyboardEvent) => {
+  function handleEntryMarkInput(ev: KeyboardEvent) {
     const entry_mark = (ev.target as HTMLInputElement).value;
     const isMarkUrl = isURL(entry_mark);
 
@@ -125,9 +124,9 @@ export default function (props: iEntryInput) {
     }
 
     setEntryMark(entry_mark);
-  };
+  }
 
-  const handleConatinerKeyDown = (ev: KeyboardEvent) => {
+  function handleConatinerKeyDown(ev: KeyboardEvent) {
     if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
       setEntry(ev);
       if (onFocusOut) {
@@ -137,7 +136,7 @@ export default function (props: iEntryInput) {
     if (ev.key === 'Escape' && onFocusOut) {
       onFocusOut();
     }
-  };
+  }
 
   return {
     handleEntryInput,
