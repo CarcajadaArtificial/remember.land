@@ -1,5 +1,5 @@
 import { type Handlers } from '$fresh/server.ts';
-import { findEntries } from 'db/middleware.ts';
+import { findEntries } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
 import { redirect } from 'redirect';
 

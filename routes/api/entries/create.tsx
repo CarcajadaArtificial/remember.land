@@ -1,6 +1,5 @@
 import { type Handlers, Status } from '$fresh/server.ts';
-import { insertEntry } from 'db/middleware.ts';
-import { iEntry } from 'db/entry.ts';
+import { iEntry, insertEntry } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
 
 type Data = { session: Record<string, string> };

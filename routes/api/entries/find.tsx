@@ -1,7 +1,6 @@
 import { type Handlers } from '$fresh/server.ts';
 import { DbResults, Projection } from 'tilia/src/types.ts';
-import { findEntries } from 'db/middleware.ts';
-import { docEntry } from 'db/entry.ts';
+import { docEntry, findEntries } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
 
 export type findReq = {

@@ -1,6 +1,5 @@
 import { type Handlers } from '$fresh/server.ts';
-import { deleteEntry } from 'db/middleware.ts';
-import { iEntry } from 'db/entry.ts';
+import { deleteEntry, iEntry } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
 
 type Data = { session: Record<string, string> };
