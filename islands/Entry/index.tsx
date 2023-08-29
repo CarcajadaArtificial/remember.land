@@ -19,6 +19,8 @@ export function Entry(props: iEntryComponent) {
     isMarkUrl,
   } = Handlers(props);
 
+  const isTaskDone = tags.includes('task') && tags.includes('done');
+
   if (editMode) {
     return (
       <div class='clr-bg-panel-30'>
@@ -59,7 +61,9 @@ export function Entry(props: iEntryComponent) {
           )
           : (
             <div>
-              <Text noMargins>{content}</Text>
+              <Text class={isTaskDone ? 'line-through' : undefined} noMargins>
+                {content}
+              </Text>
             </div>
           )}
       </div>

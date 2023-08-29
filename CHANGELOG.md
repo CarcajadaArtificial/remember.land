@@ -1,11 +1,9 @@
 # Changelog
 
-## v0.0.46
+## v0.0.47
 
-### Moved Entry island handlers to their own file.
+### Strikethrough entries that contain the "task" and "done" tags.
   - `/islands/Entry/index.tsx`
-  - `/utils/handlers/Entry.ts`
-  - `/utils/handlers/EntryInput.ts`
 
 ## Roadmap
 
@@ -28,14 +26,14 @@
     - [ ] Query builder
 - [ ] Components
   - [ ] ⏳ Contribution Calendar
-  - [ ] ⏳ Note
+  - [ ] ✅ Note
     - [x] Add an update note information functionality onclick and onkeyup enter.
     - [x] Remove id and created_at Texts.
     - [x] Relocate NoteMark
     - [x] Focus and hover must change background.
     - [x] Add the URL NoteMark interaction.
     - [x] Press backspace to delete a note.
-    - [ ] Strikethrough entries that contain the "task" and "done" tags.
+    - [x] Strikethrough entries that contain the "task" and "done" tags.
     - [x] Move handlers to their own file.
   - [x] ✅ Input Note
     - [x] Better focus background.
@@ -61,7 +59,7 @@
 
   - Backlog
     - [x] Include single password authentication method.
-    - [ ] Include FileDB database.
+    - [x] Include FileDB database.
     - [ ] Parse the EntryMark as a possible date for events and tasks.
     - [ ] Save entry search queries for future uses.
     - [ ] Implement parsing a date somewhere in an entry.
