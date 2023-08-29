@@ -1,5 +1,6 @@
+import { dbItem } from 'types';
+
 export interface iEntry {
-  id: number;
   created_at: Date;
   content: string;
   tags: string[];
@@ -10,10 +11,4 @@ export interface iEntry {
   // east_ids: number[];
 }
 
-export const def_Note: iEntry = {
-  id: -1,
-  created_at: new Date(),
-  content: '',
-  tags: [],
-  entry_mark: '',
-};
+export type dbEntry = dbItem<iEntry, string>;

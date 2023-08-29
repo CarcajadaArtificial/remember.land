@@ -1,10 +1,10 @@
-import { iEntry } from 'db/entry.ts';
+import { dbEntry } from 'db/entry.ts';
 
-export const nextEntryId = (): number => localStorage.length;
+export const nextEntryId = (): string => String(localStorage.length);
 
-export const getEntries = (): iEntry[] => localStorageToArray<iEntry>();
+export const getEntries = (): dbEntry[] => localStorageToArray<dbEntry>();
 
-export const setEntry = (entry: iEntry): void =>
+export const setEntry = (entry: dbEntry): void =>
   localStorage.setItem(
     String(entry.id),
     JSON.stringify({
@@ -16,8 +16,7 @@ export const setEntry = (entry: iEntry): void =>
     }),
   );
 
-export const deleteEntry = (id: number): void =>
-  localStorage.removeItem(String(id));
+export const deleteEntry = (id: string): void => localStorage.removeItem(id);
 
 export interface iQueryEntries {
   contains_text: string;
@@ -28,12 +27,12 @@ export interface iQueryEntries {
   // include_all_tags: boolean
 }
 
-export const findEntries = (query?: Partial<iQueryEntries>): iEntry[] => {
+export const findEntries = (query?: Partial<iQueryEntries>): dbEntry[] => {
   if (
     !query ||
     Object.values(query).every((querySetting) => querySetting === undefined)
   ) {
-    return localStorageToArray<iEntry>();
+    return localStorageToArray<dbEntry>();
   }
 
   const {
@@ -44,7 +43,7 @@ export const findEntries = (query?: Partial<iQueryEntries>): iEntry[] => {
     // excludes_tags,
   } = query;
 
-  return localStorageToArray<iEntry>().filter((entry) => {
+  return localStorageToArray<dbEntry>().filter((entry) => {
     // Content query logic
     if (
       contains_text && contains_text !== '' &&

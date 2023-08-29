@@ -17,7 +17,17 @@ export default function Home() {
       <Main>
         <Layout type='full'>
           <Panel>
-            <EntryInput updateEntriesSignal={updateEntriesSignal} />
+            <EntryInput
+              entry={{
+                id: '',
+                content: '',
+                entry_mark: '',
+                tags: [],
+                created_at: new Date(),
+              }}
+              updateEntriesSignal={updateEntriesSignal}
+              onFocusOut={() => {}}
+            />
           </Panel>
         </Layout>
         <Layout class='pt-6' type='full'>

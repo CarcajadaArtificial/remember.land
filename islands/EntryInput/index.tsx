@@ -4,23 +4,23 @@ import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx'
 import IconTag from 'icons/tag.tsx';
 import Bookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/EntryInput.ts';
-import { def_Note, iEntry } from 'db/entry.ts';
+import { dbEntry } from 'db/entry.ts';
 import { Signal } from '@preact/signals';
 import { Ref, useEffect, useRef } from 'preact/hooks';
 import { nextEntryId } from 'db/middleware.ts';
 
-interface iEntryInput extends Partial<iEntry> {
+interface iEntryInput {
+  entry: dbEntry;
   updateEntriesSignal?: Signal<number>;
-  onFocusOut?: () => void;
+  onFocusOut: () => void;
 }
 
 export function EntryInput(props: iEntryInput) {
   const { updateEntriesSignal, onFocusOut } = props;
-  const p = applyDefaults<iEntry>(def_Note, props);
   const refTextarea = useRef<HTMLTextAreaElement>();
 
-  if (p.id === -1) {
-    p.id = nextEntryId();
+  if (props.entry.id === '-1') {
+    props.entry.id = nextEntryId();
   }
 
   const {
@@ -34,7 +34,7 @@ export function EntryInput(props: iEntryInput) {
     tags,
     entryValue,
     inputStep,
-  } = Handlers(p);
+  } = Handlers(props.entry);
 
   // - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -
   const handleConatinerKeyDown = (ev: KeyboardEvent) => {

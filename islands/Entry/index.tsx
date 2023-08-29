@@ -1,5 +1,5 @@
 import { Chiplist, Link, Text } from 'lunchbox';
-import { iEntry } from 'db/entry.ts';
+import { dbEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryInput } from '../EntryInput/index.tsx';
 import { useState } from 'preact/hooks';
@@ -7,13 +7,16 @@ import { Signal } from '@preact/signals';
 import { deleteEntry } from 'db/middleware.ts';
 import { isURL } from 'utils';
 
-interface iEntryComponent extends Partial<iEntry> {
+interface iEntryComponent {
+  entry: dbEntry;
   updateEntriesSignal: Signal<number>;
 }
 
 export function Entry(props: iEntryComponent) {
+  const { entry, updateEntriesSignal } = props;
+  const { id, content, tags, entry_mark } = entry;
   const [editMode, setEditMode] = useState<boolean>(false);
-  const isMarkUrl = props.entry_mark && isURL(props.entry_mark);
+  const isMarkUrl = entry_mark && isURL(entry_mark);
 
   if (editMode) {
     return (
@@ -22,12 +25,8 @@ export function Entry(props: iEntryComponent) {
           onFocusOut={() => {
             setEditMode(false);
           }}
-          id={props.id}
-          created_at={props.created_at}
-          content={props.content}
-          tags={props.tags}
-          entry_mark={props.entry_mark}
-          updateEntriesSignal={props.updateEntriesSignal}
+          entry={entry}
+          updateEntriesSignal={updateEntriesSignal}
         />
       </div>
     );
@@ -39,27 +38,27 @@ export function Entry(props: iEntryComponent) {
         if (ev.shiftKey && ev.key === 'Enter') {
           setEditMode(true);
         } else if (isMarkUrl && ev.key === 'Enter') {
-          window.open(props.entry_mark, '_blank');
+          window.open(entry_mark, '_blank');
         } else if (
-          props.id && ev.key === 'Backspace' &&
+          id && ev.key === 'Backspace' &&
           window.confirm('Are you sure you want to delete this entry?')
         ) {
-          deleteEntry(props.id);
-          props.updateEntriesSignal.value++;
+          deleteEntry(id);
+          updateEntriesSignal.value++;
         }
       }}
       tabIndex={0}
       class='isl-entry-container'
     >
-      {props.entry_mark
+      {entry_mark
         ? (
           <div className='isl-entry-hidden'>
-            <Text noMargins class='ml-8' type='small'>{props.entry_mark}</Text>
+            <Text noMargins class='ml-8' type='small'>{entry_mark}</Text>
           </div>
         )
         : null}
       <div class='isl-entry-row'>
-        <EntryTypeIndicator tags={props.tags} />
+        <EntryTypeIndicator tags={tags} />
         {isMarkUrl
           ? (
             <Link
@@ -67,21 +66,21 @@ export function Entry(props: iEntryComponent) {
               target='_blank'
               nostyle
               class='isl-entry-link'
-              href={props.entry_mark}
+              href={entry_mark}
             >
-              {props.content}
+              {content}
             </Link>
           )
           : (
             <div>
-              <Text noMargins>{props.content}</Text>
+              <Text noMargins>{content}</Text>
             </div>
           )}
       </div>
-      {props.tags && props.tags.length > 0
+      {tags && tags.length > 0
         ? (
           <div className='isl-entry-hidden'>
-            <Chiplist class='ml-6' values={props.tags} />
+            <Chiplist class='ml-6' values={tags} />
           </div>
         )
         : null}

@@ -1,1 +1,3 @@
-export type NoteTypes = 'note' | 'task' | 'event' | 'permanent';
+export type dbItem<T, idT = number> = {
+  id: idT;
+} & T;

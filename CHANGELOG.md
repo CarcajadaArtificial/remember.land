@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.38
+## v0.0.39
 
-### Added tag "link" if the entry mark is a url.
+### Removed the `id` property from `iEntry` and instead created the generic `dbItem` for items with id.
 
 ## Roadmap
 
