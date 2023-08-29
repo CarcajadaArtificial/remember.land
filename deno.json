@@ -38,6 +38,7 @@
     "types": "./utils/types.ts",
     "hooks": "./utils/hooks.ts",
     "signals": "./utils/signals.ts",
+    "utils": "./utils/utils.ts",
     "handlers/": "./utils/handlers/",
     "db/": "./utils/db/",
     "components/": "./components/"

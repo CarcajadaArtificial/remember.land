@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.37
+## v0.0.38
 
-### Finished renaming Note to Entry
+### Added tag "link" if the entry mark is a url.
 
 ## Roadmap
 
@@ -33,14 +33,15 @@
     - [x] Add the URL NoteMark interaction.
     - [x] Press backspace to delete a note.
     - [ ] Strikethrough notes with past events and done tasks.
+    - [ ] Move handlers to their own file.
   - [ ] ⏳ Input Note
-    - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
-      - [ ] Make the icon an invisible button that changes onlcick as well.
-      - [ ] When the lock is applied change the button from invisible to panel.
     - [x] Better focus background.
     - [x] Add a hover state.
-    - [ ] Add tag "link" if the entry mark is a url.
+    - [x] Add tag "link" if the entry mark is a url.
 - [x] Rename "Note" to "Entry"
+- [ ] Rename middleware.ts to localstorage.ts
+- [ ] Solve the iEntry id conundrum.
+- [ ] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [ ] Create a database middleware file.
   - Controls if the projet stores entries on the client's localstorage or on a server db.
   - [x] Function that gets the next id for a new Entry.
@@ -48,13 +49,17 @@
   - [x] Function that deletes an Entry.
   - [ ] Function that searches for entries given a query object.
   - [ ] Implement LocalDB for the local storage.
-  - [ ] Rename middleware.ts to localstorage.ts.
 
 ### v0.2.0
 
-  - [ ] Include single password authentication method.
-  - [ ] Include FileDB database.
-  - [ ] Parse the EntryMark as a possible date for events and tasks.
-  - [ ] Save entry search queries for future uses.
-  - [ ] Implement parsing a date somewhere in an entry.
-  - [ ] Download DB as JSON.
+  - Backlog
+    - [ ] Include single password authentication method.
+    - [ ] Include FileDB database.
+    - [ ] Parse the EntryMark as a possible date for events and tasks.
+    - [ ] Save entry search queries for future uses.
+    - [ ] Implement parsing a date somewhere in an entry.
+    - [ ] Download DB as JSON.
+  - [ ] ⏳ Input Note
+    - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
+      - [ ] Make the icon an invisible button that changes onlcick as well.
+      - [ ] When the lock is applied change the button from invisible to panel.

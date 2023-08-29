@@ -3,6 +3,7 @@ import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
 import { iEntry } from 'db/entry.ts';
 import { setEntry } from 'db/middleware.ts';
+import { isURL } from 'utils';
 
 type Steps = 'entrymark' | 'tags';
 
@@ -98,7 +99,16 @@ export default function (props: iEntry) {
   };
 
   const handleEntryMarkInput = (ev: KeyboardEvent) => {
-    setEntryMark((ev.target as HTMLInputElement).value);
+    const entry_mark = (ev.target as HTMLInputElement).value;
+    const isMarkUrl = isURL(entry_mark);
+
+    if (isMarkUrl && !tags.includes('link')) {
+      updateTags(['link'], []);
+    } else if (!isMarkUrl && tags.includes('link')) {
+      updateTags([], ['link']);
+    }
+
+    setEntryMark(entry_mark);
   };
 
   return {

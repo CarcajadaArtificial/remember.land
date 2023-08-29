@@ -5,6 +5,7 @@ import { EntryInput } from '../EntryInput/index.tsx';
 import { useState } from 'preact/hooks';
 import { Signal } from '@preact/signals';
 import { deleteEntry } from 'db/middleware.ts';
+import { isURL } from 'utils';
 
 interface iEntryComponent extends Partial<iEntry> {
   updateEntriesSignal: Signal<number>;
@@ -12,9 +13,7 @@ interface iEntryComponent extends Partial<iEntry> {
 
 export function Entry(props: iEntryComponent) {
   const [editMode, setEditMode] = useState<boolean>(false);
-  const isMarkUrl = props.entry_mark &&
-    (props.entry_mark?.substring(0, 8) === 'https://' ||
-      props.entry_mark?.substring(0, 7) === 'http://');
+  const isMarkUrl = props.entry_mark && isURL(props.entry_mark);
 
   if (editMode) {
     return (
