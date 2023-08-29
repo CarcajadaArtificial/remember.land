@@ -3,16 +3,15 @@ import { dbEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryInput } from '../EntryInput/index.tsx';
 import { useState } from 'preact/hooks';
-import { Signal } from '@preact/signals';
 import { isURL } from 'utils';
+import { updateEntryList } from 'signals';
 
 interface iEntryComponent {
   entry: dbEntry;
-  updateEntriesSignal: Signal<number>;
 }
 
 export function Entry(props: iEntryComponent) {
-  const { entry, updateEntriesSignal } = props;
+  const { entry } = props;
   const { _id, content, tags, entry_mark } = entry;
   const [editMode, setEditMode] = useState<boolean>(false);
   const isMarkUrl = entry_mark && isURL(entry_mark);
@@ -25,7 +24,6 @@ export function Entry(props: iEntryComponent) {
             setEditMode(false);
           }}
           entry={entry}
-          updateEntriesSignal={updateEntriesSignal}
         />
       </div>
     );
@@ -48,7 +46,7 @@ export function Entry(props: iEntryComponent) {
             body: JSON.stringify({}),
           })
             .then(() => {
-              updateEntriesSignal.value++;
+              updateEntryList.value++;
             })
             .catch((e) => {
               alert('Delete entry error.');

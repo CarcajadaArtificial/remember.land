@@ -5,12 +5,10 @@ import IconTag from 'icons/tag.tsx';
 import Bookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/EntryInput.ts';
 import { dbEntry } from 'db/entry.ts';
-import { Signal } from '@preact/signals';
 import { Ref, useEffect, useRef } from 'preact/hooks';
 
 export interface iEntryInput {
   entry: dbEntry;
-  updateEntriesSignal?: Signal<number>;
   onFocusOut: () => void;
 }
 

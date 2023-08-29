@@ -1,13 +1,12 @@
 # Changelog
 
-## v0.0.43
+## v0.0.44
 
-### Added an authentication access wall for the API.
-  - `/routes/api/entries/create.tsx`
-  - `/routes/api/entries/find.tsx`
-  - `/routes/api/entries/[id]/delete.tsx`
-  - `/routes/api/entries/[id]/index.tsx`
-  - `/routes/api/entries/[id]/update.tsx`
+### Changeed updateEntriesSignal to the one in ./utils/signals.ts.
+  - `/islands/Entry/index.tsx`
+  - `/islands/EntryList/index.tsx`
+  - `/islands/EntryInput/index.tsx`
+  - `/utils/handlers/EntryInput.ts`
 
 ## Roadmap
 
@@ -46,7 +45,7 @@
 - [x] Rename "Note" to "Entry"
 - [ ] Move /db/middleware.ts to /db/entry.ts
 - [x] Solve the iEntry id conundrum.
-- [ ] Change updateEntriesSignal to the one in ./utils/signals.ts.
+- [x] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [x] Put API behind a authentication wall that always redirects to /signin.
 - [ ] Implement quick day created indexing.
   - [ ] On signing in, create the file data/app.json if not already created.

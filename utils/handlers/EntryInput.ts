@@ -3,11 +3,12 @@ import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
 import { isURL } from 'utils';
 import { iEntryInput } from 'islands/EntryInput/index.tsx';
+import { updateEntryList } from 'signals';
 
 type Steps = 'entrymark' | 'tags';
 
 export default function (props: iEntryInput) {
-  const { entry, updateEntriesSignal, onFocusOut } = props;
+  const { entry, onFocusOut } = props;
 
   const [tags, updateTags] = useTagList(entry.tags);
   const [entryValue, setEntryValue] = useState<string>(entry.content);
@@ -33,9 +34,7 @@ export default function (props: iEntryInput) {
       }),
     })
       .then(() => {
-        if (updateEntriesSignal) {
-          updateEntriesSignal.value++;
-        }
+        updateEntryList.value++;
       })
       .catch((e) => {
         alert('Create entry error.');

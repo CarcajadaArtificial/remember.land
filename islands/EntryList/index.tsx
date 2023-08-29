@@ -1,15 +1,9 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Entry } from '../Entry/index.tsx';
 import { dbEntry } from 'db/entry.ts';
-// import { getEntries } from 'db/middleware.ts';
-import { Signal } from '@preact/signals';
+import { updateEntryList } from 'signals';
 
-interface iEntryList {
-  updateEntriesSignal: Signal<number>;
-}
-
-export function EntryList(props: iEntryList) {
-  const { updateEntriesSignal } = props;
+export function EntryList() {
   const [entries, setEntries] = useState<dbEntry[]>([]);
 
   useEffect(() => {
@@ -25,13 +19,11 @@ export function EntryList(props: iEntryList) {
         alert('Find entries error.');
         console.error('Find entries error:', e);
       });
-  }, [updateEntriesSignal.value]);
+  }, [updateEntryList.value]);
 
   return (
     <div class='grid'>
-      {entries.map((entry) => (
-        <Entry entry={entry} updateEntriesSignal={updateEntriesSignal} />
-      ))}
+      {entries.map((entry) => <Entry entry={entry} />)}
     </div>
   );
 }
