@@ -3,6 +3,24 @@ import { datetime } from 'ptera';
 import { useSignal } from '@preact/signals';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
+import { Handlers } from '$fresh/server.ts';
+import { redirect } from 'redirect';
+import { WithSession } from 'fresh_session';
+
+type Data = { session: Record<string, string> };
+
+export const handler: Handlers<
+  Data,
+  WithSession
+> = {
+  GET(_req, ctx) {
+    return ctx.state.session.get('isSignedIn')
+      ? ctx.render({
+        session: ctx.state.session.data,
+      })
+      : redirect('/signin');
+  },
+};
 
 export default function Home() {
   const updateEntriesSignal = useSignal<number>(0);

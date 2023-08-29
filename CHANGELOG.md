@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.40
+## v0.0.41
 
-### Moved `handleConatinerKeyDown` to `utils/handlers/EntryInput.ts`
+### Added .env PASSWORD authentication
 
 ## Roadmap
 
@@ -40,7 +40,7 @@
     - [x] Add tag "link" if the entry mark is a url.
 - [x] Rename "Note" to "Entry"
 - [ ] Rename middleware.ts to localstorage.ts
-- [ ] Solve the iEntry id conundrum.
+- [x] Solve the iEntry id conundrum.
 - [ ] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [ ] Create a database middleware file.
   - Controls if the projet stores entries on the client's localstorage or on a server db.
@@ -53,7 +53,7 @@
 ### v0.2.0
 
   - Backlog
-    - [ ] Include single password authentication method.
+    - [x] Include single password authentication method.
     - [ ] Include FileDB database.
     - [ ] Parse the EntryMark as a possible date for events and tasks.
     - [ ] Save entry search queries for future uses.
