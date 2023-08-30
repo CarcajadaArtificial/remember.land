@@ -8,7 +8,7 @@
 static/style.css
 *.css.map
 # generated database
-data/db/entries.json.db
+data/
 # generated test coverage
 cov/
 cov.lcov

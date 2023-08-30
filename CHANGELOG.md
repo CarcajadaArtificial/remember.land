@@ -1,9 +1,13 @@
 # Changelog
 
-## v0.0.47
+## v0.0.48
 
-### Strikethrough entries that contain the "task" and "done" tags.
-  - `/islands/Entry/index.tsx`
+### Added AppConfiguration setup
+  - `/deno.json`
+  - `/.gitignore`
+  - `/routes/index.tsx`
+  - `/routes/signin.tsx`
+  - `/utils/setup.ts`
 
 ## Roadmap
 

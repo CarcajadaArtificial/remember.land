@@ -30,7 +30,10 @@ export default function Home() {
     <div>
       <Navigation class='py-3'>
         <Text>{today.format('MMMM-dd')}</Text>
-        <Link href='/archive'>Archive</Link>
+        <div class='flex gap-6'>
+          <Link href='/archive'>Archive</Link>
+          <Link href='/signout'>SignOut</Link>
+        </div>
       </Navigation>
       <Main>
         <Layout type='full'>
@@ -43,13 +46,12 @@ export default function Home() {
                 tags: [],
                 utc_created_at: new Date().toUTCString(),
               }}
-              updateEntriesSignal={updateEntriesSignal}
               onFocusOut={() => {}}
             />
           </Panel>
         </Layout>
         <Layout class='pt-6' type='full'>
-          <EntryList updateEntriesSignal={updateEntriesSignal} />
+          <EntryList />
         </Layout>
       </Main>
     </div>
