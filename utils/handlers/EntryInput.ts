@@ -1,9 +1,11 @@
 import { certainKeyPressed } from 'lunchbox';
 import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
-import { isURL } from 'utils';
+import { bring, isURL } from 'utils';
 import { iEntryInput } from 'islands/EntryInput/index.tsx';
 import { updateEntryList } from 'signals';
+import { docEntry, iEntry } from 'db/entry.ts';
+import { DbResults } from 'tilia/src/types.ts';
 
 type Steps = 'entrymark' | 'tags';
 
@@ -22,23 +24,15 @@ export default function (props: iEntryInput) {
       ? `/api/entries/${entry._id}/update`
       : '/api/entries/create';
 
-    await fetch(setApiUrl, {
-      method: 'POST',
-      mode: 'no-cors',
-      body: JSON.stringify({
-        utc_created_at: entry.utc_created_at,
-        content: entryValue,
-        tags: tags,
-        entry_mark: entryMark,
-      }),
-    })
-      .then(() => {
-        updateEntryList.value++;
-      })
-      .catch((e) => {
-        alert('Create entry error.');
-        console.error('Create entry error:', e);
-      });
+    await bring<iEntry, DbResults<docEntry>>(setApiUrl, 'POST', {
+      utc_created_at: entry.utc_created_at,
+      content: entryValue,
+      tags: tags,
+      entry_mark: entryMark,
+    }, 'Create entry error.');
+
+    updateEntryList.value++;
+
     setEntryValue('');
     setEntryMark('');
     updateTags([], tags);

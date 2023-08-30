@@ -45,12 +45,14 @@ export const insertEntry = async (
 export const deleteEntry = async (id: string): Promise<DbResults<docEntry>> =>
   await entries.removeOne({ _id: id });
 
-export const updateEntry = async (id: string, entry: iEntry) => {
+export const updateEntry = async (
+  id: string,
+  entry: iEntry,
+): Promise<DbResults<docEntry>> =>
   await entries.updateOne(
     { _id: id },
     { $set: { ...entry } },
   );
-};
 
 export const findEntries = async (
   query: Partial<docEntry> = {},

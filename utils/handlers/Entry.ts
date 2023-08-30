@@ -1,5 +1,5 @@
 import { useState } from 'preact/hooks';
-import { isURL } from 'utils';
+import { bring, isURL } from 'utils';
 import { iEntryComponent } from 'islands/Entry/index.tsx';
 import { updateEntryList } from 'signals';
 
@@ -22,18 +22,14 @@ export default function (props: iEntryComponent) {
       _id && ev.key === 'Backspace' &&
       window.confirm('Are you sure you want to delete this entry?')
     ) {
-      fetch(`/api/entries/${_id}/delete`, {
-        method: 'POST',
-        mode: 'no-cors',
-        body: JSON.stringify({}),
-      })
-        .then(() => {
-          updateEntryList.value++;
-        })
-        .catch((e) => {
-          alert('Delete entry error.');
-          console.error('Delete entry error:', e);
-        });
+      bring<{}, {}>(
+        `/api/entries/${_id}/delete`,
+        'POST',
+        {},
+        'Delete entry error.',
+      ).then(() => {
+        updateEntryList.value++;
+      });
     }
   }
 

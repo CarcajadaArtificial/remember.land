@@ -1,13 +1,13 @@
 # Changelog
 
-## v0.0.48
+## v0.0.49
 
-### Added AppConfiguration setup
-  - `/deno.json`
-  - `/.gitignore`
-  - `/routes/index.tsx`
-  - `/routes/signin.tsx`
-  - `/utils/setup.ts`
+### Added the bring function utility.
+  - `/utils/utils.ts`
+  - `/islands/EntryList/index.tsx`
+  - `/utils/db/entry.ts`
+  - `/utils/handlers/Entry.ts`
+  - `/utils/handlers/EntryInput.ts`
 
 ## Roadmap
 
