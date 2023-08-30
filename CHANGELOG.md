@@ -1,17 +1,18 @@
 # Changelog
 
-## v0.0.50
+## v0.0.51
 
-### Added day_count to the iEntry interface
+### Added query props to EntryInput
+  - `/islands/EntryList/index.tsx`
+  - `/islands/EntryQuery/index.tsx`
+
+### Moved day_count set from `routes/api/entries` ro `/routes/index.tsx`
   - `/routes/index.tsx`
   - `/routes/api/entries/create.tsx`
-  - `/utils/setup.ts`
   - `/utils/handlers/EntryInput.ts`
 
 ### Minor updates
-  - `/islands/EntryList/index.tsx`
-  - `/islands/EntryQuery/index.tsx`
-  - `/utils/handlers/Entry.ts`
+  - `/utils/utils.ts`
 
 ## Roadmap
 
@@ -26,7 +27,7 @@
 - [ ] Pages
   - [ ] ⏳ Home
     - [ ] Instructions for first time users.
-    - [ ] Limit notes to only the ones today.
+    - [x] Limit notes to only the ones today.
     - [x] Navigation bar for accessing other routes.
     - [ ] Show future events and uncompleted tasks.
   - [ ] ⏳ Archive
@@ -72,7 +73,10 @@
     - [ ] Save entry search queries for future uses.
     - [ ] Implement parsing a date somewhere in an entry.
     - [ ] Download DB as JSON.
-  - [ ] ⏳ Input Note
+  - [ ] Input Note
     - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
       - [ ] Make the icon an invisible button that changes onlcick as well.
       - [ ] When the lock is applied change the button from invisible to panel.
+  - [ ] Pages
+    - [ ] Day, Month and Year view. `/[year].tsx/[month].tsx/[day].tsx` in numbers.
+    - [ ] Tag view `/tag/[tag].tsx`.

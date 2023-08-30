@@ -1,10 +1,11 @@
+import { datetime, diffInDays } from 'ptera';
+import { WithSession } from 'fresh_session';
+import { Handlers } from '$fresh/server.ts';
 import { Layout, Link, Main, Navigation, Panel, Text } from 'lunchbox';
-import { datetime } from 'ptera';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
-import { Handlers } from '$fresh/server.ts';
 import { redirect } from 'redirect';
-import { WithSession } from 'fresh_session';
+import { getAppConfiguration } from 'setup';
 
 type Data = { session: Record<string, string> };
 
@@ -21,8 +22,12 @@ export const handler: Handlers<
   },
 };
 
-export default function Home() {
+export default async function Home() {
   const today = datetime(new Date());
+
+  const appConfig = await getAppConfiguration();
+  const startingDate = datetime(new Date(appConfig.startingUtcDate));
+  const day_count_today = diffInDays(startingDate, datetime());
 
   return (
     <div>
@@ -43,14 +48,14 @@ export default function Home() {
                 entry_mark: '',
                 tags: [],
                 utc_created_at: new Date().toUTCString(),
-                day_count: -1,
+                day_count: day_count_today,
               }}
               onFocusOut={() => {}}
             />
           </Panel>
         </Layout>
         <Layout class='pt-6' type='full'>
-          <EntryList />
+          <EntryList query={{ day_count: day_count_today }} projection={{}} />
         </Layout>
       </Main>
     </div>

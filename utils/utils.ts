@@ -13,6 +13,7 @@ export async function bring<Req, Res>(
   errorMessage: string,
 ): Promise<Res | null> {
   let responseJson;
+
   await fetch(url, {
     method: method,
     mode: 'no-cors',
