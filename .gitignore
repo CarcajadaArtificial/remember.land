@@ -12,8 +12,6 @@ data/
 # generated test coverage
 cov/
 cov.lcov
-# generated fresh files
-fresh.gen.ts
 # others
 *.DS_Store
 .obsidian

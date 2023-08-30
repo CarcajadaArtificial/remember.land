@@ -19,7 +19,7 @@ export default function (props: iEntryInput) {
     setInputStep,
   ] = useState<(Steps)[]>([]);
 
-  async function setEntry(_ev: KeyboardEvent) {
+  async function setEntry() {
     const setApiUrl = entry._id
       ? `/api/entries/${entry._id}/update`
       : '/api/entries/create';
@@ -84,7 +84,7 @@ export default function (props: iEntryInput) {
     }
   }
 
-  function handleTagInput(ev: Event) {
+  function handleTagInput(ev: KeyboardEvent) {
     return certainKeyPressed(ev, ['Enter'], (ev) => {
       const newValue = (ev.target as HTMLInputElement).value;
       if (newValue.replace(' ', '').length > 0) {
@@ -123,7 +123,7 @@ export default function (props: iEntryInput) {
 
   function handleConatinerKeyDown(ev: KeyboardEvent) {
     if ((ev.metaKey || ev.ctrlKey) && ev.key === 'Enter') {
-      setEntry(ev);
+      setEntry();
       if (onFocusOut) {
         onFocusOut();
       }

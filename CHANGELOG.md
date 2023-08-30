@@ -1,15 +1,17 @@
 # Changelog
 
-## v0.0.52
+## v0.0.53
 
-### Added uncompleted tasks to home page.
-  - `/routes/index.tsx`
-
-### Extended the `findEntries()` feature with `iQueryEntries` queries.
-  - `/islands/EntryList/index.tsx`
+### Added entry search functionality
   - `/islands/EntryQuery/index.tsx`
-  - `/routes/api/entries/find.tsx`
-  - `/utils/db/entry.ts`
+  - `/utils/handlers/EntryInput.ts`
+
+### Removed `fresh.gen.ts` from `.gitignore`
+  - `/.gitignore`
+  - `/fresh.gen.ts`
+
+### Minor updates
+  - `/routes/index.tsx`
 
 ## Roadmap
 
@@ -28,7 +30,7 @@
     - [x] Show uncompleted tasks.
   - [ ] ⏳ Archive
     - [ ] Contribution calendar
-    - [ ] Query builder
+    - [x] Query builder
 - [ ] Components
   - [ ] ⏳ Contribution Calendar
   - [x] ✅ Note
