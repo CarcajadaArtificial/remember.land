@@ -1,6 +1,5 @@
 import { Layout, Link, Main, Navigation, Panel, Text } from 'lunchbox';
 import { datetime } from 'ptera';
-import { useSignal } from '@preact/signals';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
 import { Handlers } from '$fresh/server.ts';
@@ -23,7 +22,6 @@ export const handler: Handlers<
 };
 
 export default function Home() {
-  const updateEntriesSignal = useSignal<number>(0);
   const today = datetime(new Date());
 
   return (
@@ -45,6 +43,7 @@ export default function Home() {
                 entry_mark: '',
                 tags: [],
                 utc_created_at: new Date().toUTCString(),
+                day_count: -1,
               }}
               onFocusOut={() => {}}
             />

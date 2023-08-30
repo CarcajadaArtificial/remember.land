@@ -41,9 +41,7 @@ export function EntryQuery() {
       </Panel>
       <Main>
         <Layout class='pt-6' type='full'>
-          <EntryList
-            updateEntriesSignal={updateEntriesSignal}
-          />
+          <EntryList />
         </Layout>
       </Main>
     </>

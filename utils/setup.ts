@@ -1,6 +1,10 @@
 const entriesDbPath = './data/db/entries.json.db';
 const appConfigurationPath = './data/app.json';
 
+export interface iAppConfiguration {
+  startingUtcDate: string;
+}
+
 export async function firstSignInSetup() {
   const entriesDbExists = await exists(entriesDbPath);
   const appConfigurationExists = await exists(appConfigurationPath);
@@ -13,14 +17,16 @@ export async function firstSignInSetup() {
     await Deno.writeTextFile(
       appConfigurationPath,
       JSON.stringify({
-        starting_utc_date: new Date().toUTCString(),
+        startingUtcDate: new Date().toUTCString(),
       }),
     );
   }
 }
 
-export async function getAppConfiguration() {
-  return JSON.parse(await Deno.readTextFile(appConfigurationPath));
+export async function getAppConfiguration(): Promise<iAppConfiguration> {
+  return JSON.parse(
+    await Deno.readTextFile(appConfigurationPath),
+  ) as iAppConfiguration;
 }
 
 const exists = async (filename: string): Promise<boolean> => {

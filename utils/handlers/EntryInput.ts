@@ -29,6 +29,7 @@ export default function (props: iEntryInput) {
       content: entryValue,
       tags: tags,
       entry_mark: entryMark,
+      day_count: -1,
     }, 'Create entry error.');
 
     updateEntryList.value++;

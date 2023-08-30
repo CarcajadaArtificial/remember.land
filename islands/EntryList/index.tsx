@@ -8,6 +8,7 @@ export function EntryList() {
   const [entries, setEntries] = useState<dbEntry[]>([]);
 
   useEffect(() => {
+    // deno-lint-ignore ban-types
     bring<{}, dbEntry[]>('/api/entries/find', 'POST', {}, 'Find entries error.')
       .then((res) => {
         if (res) {

@@ -22,6 +22,7 @@ export default function (props: iEntryComponent) {
       _id && ev.key === 'Backspace' &&
       window.confirm('Are you sure you want to delete this entry?')
     ) {
+      // deno-lint-ignore ban-types
       bring<{}, {}>(
         `/api/entries/${_id}/delete`,
         'POST',

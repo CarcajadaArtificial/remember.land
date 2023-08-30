@@ -7,7 +7,7 @@ export interface iEntry {
   content: string;
   tags: string[];
   entry_mark: string;
-  // day_count: number;
+  day_count: number;
   // north_ids: number[];
   // south_ids: number[];
   // west_ids: number[];
@@ -40,6 +40,7 @@ export const insertEntry = async (
     content: entry.content,
     tags: entry.tags,
     entry_mark: entry.entry_mark,
+    day_count: entry.day_count,
   });
 
 export const deleteEntry = async (id: string): Promise<DbResults<docEntry>> =>

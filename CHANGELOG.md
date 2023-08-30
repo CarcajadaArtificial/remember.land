@@ -1,13 +1,17 @@
 # Changelog
 
-## v0.0.49
+## v0.0.50
 
-### Added the bring function utility.
-  - `/utils/utils.ts`
-  - `/islands/EntryList/index.tsx`
-  - `/utils/db/entry.ts`
-  - `/utils/handlers/Entry.ts`
+### Added day_count to the iEntry interface
+  - `/routes/index.tsx`
+  - `/routes/api/entries/create.tsx`
+  - `/utils/setup.ts`
   - `/utils/handlers/EntryInput.ts`
+
+### Minor updates
+  - `/islands/EntryList/index.tsx`
+  - `/islands/EntryQuery/index.tsx`
+  - `/utils/handlers/Entry.ts`
 
 ## Roadmap
 
@@ -30,7 +34,7 @@
     - [ ] Query builder
 - [ ] Components
   - [ ] ⏳ Contribution Calendar
-  - [ ] ✅ Note
+  - [x] ✅ Note
     - [x] Add an update note information functionality onclick and onkeyup enter.
     - [x] Remove id and created_at Texts.
     - [x] Relocate NoteMark
@@ -48,10 +52,10 @@
 - [x] Solve the iEntry id conundrum.
 - [x] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [x] Put API behind a authentication wall that always redirects to /signin.
-- [ ] Implement quick day created indexing.
-  - [ ] On signing in, create the file data/app.json if not already created.
-  - [ ] Register the date of first sign in inside data/app.json
-  - [ ] Add daycount to iEntry that keeps track of the day number relative to the first day of use.
+- [x] Implement quick day created indexing.
+  - [x] On signing in, create the file data/app.json if not already created.
+  - [x] Register the date of first sign in inside data/app.json
+  - [x] Add daycount to iEntry that keeps track of the day number relative to the first day of use.
 - [x] Create a database middleware file.
   - Controls if the projet stores entries on the client's localstorage or on a server db.
   - [x] Function that gets the next id for a new Entry.
