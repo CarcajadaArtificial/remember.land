@@ -1,18 +1,15 @@
 # Changelog
 
-## v0.0.51
+## v0.0.52
 
-### Added query props to EntryInput
+### Added uncompleted tasks to home page.
+  - `/routes/index.tsx`
+
+### Extended the `findEntries()` feature with `iQueryEntries` queries.
   - `/islands/EntryList/index.tsx`
   - `/islands/EntryQuery/index.tsx`
-
-### Moved day_count set from `routes/api/entries` ro `/routes/index.tsx`
-  - `/routes/index.tsx`
-  - `/routes/api/entries/create.tsx`
-  - `/utils/handlers/EntryInput.ts`
-
-### Minor updates
-  - `/utils/utils.ts`
+  - `/routes/api/entries/find.tsx`
+  - `/utils/db/entry.ts`
 
 ## Roadmap
 
@@ -25,11 +22,10 @@
   - [x] Define components and their properties.
   - [x] Define pages.
 - [ ] Pages
-  - [ ] ⏳ Home
-    - [ ] Instructions for first time users.
+  - [x] ✅ Home
     - [x] Limit notes to only the ones today.
     - [x] Navigation bar for accessing other routes.
-    - [ ] Show future events and uncompleted tasks.
+    - [x] Show uncompleted tasks.
   - [ ] ⏳ Archive
     - [ ] Contribution calendar
     - [ ] Query builder
@@ -73,6 +69,7 @@
     - [ ] Save entry search queries for future uses.
     - [ ] Implement parsing a date somewhere in an entry.
     - [ ] Download DB as JSON.
+    - [ ] Add equally smooth mobile experience.
   - [ ] Input Note
     - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
       - [ ] Make the icon an invisible button that changes onlcick as well.

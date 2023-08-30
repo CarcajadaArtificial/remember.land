@@ -41,7 +41,7 @@ export function EntryQuery() {
       </Panel>
       <Main>
         <Layout class='pt-6' type='full'>
-          <EntryList query={{}} projection={{}} />
+          <EntryList query={{}} />
         </Layout>
       </Main>
     </>

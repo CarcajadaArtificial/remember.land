@@ -54,8 +54,22 @@ export default async function Home() {
             />
           </Panel>
         </Layout>
-        <Layout class='pt-6' type='full'>
-          <EntryList query={{ day_count: day_count_today }} projection={{}} />
+        <Layout class='pt-6' type='halves'>
+          <div>
+            <EntryList
+              query={{
+                created_on_day_count: day_count_today,
+              }}
+            />
+          </div>
+          <div>
+            <EntryList
+              query={{
+                includes_tags: ['task'],
+                excludes_tags: ['done'],
+              }}
+            />
+          </div>
         </Layout>
       </Main>
     </div>
