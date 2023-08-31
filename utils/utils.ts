@@ -12,7 +12,7 @@ export async function bring<Req, Res>(
   body: Req,
   errorMessage: string,
 ): Promise<Res | null> {
-  let responseJson;
+  let responseJson: Res | null = null;
 
   await fetch(url, {
     method: method,
@@ -24,8 +24,16 @@ export async function bring<Req, Res>(
     })
     .catch((e) => {
       alert(errorMessage);
-      console.error(errorMessage, e);
+      console.error(errorMessage, responseJson, e);
     });
 
-  return responseJson ? responseJson : null;
+  return responseJson;
+}
+
+export function adjustToLastHour(date: Date, hour: number) {
+  if (date.getHours() < hour) {
+    date.setDate(date.getDate() - 1);
+  }
+  date.setHours(hour, 0, 0, 0);
+  return date;
 }

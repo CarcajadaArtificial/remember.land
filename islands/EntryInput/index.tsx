@@ -34,10 +34,7 @@ export function EntryInput(props: iEntryInput) {
 
   return (
     <div>
-      <div
-        class='isl-EntryInput-container'
-        onKeyDown={handleConatinerKeyDown}
-      >
+      <div class='isl-EntryInput-container' onKeyDown={handleConatinerKeyDown}>
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         {/* Textarea Row */}
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}

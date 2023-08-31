@@ -12,8 +12,7 @@ export const handler: Handlers<
     if (!ctx.state.session.get('isSignedIn')) {
       return new Response(JSON.stringify({}));
     }
-    const entry = (await req.json()) as iEntry;
-    const updatedEntry = await deleteEntry(ctx.params.id);
-    return new Response(JSON.stringify(updatedEntry));
+    await deleteEntry(ctx.params.id);
+    return new Response(JSON.stringify({}));
   },
 };

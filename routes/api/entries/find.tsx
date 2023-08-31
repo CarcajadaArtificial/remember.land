@@ -1,14 +1,14 @@
 import { type Handlers } from '$fresh/server.ts';
-import { DbResults, Projection } from 'tilia/src/types.ts';
-import { docEntry, findEntries } from 'db/entry.ts';
+import { DbResults } from 'tilia/src/types.ts';
+import { iEntry } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
-import { iQueryEntries } from 'db/entry.ts';
+import { findEntries, iQueryEntries } from 'db/entry.ts';
 
 export type findReq = {
   query: iQueryEntries;
 };
 
-export type findRes = DbResults<docEntry>;
+export type findRes = DbResults<iEntry>;
 
 type Data = { session: Record<string, string> };
 
@@ -22,6 +22,6 @@ export const handler: Handlers<
     }
     const { query } = await req.json() as findReq;
     const entries = await findEntries(query);
-    return new Response(JSON.stringify(entries));
+    return new Response(JSON.stringify(entries.result));
   },
 };

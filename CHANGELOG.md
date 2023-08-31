@@ -1,17 +1,11 @@
 # Changelog
 
-## v0.0.53
+## v0.0.54
 
-### Added entry search functionality
-  - `/islands/EntryQuery/index.tsx`
-  - `/utils/handlers/EntryInput.ts`
-
-### Removed `fresh.gen.ts` from `.gitignore`
-  - `/.gitignore`
-  - `/fresh.gen.ts`
-
-### Minor updates
-  - `/routes/index.tsx`
+- Added DenoKV and kvdex for database.
+- Removed any reading or writing of files.
+- Added App configuration using DenoKV without kvdex.
+- Migrated all functionalities to DenoKV with kvdex.
 
 ## Roadmap
 
@@ -51,6 +45,8 @@
 - [x] Solve the iEntry id conundrum.
 - [x] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [x] Put API behind a authentication wall that always redirects to /signin.
+- [ ] Fix entry x overflow on long single words.
+- [ ] Change from tilia to DenoKV.
 - [x] Implement quick day created indexing.
   - [x] On signing in, create the file data/app.json if not already created.
   - [x] Register the date of first sign in inside data/app.json
@@ -72,6 +68,8 @@
     - [ ] Implement parsing a date somewhere in an entry.
     - [ ] Download DB as JSON.
     - [ ] Add equally smooth mobile experience.
+    - [ ] Add a middleware file in /routes/api for all auth redirection and responding {} when not signed in.
+    - [ ] Make type safe all requests and responses in the API.
   - [ ] Input Note
     - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
       - [ ] Make the icon an invisible button that changes onlcick as well.

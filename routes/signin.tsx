@@ -2,7 +2,7 @@ import { Header, Input, Text } from 'lunchbox';
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { redirect } from 'redirect';
 import { WithSession } from 'fresh_session';
-import { firstSignInSetup, getAppConfiguration } from 'setup';
+import { setupApp } from 'db/index.ts';
 
 type Data = {
   session: Record<string, string>;
@@ -23,7 +23,7 @@ export const handler: Handlers<Data, WithSession> = {
 
     if (enteredPassword === Deno.env.get('PASSWORD')) {
       await ctx.state.session.set('isSignedIn', true);
-      await firstSignInSetup();
+      await setupApp();
 
       return redirect('/');
     } else {

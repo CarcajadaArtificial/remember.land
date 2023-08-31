@@ -1,16 +1,17 @@
+import { Document } from 'kvdex';
 import { Chiplist, Link, Text } from 'lunchbox';
-import { dbEntry } from 'db/entry.ts';
+import { LargeKvEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
-import { EntryInput } from '../EntryInput/index.tsx';
 import Handlers from 'handlers/Entry.ts';
+import { EntryInput } from '../EntryInput/index.tsx';
 
 export interface iEntryComponent {
-  entry: dbEntry;
+  entry: Document<LargeKvEntry>;
 }
 
 export function Entry(props: iEntryComponent) {
   const { entry } = props;
-  const { content, tags, entry_mark } = entry;
+  const { content, tags, entry_mark, utc_created_at, day_count } = entry.value;
 
   const {
     onInputFocusOut,
@@ -26,7 +27,14 @@ export function Entry(props: iEntryComponent) {
       <div class='clr-bg-panel-30'>
         <EntryInput
           onFocusOut={onInputFocusOut}
-          entry={entry}
+          entry={{
+            _id: String(entry.id),
+            content: content,
+            entry_mark: entry_mark,
+            tags: tags,
+            utc_created_at: utc_created_at,
+            day_count: day_count,
+          }}
         />
       </div>
     );

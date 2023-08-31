@@ -1,5 +1,5 @@
 import { type Handlers } from '$fresh/server.ts';
-import { findEntries } from 'db/entry.ts';
+import { getEntry } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
 import { redirect } from 'redirect';
 
@@ -13,7 +13,7 @@ export const handler: Handlers<
     if (!ctx.state.session.get('isSignedIn')) {
       return redirect('/signin');
     }
-    const foundEntries = await findEntries({ _id: ctx.params.id });
+    const foundEntries = await getEntry(ctx.params.id);
     return new Response(JSON.stringify(foundEntries));
   },
 };

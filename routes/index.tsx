@@ -5,7 +5,7 @@ import { Footer, Layout, Link, Main, Navigation, Panel, Text } from 'lunchbox';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
 import { redirect } from 'redirect';
-import { getAppConfiguration } from 'setup';
+import { getApp } from 'db/index.ts';
 
 type Data = { session: Record<string, string> };
 
@@ -25,8 +25,10 @@ export const handler: Handlers<
 export default async function Home() {
   const today = datetime(new Date());
 
-  const appConfig = await getAppConfiguration();
-  const startingDate = datetime(new Date(appConfig.startingUtcDate));
+  const appConfig = await getApp();
+  const startingDate = datetime(
+    appConfig ? new Date(appConfig.startingUtcDate) : new Date(),
+  );
   const day_count_today = diffInDays(startingDate, datetime());
 
   return (

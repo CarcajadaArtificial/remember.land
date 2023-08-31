@@ -1,11 +1,10 @@
 {
   "lock": false,
   "tasks": {
-    "start": "deno run -A --watch=static/,routes/ dev.ts",
+    "start": "deno run --unstable -A --watch=static/,routes/ dev.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "sass": "sass -w index.scss static/style.css",
-    "build": "deno run -A dev.ts build",
-    "preview": "deno run -A main.ts"
+    "update:imports": "deno run -A -r https://deno.land/x/update/mod.ts ./deno.json"
   },
   "lint": {
     "rules": {
@@ -23,19 +22,20 @@
   },
   "imports": {
     "$fresh/": "https://deno.land/x/fresh@1.4.2/",
-    "preact": "https://esm.sh/preact@10.15.1",
-    "preact/": "https://esm.sh/preact@10.15.1/",
+    "preact": "https://esm.sh/preact@10.17.1",
+    "preact/": "https://esm.sh/preact@10.17.1/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
-    "$std/": "https://deno.land/std@0.193.0/",
+    "$std/": "https://deno.land/std@0.200.0/",
     "lunchbox": "https://deno.land/x/lunchbox@v0.2.6/mod.ts",
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
-    "icons/": "https://deno.land/x/tabler_icons_tsx@0.0.3/tsx/",
+    "icons/": "https://deno.land/x/tabler_icons_tsx@0.0.4/tsx/",
     "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts",
     "tilia/": "https://deno.land/x/tilia@0.1.2/",
+    "kvdex": "https://deno.land/x/kvdex@v0.12.6/mod.ts",
     "types": "./utils/types.ts",
     "hooks": "./utils/hooks.ts",
     "signals": "./utils/signals.ts",

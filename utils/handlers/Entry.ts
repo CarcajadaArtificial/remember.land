@@ -5,7 +5,8 @@ import { updateEntryList } from 'signals';
 
 export default function (props: iEntryComponent) {
   const { entry } = props;
-  const { _id, entry_mark } = entry;
+  const { entry_mark } = entry.value;
+  const _id = entry.id;
   const [editMode, setEditMode] = useState<boolean>(false);
   const isMarkUrl = entry_mark && isURL(entry_mark);
 

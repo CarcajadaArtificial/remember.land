@@ -25,7 +25,9 @@ export function EntryList(props: iEntryList) {
 
   return (
     <div class='grid'>
-      {entries.map((entry) => <Entry entry={entry} />)}
+      {entries.length === 0
+        ? <></>
+        : entries.map((entry) => <Entry entry={entry} />)}
     </div>
   );
 }
