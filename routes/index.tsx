@@ -56,15 +56,25 @@ export default async function Home() {
           </Panel>
         </Layout>
         <Layout class='pt-6' type='halves'>
-          <div>
+          <div class='grid gap-3'>
+            <EntryList
+              query={{
+                includes_tags: ['permanent'],
+              }}
+            />
             <EntryList
               query={{
                 created_on_day_count: day_count_today,
-                excludes_tags: ['task'],
+                excludes_tags: ['task', 'event', 'permanent'],
               }}
             />
           </div>
-          <div>
+          <div class='grid gap-3'>
+            <EntryList
+              query={{
+                includes_tags: ['event'],
+              }}
+            />
             <EntryList
               query={{
                 includes_tags: ['task'],

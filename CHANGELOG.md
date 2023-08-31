@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.56
+## v0.0.57
 
-- Fixed home's main element height.
+- Minor changes and tweaks.
 
 ## Roadmap
 

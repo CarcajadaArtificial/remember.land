@@ -44,6 +44,7 @@
     "utils": "./utils/utils.ts",
     "handlers/": "./utils/handlers/",
     "db/": "./utils/db/",
+    "api/": "./routes/api/",
     "islands/": "./islands/",
     "components/": "./components/"
   }
