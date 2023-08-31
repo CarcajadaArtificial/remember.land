@@ -1,11 +1,8 @@
 # Changelog
 
-## v0.0.54
+## v0.0.55
 
-- Added DenoKV and kvdex for database.
-- Removed any reading or writing of files.
-- Added App configuration using DenoKV without kvdex.
-- Migrated all functionalities to DenoKV with kvdex.
+- Updated gitignore to stop ignoring stylesheets.
 
 ## Roadmap
 

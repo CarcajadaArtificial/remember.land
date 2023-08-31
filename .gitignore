@@ -4,11 +4,6 @@
 .env.test.local
 .env.production.local
 .env.local
-# generated style sheets
-static/style.css
-*.css.map
-# generated database
-# data/
 # generated test coverage
 cov/
 cov.lcov
