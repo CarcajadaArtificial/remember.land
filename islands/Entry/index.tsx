@@ -45,6 +45,9 @@ export function Entry(props: iEntryComponent) {
       onKeyUp={onEntryContainerKeyUp}
       tabIndex={0}
       class='isl-entry-container'
+      data-utc_created_at={utc_created_at}
+      data-day_count={day_count}
+      data-id={entry.id}
     >
       {entry_mark
         ? (

@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.57
+## v0.0.58
 
-- Minor changes and tweaks.
+- Added Entry data representation.
 
 ## Roadmap
 
@@ -42,7 +42,6 @@
 - [x] Solve the iEntry id conundrum.
 - [x] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [x] Put API behind a authentication wall that always redirects to /signin.
-- [ ] Fix entry x overflow on long single words.
 - [x] Change from tilia to DenoKV.
 - [x] Implement quick day created indexing.
   - [x] On signing in, create the file data/app.json if not already created.
@@ -65,8 +64,11 @@
     - [ ] Implement parsing a date somewhere in an entry.
     - [ ] Download DB as JSON.
     - [ ] Add equally smooth mobile experience.
+    - [ ] Fix entry x overflow on long single words.
     - [ ] Add a middleware file in /routes/api for all auth redirection and responding {} when not signed in.
     - [ ] Make type safe all requests and responses in the API.
+    - [ ] Add n queries as argument to findEntries.
+      - Returns n lists of entries, instead of calling and filtering n times all entries.
   - [ ] Input Note
     - [ ] Lock entry information with Alt+Space when on NoteMark and Tag inputs.
       - [ ] Make the icon an invisible button that changes onlcick as well.
