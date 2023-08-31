@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.58
+## v0.0.59
 
-- Added Entry data representation.
+- Added App config data representation.
 
 ## Roadmap
 
