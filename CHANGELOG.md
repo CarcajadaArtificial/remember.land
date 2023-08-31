@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.55
+## v0.0.56
 
-- Updated gitignore to stop ignoring stylesheets.
+- Fixed home's main element height.
 
 ## Roadmap
 
@@ -43,7 +43,7 @@
 - [x] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [x] Put API behind a authentication wall that always redirects to /signin.
 - [ ] Fix entry x overflow on long single words.
-- [ ] Change from tilia to DenoKV.
+- [x] Change from tilia to DenoKV.
 - [x] Implement quick day created indexing.
   - [x] On signing in, create the file data/app.json if not already created.
   - [x] Register the date of first sign in inside data/app.json

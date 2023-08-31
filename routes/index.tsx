@@ -39,7 +39,7 @@ export default async function Home() {
           <Link href='/archive'>Archive</Link>
         </div>
       </Navigation>
-      <Main class='h-screen'>
+      <Main class='min-h-screen'>
         <Layout type='full'>
           <Panel>
             <EntryInput
