@@ -2,7 +2,7 @@
 
 ## v0.0.61
 
-- Extended the functionality of the `<ContributionCalendar/>` component.
+- `<ContributionCalendar/>` component hotfix
 
 ## Roadmap
 
