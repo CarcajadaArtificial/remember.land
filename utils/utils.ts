@@ -37,3 +37,16 @@ export function adjustToLastHour(date: Date, hour: number) {
   date.setHours(hour, 0, 0, 0);
   return date;
 }
+
+export function isLastDayOfMonth(date: Date) {
+  const currentDay = date.getDate();
+  const nextDay = new Date(date);
+  nextDay.setDate(currentDay + 1);
+  return nextDay.getDate() === 1;
+}
+
+export function forEachInN(n: number, cb: (i: number) => void) {
+  for (let i = 0; i < n; i++) {
+    cb(i);
+  }
+}

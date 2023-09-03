@@ -4,6 +4,7 @@ import { EntryQuery } from '../islands/EntryQuery/index.tsx';
 import { Handlers } from '$fresh/server.ts';
 import { redirect } from 'redirect';
 import { WithSession } from 'fresh_session';
+import { getApp } from 'db/index.ts';
 
 type Data = { session: Record<string, string> };
 
@@ -20,15 +21,18 @@ export const handler: Handlers<
   },
 };
 
-export default function Archive() {
+export default async function Archive() {
   const today = datetime(new Date());
+  const appConfiguration = await getApp();
 
   return (
     <div>
       <Navigation class='py-3'>
         <Link href='./'>{today.format('MMMM-dd')}</Link>
       </Navigation>
-      <EntryQuery />
+      {appConfiguration
+        ? <EntryQuery appConfiguration={appConfiguration} />
+        : <>App Config Error</>}
     </div>
   );
 }

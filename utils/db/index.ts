@@ -1,4 +1,4 @@
-import { kvdex, largeCollection } from 'kvdex';
+import { kvdex, KvObject, largeCollection } from 'kvdex';
 import { LargeKvEntry } from 'db/entry.ts';
 import { adjustToLastHour } from 'utils';
 
@@ -8,7 +8,11 @@ export const db = kvdex(kv, {
   entries: largeCollection<LargeKvEntry>().build(),
 });
 
-interface KvApp {
+export interface iApp {
+  startingUtcDate: string;
+}
+
+export interface KvApp extends KvObject {
   startingUtcDate: string;
 }
 
@@ -22,4 +26,5 @@ export const setupApp = async () => {
   });
 };
 
-export const getApp = async () => (await kv.get<KvApp>(['app'])).value;
+export const getApp = async () =>
+  (await kv.get<KvApp>(['app'])).value as iApp | null;

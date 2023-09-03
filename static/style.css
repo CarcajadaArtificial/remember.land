@@ -1,6 +1,39 @@
 .comp-contributionCalendar {
   display: block;
 }
+.comp-contributionCalendar-block {
+  width: var(--s-single);
+  height: var(--s-single);
+  border-radius: var(--s-eighth);
+}
+.comp-contributionCalendar-block_none {
+  background-color: var(--clr-bg-panel-10);
+}
+.comp-contributionCalendar-block_low {
+  background-color: var(--clr-bg-panel-20);
+}
+.comp-contributionCalendar-block_mid {
+  background-color: var(--clr-bg-panel-30);
+}
+.comp-contributionCalendar-block_high {
+  background-color: var(--clr-bg-panel);
+}
+.comp-contributionCalendar-week {
+  display: flex;
+  flex-direction: column;
+  gap: var(--s-eighth);
+}
+.comp-contributionCalendar-month {
+  display: flex;
+  gap: var(--s-eighth);
+}
+.comp-contributionCalendar-calendar {
+  display: flex;
+  gap: var(--s-single);
+}
+.comp-contributionCalendar-calendar_module:first-child .comp-contributionCalendar-month {
+  justify-content: end;
+}
 
 .isl-EntryInput {
   display: block;

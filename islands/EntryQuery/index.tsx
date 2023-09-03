@@ -1,15 +1,19 @@
 import { certainKeyPressed, Chiplist, Layout, Main, Panel } from 'lunchbox';
 import { EntryList } from '../EntryList/index.tsx';
+import { ContributionCalendar } from 'components/ContributionCalendar/index.tsx';
 import { useState } from 'preact/hooks';
 import { updateEntryList } from 'signals';
 import IconTag from 'icons/tag.tsx';
 import AlignJustifiedTag from 'icons/align-justified.tsx';
 import { useTagList } from 'hooks';
+import { iApp } from 'db/index.ts';
 
-export function EntryQuery() {
-  const [containsText, setContainsText] = useState<string | undefined>(
-    undefined,
-  );
+interface iEntryQuery {
+  appConfiguration: iApp;
+}
+
+export function EntryQuery(props: iEntryQuery) {
+  const [containsText, setContainsText] = useState<string>('');
   const [includesTags, updateIncludesTags] = useTagList([]);
 
   return (
@@ -22,6 +26,7 @@ export function EntryQuery() {
               <input
                 class='comp-input isl-EntryInput-field'
                 type='text'
+                value={containsText}
                 onKeyUp={async (ev) => {
                   await setContainsText(
                     (ev.target as HTMLTextAreaElement).value,
@@ -62,7 +67,15 @@ export function EntryQuery() {
         </Layout>
       </Panel>
       <Main>
-        <Layout class='pt-6' type='full'>
+        <Layout type='full'>
+          <div class='pb-12'>
+            <ContributionCalendar
+              startDateUtc={props.appConfiguration.startingUtcDate!}
+              endDateUtc={new Date(
+                new Date().setDate(new Date().getDate() + 100),
+              ).toUTCString()}
+            />
+          </div>
           <EntryList
             query={{
               contains_text: containsText,

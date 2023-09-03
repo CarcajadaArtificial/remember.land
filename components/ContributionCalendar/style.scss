@@ -1,3 +1,45 @@
 .comp-contributionCalendar {
   display: block;
+
+  &-block {
+    width: var(--s-single);
+    height: var(--s-single);
+    border-radius: var(--s-eighth);
+
+    &_none {
+      background-color: var(--clr-bg-panel-10);
+    }
+
+    &_low {
+      background-color: var(--clr-bg-panel-20);
+    }
+
+    &_mid {
+      background-color: var(--clr-bg-panel-30);
+    }
+
+    &_high {
+      background-color: var(--clr-bg-panel);
+    }
+  }
+
+  &-week {
+    display: flex;
+    flex-direction: column;
+    gap: var(--s-eighth);
+  }
+
+  &-month {
+    display: flex;
+    gap: var(--s-eighth);
+  }
+
+  &-calendar {
+    display: flex;
+    gap: var(--s-single);
+
+    &_module:first-child .comp-contributionCalendar-month {
+      justify-content: end;
+    }
+  }
 }

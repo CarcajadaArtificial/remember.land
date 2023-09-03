@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.59
+## v0.0.60
 
-- Added App config data representation.
+- Added a base for the `<ContributionCalendar/>` component
 
 ## Roadmap
 
