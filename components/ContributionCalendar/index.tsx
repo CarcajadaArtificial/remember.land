@@ -26,7 +26,7 @@ const contributionCalendarBlock = (
 export function ContributionCalendar(props: iContributionCalendar) {
   const startDateTime = datetime(new Date(props.startDateUtc));
   const endDateTime = datetime(new Date(props.endDateUtc));
-  const dayDifference = diffInDays(startDateTime, datetime(endDateTime));
+  const dayDifference = diffInDays(startDateTime, datetime(endDateTime)) + 2;
 
   const currentWeek: JSX.Element[] = [];
   const currentMonth: JSX.Element[] = [];
