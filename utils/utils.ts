@@ -1,3 +1,5 @@
+import { DateTime, datetime } from 'ptera';
+
 export const isURL = (str: string): boolean =>
   (str.length >= 7 && str.substring(0, 7) === 'http://') ||
   (str.length >= 8 && str.substring(0, 8) === 'https://');
@@ -38,12 +40,8 @@ export function adjustToLastHour(date: Date, hour: number) {
   return date;
 }
 
-export function isLastDayOfMonth(date: Date) {
-  const currentDay = date.getDate();
-  const nextDay = new Date(date);
-  nextDay.setDate(currentDay + 1);
-  return nextDay.getDate() === 1;
-}
+export const isLastDayOfMonth = (date: DateTime) =>
+  date.add({ day: 1 }).day === 1;
 
 export function forEachInN(n: number, cb: (i: number) => void) {
   for (let i = 0; i < n; i++) {

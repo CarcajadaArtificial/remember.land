@@ -3,13 +3,16 @@ import { datetime, diffInDays } from 'ptera';
 import { forEachInN, isLastDayOfMonth } from 'utils';
 import { Text } from 'lunchbox';
 
+export type ContributionLevel = null | 'none' | 'low' | 'mid' | 'high';
+
 interface iContributionCalendar {
   startDateUtc: string;
   endDateUtc: string;
+  contributionMap: Record<string, ContributionLevel>;
 }
 
 const contributionCalendarBlock = (
-  level: null | 'none' | 'low' | 'mid' | 'high',
+  level: ContributionLevel,
   dateUtc: string,
 ) => (
   <div
@@ -21,41 +24,43 @@ const contributionCalendarBlock = (
 );
 
 export function ContributionCalendar(props: iContributionCalendar) {
-  const startDate = new Date(props.startDateUtc);
-  const endDate = new Date(props.endDateUtc);
-  const dayDifference = diffInDays(datetime(startDate), datetime(endDate));
+  const startDateTime = datetime(new Date(props.startDateUtc));
+  const endDateTime = datetime(new Date(props.endDateUtc));
+  const dayDifference = diffInDays(startDateTime, datetime(endDateTime));
 
   const currentWeek: JSX.Element[] = [];
   const currentMonth: JSX.Element[] = [];
   const monthsOfContribution: JSX.Element[] = [];
 
   forEachInN(dayDifference, (i) => {
-    const blockDate = new Date(startDate.setDate(startDate.getDate() + 1));
+    const blockDate = startDateTime.add({ day: i });
     const blockDateTime = datetime(blockDate);
+    const isEndOfMonth = isLastDayOfMonth(blockDate);
+    const isEndDate = i === dayDifference - 1;
+    const contributions = props.contributionMap[blockDateTime.toISODate()];
 
-    const isStartOfMonth = blockDate.getDate() === 1;
-    const isStartDate = i === 0;
-
-    if (isStartDate || isStartOfMonth) {
-      forEachInN(datetime(blockDate).weekDay(), () => {
-        currentWeek.push(contributionCalendarBlock(null, 'blank'));
-      });
+    if (i === 0 || blockDateTime.day === 1) {
+      currentWeek.push(
+        ...Array(datetime(blockDate).weekDay()).fill(
+          contributionCalendarBlock(null, 'blank'),
+        ),
+      );
     }
 
     currentWeek.push(
-      contributionCalendarBlock('none', blockDate.toUTCString()),
+      contributionCalendarBlock(
+        contributions ? contributions : 'none',
+        blockDateTime.format('www, d MMM YYYY'),
+      ),
     );
 
-    const isEndOfWeek = currentWeek.length === 7;
-    const isEndOfMonth = isLastDayOfMonth(blockDate);
-    const isEndDate = i === dayDifference - 1;
-
-    if (isEndOfWeek || isEndOfMonth || isEndDate) {
+    if (currentWeek.length === 7 || isEndOfMonth || isEndDate) {
       currentMonth.push(
         <div class='comp-contributionCalendar-week'>{...currentWeek}</div>,
       );
       currentWeek.length = 0;
     }
+
     if (isEndOfMonth || isEndDate) {
       monthsOfContribution.push(
         <div class='comp-contributionCalendar-calendar_module'>

@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.0.60
+## v0.0.61
 
-- Added a base for the `<ContributionCalendar/>` component
+- Extended the functionality of the `<ContributionCalendar/>` component.
 
 ## Roadmap
 
@@ -19,11 +19,13 @@
     - [x] Limit notes to only the ones today.
     - [x] Navigation bar for accessing other routes.
     - [x] Show uncompleted tasks.
-  - [ ] ⏳ Archive
-    - [ ] Contribution calendar
+  - [x] ✅ Archive
+    - [x] Contribution calendar
     - [x] Query builder
 - [ ] Components
   - [ ] ⏳ Contribution Calendar
+    - [x] Add contribution object as a prop.
+    - [ ] Create the Block and Calendar Module subcomponents.
   - [x] ✅ Note
     - [x] Add an update note information functionality onclick and onkeyup enter.
     - [x] Remove id and created_at Texts.
@@ -43,6 +45,7 @@
 - [x] Change updateEntriesSignal to the one in ./utils/signals.ts.
 - [x] Put API behind a authentication wall that always redirects to /signin.
 - [x] Change from tilia to DenoKV.
+- [ ] Move getApp() to a GET function in the index.tsx and archive.tsx routes.
 - [x] Implement quick day created indexing.
   - [x] On signing in, create the file data/app.json if not already created.
   - [x] Register the date of first sign in inside data/app.json

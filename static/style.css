@@ -1,5 +1,6 @@
 .comp-contributionCalendar {
   display: block;
+  margin-bottom: var(--s-double);
 }
 .comp-contributionCalendar-block {
   width: var(--s-single);

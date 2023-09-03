@@ -1,6 +1,5 @@
 import { certainKeyPressed, Chiplist, Layout, Main, Panel } from 'lunchbox';
 import { EntryList } from '../EntryList/index.tsx';
-import { ContributionCalendar } from 'components/ContributionCalendar/index.tsx';
 import { useState } from 'preact/hooks';
 import { updateEntryList } from 'signals';
 import IconTag from 'icons/tag.tsx';
@@ -68,15 +67,8 @@ export function EntryQuery(props: iEntryQuery) {
       </Panel>
       <Main>
         <Layout type='full'>
-          <div class='pb-12'>
-            <ContributionCalendar
-              startDateUtc={props.appConfiguration.startingUtcDate!}
-              endDateUtc={new Date(
-                new Date().setDate(new Date().getDate() + 100),
-              ).toUTCString()}
-            />
-          </div>
           <EntryList
+            contributionCalendar
             query={{
               contains_text: containsText,
               includes_tags: includesTags,
