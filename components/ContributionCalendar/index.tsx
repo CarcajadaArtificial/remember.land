@@ -2,6 +2,7 @@ import { JSX } from 'preact';
 import { datetime, diffInDays } from 'ptera';
 import { forEachInN, isLastDayOfMonth } from 'utils';
 import { Text } from 'lunchbox';
+import { ContributionCalendarBlock } from './components/ContributionCalendarBlock.tsx';
 
 export type ContributionLevel = null | 'none' | 'low' | 'mid' | 'high';
 
@@ -11,22 +12,10 @@ interface iContributionCalendar {
   contributionMap: Record<string, ContributionLevel>;
 }
 
-const contributionCalendarBlock = (
-  level: ContributionLevel,
-  dateUtc: string,
-) => (
-  <div
-    class={level === null
-      ? 'comp-contributionCalendar-block'
-      : `comp-contributionCalendar-block comp-contributionCalendar-block_${level}`}
-    title={dateUtc}
-  />
-);
-
 export function ContributionCalendar(props: iContributionCalendar) {
   const startDateTime = datetime(new Date(props.startDateUtc));
   const endDateTime = datetime(new Date(props.endDateUtc));
-  const dayDifference = diffInDays(startDateTime, datetime(endDateTime)) + 2;
+  const dayDifference = diffInDays(startDateTime, datetime(endDateTime)) + 1;
 
   const currentWeek: JSX.Element[] = [];
   const currentMonth: JSX.Element[] = [];
@@ -42,16 +31,16 @@ export function ContributionCalendar(props: iContributionCalendar) {
     if (i === 0 || blockDateTime.day === 1) {
       currentWeek.push(
         ...Array(datetime(blockDate).weekDay()).fill(
-          contributionCalendarBlock(null, 'blank'),
+          <ContributionCalendarBlock level={null} />,
         ),
       );
     }
 
     currentWeek.push(
-      contributionCalendarBlock(
-        contributions ? contributions : 'none',
-        blockDateTime.format('www, d MMM YYYY'),
-      ),
+      <ContributionCalendarBlock
+        level={contributions ? contributions : 'none'}
+        dateUtc={blockDateTime.format('www, d MMM YYYY')}
+      />,
     );
 
     if (currentWeek.length === 7 || isEndOfMonth || isEndDate) {

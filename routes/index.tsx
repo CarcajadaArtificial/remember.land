@@ -1,40 +1,59 @@
-import { datetime, diffInDays } from 'ptera';
+import { DateTime, datetime, diffInDays } from 'ptera';
 import { WithSession } from 'fresh_session';
-import { Handlers } from '$fresh/server.ts';
+import { Handlers, PageProps } from '$fresh/server.ts';
 import { Footer, Layout, Link, Main, Navigation, Panel, Text } from 'lunchbox';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
 import { redirect } from 'redirect';
-import { getApp } from 'db/index.ts';
+import { getApp, iApp } from 'db/index.ts';
 
-type Data = { session: Record<string, string> };
+interface HomePageData {
+  session: Record<string, string>;
+  today: DateTime;
+  appConfig: iApp;
+  startingDate: DateTime;
+  day_count_today: number;
+}
 
 export const handler: Handlers<
-  Data,
+  HomePageData,
   WithSession
 > = {
-  GET(_req, ctx) {
-    return ctx.state.session.get('isSignedIn')
-      ? ctx.render({
-        session: ctx.state.session.data,
-      })
-      : redirect('/signin');
+  async GET(_req, ctx) {
+    if (!ctx.state.session.get('isSignedIn')) {
+      return redirect('/signin');
+    }
+
+    const today = datetime(new Date());
+    const appConfig = await getApp();
+
+    if (appConfig === null) {
+      return redirect('/asdfg');
+    }
+
+    const startingDate = datetime(new Date(appConfig.startingUtcDate));
+    const day_count_today = diffInDays(startingDate, datetime());
+
+    const pageData: HomePageData = {
+      session: ctx.state.session.data,
+      today: today,
+      appConfig: appConfig,
+      startingDate: startingDate,
+      day_count_today: day_count_today,
+    };
+
+    // console.log(pageData);
+    return ctx.render(pageData);
   },
 };
 
-export default async function Home() {
-  const today = datetime(new Date());
-
-  const appConfig = await getApp();
-  const startingDate = datetime(
-    appConfig ? new Date(appConfig.startingUtcDate) : new Date(),
-  );
-  const day_count_today = diffInDays(startingDate, datetime());
+export default function Home(props: PageProps<HomePageData>) {
+  const { today, appConfig, day_count_today } = props.data;
 
   return (
     <div>
       <Navigation class='py-3'>
-        <Text>{today.format('MMMM-dd')}</Text>
+        <Text>{today.format('MMM d')}</Text>
         <div class='flex gap-6'>
           <Link href='/archive'>Archive</Link>
         </div>

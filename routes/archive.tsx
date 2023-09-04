@@ -28,7 +28,7 @@ export default async function Archive() {
   return (
     <div>
       <Navigation class='py-3'>
-        <Link href='./'>{today.format('MMMM-dd')}</Link>
+        <Link href='./'>{today.format('MMM d')}</Link>
       </Navigation>
       {appConfiguration
         ? <EntryQuery appConfiguration={appConfiguration} />
