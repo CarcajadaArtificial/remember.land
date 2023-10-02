@@ -8,7 +8,6 @@ export default function App({ Component }: AppProps) {
       <Head>
         <title>remember.land</title>
         <Stylesheet />
-        <link rel='stylesheet' href='style.css' />
       </Head>
       <body class='clr-bg-panel clr-txt-base txt-paragraph'>
         <Component />

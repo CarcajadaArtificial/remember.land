@@ -1,22 +1,32 @@
 # Changelog
 
-## v0.1.3
+## v0.1.4
 
-- Updated to newer deno structures
-  - `/fresh.config.ts`
-  - `/deno.json`
-  - `/main.ts`
+- Added the lunchbox fonts
+  - `/static/fonts/*`
 
-- Added `dotenv` import in the signin route.
-  - `/routes/signin.tsx`
-
-- Started the adaptation to the new Lunchbox.
-  - `/islands/EntryQuery/index.tsx`
+- Removed static styles
+  - `/static/style.css`
+  - `/static/style.css.map`
   - `/routes/_app.tsx`
-  - `/utils/handlers/EntryInput.ts`
+  - `/index.scss`
+
+### Changes so far
+
+- Added the Lunchbox fonts.
+- Removed static styles.
 
 ### v0.2
 
+  - UI Revamp and upgrade to Lunchbox v0.3
+    - `<EntryTypeIndicator/>`
+      - [ ] Use tabler icons instead of characters.
+    - `<EntryInput/>`
+      - [ ] Use a contenteditable instead of a textarea.
+      - [ ] Use '#' character detection inside the content for tags instead of an input.
+      - [ ] This same component might be used to substitute EntryQuery, make the onSubmit action configurable to searching instead of submiting.
+    - `<EntryList/>`
+      - [ ] Use loader component.
   - Backlog
     - [x] Include single password authentication method.
     - [x] Include FileDB database.

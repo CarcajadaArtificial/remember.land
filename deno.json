@@ -3,10 +3,7 @@
   "tasks": {
     "start": "deno run --unstable -A --watch=static/,routes/ dev.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
-    "sass": "sass -w index.scss static/style.css",
-    "update:imports": "deno run -A -r https://deno.land/x/update/mod.ts ./deno.json",
-    "build": "deno run -A dev.ts build",
-    "preview": "deno run -A main.ts"
+    "update:imports": "deno run -A -r https://deno.land/x/update/mod.ts ./deno.json"
   },
   "lint": {
     "rules": {
@@ -39,6 +36,7 @@
     "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts",
     "tilia/": "https://deno.land/x/tilia@0.1.2/",
     "kvdex": "https://deno.land/x/kvdex@v0.12.6/mod.ts",
+    "resin": "https://deno.land/x/resin@v0.1.6/mod.ts",
     "types": "./utils/types.ts",
     "hooks": "./utils/hooks.ts",
     "signals": "./utils/signals.ts",
