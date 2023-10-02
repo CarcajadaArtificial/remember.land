@@ -1,29 +1,27 @@
-import { Text } from 'lunchbox';
+import IconAsteriskSimple from 'icons/asterisk-simple.tsx';
+import IconMinus from 'icons/minus.tsx';
+import IconCircle from 'icons/circle.tsx';
+import IconSquare from 'icons/square.tsx';
+import IconCheckbox from 'icons/checkbox.tsx';
 
 interface iEntryTypeIndicator {
   tags?: string[];
 }
 
-function tagsToIndicator(tags?: string[]): string {
-  if (!tags) {
-    return ' - ';
-  } else if (tags.includes('permanent')) {
-    return ' * ';
-  } else if (tags.includes('event')) {
-    return ' ○ ';
-  } else if (tags.includes('task') && !tags.includes('done')) {
-    return ' ☐ ';
-  } else if (tags.includes('task') && tags.includes('done')) {
-    return ' ☑ ';
-  } else {
-    return ' - ';
-  }
-}
-
 export function EntryTypeIndicator(props: iEntryTypeIndicator) {
-  return (
-    <Text class='text-center cursor-default select-none'>
-      {tagsToIndicator(props.tags)}
-    </Text>
-  );
+  const { tags } = props;
+
+  if (!tags) {
+    return <IconMinus />;
+  } else if (tags.includes('permanent')) {
+    return <IconAsteriskSimple />;
+  } else if (tags.includes('event')) {
+    return <IconCircle />;
+  } else if (tags.includes('task') && !tags.includes('done')) {
+    return <IconSquare />;
+  } else if (tags.includes('task') && tags.includes('done')) {
+    return <IconCheckbox />;
+  } else {
+    return <IconMinus />;
+  }
 }

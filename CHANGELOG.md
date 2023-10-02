@@ -1,15 +1,8 @@
 # Changelog
 
-## v0.1.4
+## v0.1.5
 
-- Added the lunchbox fonts
-  - `/static/fonts/*`
-
-- Removed static styles
-  - `/static/style.css`
-  - `/static/style.css.map`
-  - `/routes/_app.tsx`
-  - `/index.scss`
+- Updated the `<EntryTypeIndicator/>` for tabler icons.
 
 ### Changes so far
 
@@ -20,7 +13,7 @@
 
   - UI Revamp and upgrade to Lunchbox v0.3
     - `<EntryTypeIndicator/>`
-      - [ ] Use tabler icons instead of characters.
+      - [x] Use tabler icons instead of characters.
     - `<EntryInput/>`
       - [ ] Use a contenteditable instead of a textarea.
       - [ ] Use '#' character detection inside the content for tags instead of an input.
