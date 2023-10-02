@@ -4,7 +4,9 @@
     "start": "deno run --unstable -A --watch=static/,routes/ dev.ts",
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "sass": "sass -w index.scss static/style.css",
-    "update:imports": "deno run -A -r https://deno.land/x/update/mod.ts ./deno.json"
+    "update:imports": "deno run -A -r https://deno.land/x/update/mod.ts ./deno.json",
+    "build": "deno run -A dev.ts build",
+    "preview": "deno run -A main.ts"
   },
   "lint": {
     "rules": {
@@ -21,9 +23,9 @@
     "singleQuote": true
   },
   "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.4.2/",
-    "preact": "https://esm.sh/preact@10.17.1",
-    "preact/": "https://esm.sh/preact@10.17.1/",
+    "$fresh/": "https://deno.land/x/fresh@1.4.3/",
+    "preact": "https://esm.sh/preact@10.15.1",
+    "preact/": "https://esm.sh/preact@10.15.1/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",

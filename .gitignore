@@ -10,3 +10,5 @@ cov.lcov
 # others
 *.DS_Store
 .obsidian
+# Fresh build directory
+_fresh/
