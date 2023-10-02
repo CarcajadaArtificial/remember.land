@@ -3,6 +3,7 @@ import { Handlers, PageProps } from '$fresh/server.ts';
 import { redirect } from 'redirect';
 import { WithSession } from 'fresh_session';
 import { setupApp } from 'db/index.ts';
+import '$std/dotenv/load.ts';
 
 type Data = {
   session: Record<string, string>;

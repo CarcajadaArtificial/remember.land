@@ -1,4 +1,5 @@
-import { certainKeyPressed, Chiplist, Layout, Main, Panel } from 'lunchbox';
+import { Chiplist, Layout, Main, Panel } from 'lunchbox';
+import { certainKeyPressed } from 'lunchbox/handlers.ts';
 import { EntryList } from '../EntryList/index.tsx';
 import { useState } from 'preact/hooks';
 import { updateEntryList } from 'signals';

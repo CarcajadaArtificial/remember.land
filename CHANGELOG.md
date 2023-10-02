@@ -1,8 +1,19 @@
 # Changelog
 
-## v0.1.1
+## v0.1.3
 
-### Upgraded to Deno Fresh 1.4.3
+- Updated to newer deno structures
+  - `/fresh.config.ts`
+  - `/deno.json`
+  - `/main.ts`
+
+- Added `dotenv` import in the signin route.
+  - `/routes/signin.tsx`
+
+- Started the adaptation to the new Lunchbox.
+  - `/islands/EntryQuery/index.tsx`
+  - `/routes/_app.tsx`
+  - `/utils/handlers/EntryInput.ts`
 
 ### v0.2
 

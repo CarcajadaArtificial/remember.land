@@ -1,4 +1,4 @@
-import { certainKeyPressed } from 'lunchbox';
+import { certainKeyPressed } from 'lunchbox/handlers.ts';
 import { useState } from 'preact/hooks';
 import { useTagList } from 'hooks';
 import { bring, isURL } from 'utils';
