@@ -40,22 +40,21 @@ export default function (props: iEntryInput) {
     setInputStep([]);
   }
 
-  function handleEntryInput(ev: Event) {
-    const value = (ev.target as HTMLTextAreaElement).value;
+  function handleEntryInput(ev: KeyboardEvent) {
+    const value = (ev.target as HTMLSpanElement).innerText;
 
     if (
-      value.at(0) === ' ' && value.length >= 3 &&
-      [' - ', ' * ', ' x ', ' o '].includes(value.substring(0, 3))
+      ev.key === ' ' && value.length >= 2 &&
+      ['-', '*', 'x', 'o'].includes(value[0])
     ) {
-      const shortcut = value.substring(0, 3);
-      switch (shortcut) {
-        case ' - ':
+      switch (value[0]) {
+        case '-':
           updateTags([], ['permanent', 'event', 'done', 'task']);
           break;
-        case ' * ':
+        case '*':
           updateTags(['permanent'], ['event', 'done', 'task']);
           break;
-        case ' x ':
+        case 'x':
           if (tags.includes('done')) {
             updateTags([], ['permanent', 'event', 'done']);
           } else if (tags.includes('task')) {
@@ -64,14 +63,14 @@ export default function (props: iEntryInput) {
             updateTags(['task'], ['permanent', 'event']);
           }
           break;
-        case ' o ':
+        case 'o':
           updateTags(['event'], ['permanent', 'task', 'done']);
           break;
         default:
           break;
       }
-      const shortcutRemoved = value.substring(3);
-      (ev.target as HTMLTextAreaElement).value = shortcutRemoved;
+      const shortcutRemoved = value.substring(2);
+      (ev.target as HTMLSpanElement).innerHTML = shortcutRemoved;
       setEntryValue(shortcutRemoved);
     } else {
       setEntryValue(value);

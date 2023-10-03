@@ -1,8 +1,10 @@
 # Changelog
 
-## v0.1.5
+## v0.1.6
 
-- Updated the `<EntryTypeIndicator/>` for tabler icons.
+- Added styles to `<EntryTypeIndicator/>`.
+- Updated `<EntryInput/>` to use a contenteditable instead of a textarea.
+- Added the `styles` module.
 
 ### Changes so far
 
@@ -15,7 +17,7 @@
     - `<EntryTypeIndicator/>`
       - [x] Use tabler icons instead of characters.
     - `<EntryInput/>`
-      - [ ] Use a contenteditable instead of a textarea.
+      - [x] Use a contenteditable instead of a textarea.
       - [ ] Use '#' character detection inside the content for tags instead of an input.
       - [ ] This same component might be used to substitute EntryQuery, make the onSubmit action configurable to searching instead of submiting.
     - `<EntryList/>`

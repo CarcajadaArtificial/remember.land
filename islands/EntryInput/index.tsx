@@ -1,11 +1,12 @@
-import { Chiplist } from 'lunchbox';
+import { Chiplist, Text } from 'lunchbox';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';
 import Bookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/EntryInput.ts';
 import { dbEntry } from 'db/entry.ts';
-import { Ref, useEffect, useRef } from 'preact/hooks';
+import { useEffect, useRef } from 'preact/hooks';
+import { ENTRY_GRID } from 'styles';
 
 export interface iEntryInput {
   entry: dbEntry;
@@ -13,7 +14,7 @@ export interface iEntryInput {
 }
 
 export function EntryInput(props: iEntryInput) {
-  const refTextarea = useRef<HTMLTextAreaElement>();
+  const refTextarea = useRef<HTMLSpanElement>();
 
   const {
     handleRemoveTag,
@@ -38,16 +39,12 @@ export function EntryInput(props: iEntryInput) {
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         {/* Textarea Row */}
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        <div class='isl-EntryInput-row'>
-          <div class='pt-1'>
-            <EntryTypeIndicator tags={tags} />
-          </div>
-          <textarea
-            class='isl-EntryInput-textarea'
-            rows={5}
+        <div class={ENTRY_GRID}>
+          <EntryTypeIndicator tags={tags} />
+          <Text
+            contentEditable
             onKeyUp={handleEntryInput}
-            value={entryValue}
-            ref={refTextarea as Ref<HTMLTextAreaElement>}
+            fref={refTextarea}
           />
         </div>
         {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
