@@ -1,11 +1,10 @@
 # Changelog
 
-## v0.1.7
+## v0.1.8
 
-- Added twind dependencies.
-- Updated general entry layout styles.
-- Updated the `<EntryInput/>` island to support a contenteditable `<div/>` and `<Input/>` components.
-- Updated the `<Navigation/>` component.
+- Added css-in-js to the `<Entry/>`, `<EntryInput/>`, and `<EntryQuery/>` islands.
+- Fixed focus states on entry input fields.
+- Restructured the home route.
 
 ### Changes so far
 

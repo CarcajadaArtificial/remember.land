@@ -74,41 +74,24 @@ export default function Home(props: PageProps<HomePageData>) {
         class='min-h-screen mt-10'
       >
         <Layout dashboard type='left'>
-          <Card>
-            <EntryInput
-              entry={{
-                _id: '',
-                content: '',
-                entry_mark: '',
-                tags: [],
-                utc_created_at: new Date().toUTCString(),
-                day_count: day_count_today,
-              }}
-              onFocusOut={() => {}}
-            />
-            <Separator style='border: 0; border-top: 1px solid;' />
-            <EntryList
-              query={{
-                includes_tags: ['permanent'],
-              }}
-            />
+          <div class='grid gap-6'>
+            <Card>
+              <EntryInput
+                entry={{
+                  _id: '',
+                  content: '',
+                  entry_mark: '',
+                  tags: [],
+                  utc_created_at: new Date().toUTCString(),
+                  day_count: day_count_today,
+                }}
+                onFocusOut={() => {}}
+              />
+            </Card>
             <EntryList
               query={{
                 created_on_day_count: day_count_today,
                 excludes_tags: ['task', 'event', 'permanent'],
-              }}
-            />
-          </Card>
-          <div class='grid gap-3'>
-            <EntryList
-              query={{
-                includes_tags: ['event'],
-              }}
-            />
-            <EntryList
-              query={{
-                includes_tags: ['task'],
-                excludes_tags: ['done'],
               }}
             />
           </div>

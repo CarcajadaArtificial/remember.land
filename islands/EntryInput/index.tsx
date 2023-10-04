@@ -7,7 +7,7 @@ import IconBookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/EntryInput.ts';
 import { dbEntry } from 'db/entry.ts';
 import { useEffect, useRef } from 'preact/hooks';
-import { ENTRY_GRID, ICON_STANDARD } from 'styles';
+import { ENTRY_GRID, ENTRY_INPUT_FIELD, ICON_STANDARD } from 'styles';
 
 export interface iEntryInput {
   entry: dbEntry;
@@ -46,28 +46,28 @@ export function EntryInput(props: iEntryInput) {
             contentEditable
             onKeyUp={handleEntryInput}
             fref={refTextarea}
-            class='outline-none'
-          />
+            class={`${ENTRY_INPUT_FIELD} px-1.5`}
+          >
+            {props.entry.content}
+          </Text>
 
           {/* Entry Mark Row */}
           <IconBookmark class={ICON_STANDARD} />
-          <Input
-            class='w-full'
+          <input
+            class={`${ENTRY_INPUT_FIELD} px-1.5`}
             type='text'
             onKeyUp={handleEntryMarkInput}
             onFocus={handleFieldFocus('entrymark')}
             value={entryMark}
-            fwd={{ container: { nostyle: true } }}
           />
 
           {/* Tags Row */}
           <IconTag class={ICON_STANDARD} />
-          <Input
-            class='w-full'
+          <input
+            class={`${ENTRY_INPUT_FIELD} px-1.5`}
             type='text'
             onFocus={handleFieldFocus('tags')}
             onKeyUp={handleTagInput}
-            fwd={{ container: { nostyle: true } }}
           />
         </div>
         {/* Tags Chiplist */}

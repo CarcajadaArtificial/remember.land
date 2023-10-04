@@ -4,7 +4,7 @@ import { LargeKvEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import Handlers from 'handlers/Entry.ts';
 import { EntryInput } from '../EntryInput/index.tsx';
-import { ENTRY_GRID } from 'styles';
+import { ENTRY_CONTAINER, ENTRY_GRID } from 'styles';
 
 export interface iEntryComponent {
   entry: Document<LargeKvEntry>;
@@ -45,7 +45,7 @@ export function Entry(props: iEntryComponent) {
     <div
       onKeyUp={onEntryContainerKeyUp}
       tabIndex={0}
-      class='isl-entry-container'
+      class={ENTRY_CONTAINER}
       data-utc_created_at={utc_created_at}
       data-day_count={day_count}
       data-id={entry.id}

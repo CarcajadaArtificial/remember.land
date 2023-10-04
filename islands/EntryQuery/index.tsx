@@ -7,6 +7,7 @@ import IconTag from 'icons/tag.tsx';
 import AlignJustifiedTag from 'icons/align-justified.tsx';
 import { useTagList } from 'hooks';
 import { iApp } from 'db/index.ts';
+import { ENTRY_GRID, ENTRY_INPUT_FIELD } from 'styles';
 
 interface iEntryQuery {
   appConfiguration: iApp;
@@ -21,10 +22,10 @@ export function EntryQuery(props: iEntryQuery) {
       <Panel class='mt-10'>
         <Layout type='full'>
           <div class='py-3'>
-            <div class='isl-EntryInput-row'>
+            <div class={ENTRY_GRID}>
               <AlignJustifiedTag class='w-5 pt-1.5' stroke={1} />
               <input
-                class='comp-input isl-EntryInput-field'
+                class={ENTRY_INPUT_FIELD}
                 type='text'
                 value={containsText}
                 onKeyUp={async (ev) => {
@@ -34,12 +35,10 @@ export function EntryQuery(props: iEntryQuery) {
                   updateEntryList.value++;
                 }}
               />
-            </div>
-            <div class='isl-EntryInput-row'>
               <IconTag class='w-5 pt-1.5' stroke={1} />
               <input
                 type='text'
-                class='comp-input isl-EntryInput-field'
+                class={ENTRY_INPUT_FIELD}
                 onKeyUp={(ev: KeyboardEvent) => {
                   return certainKeyPressed(ev, ['Enter'], (ev) => {
                     const newValue = (ev.target as HTMLInputElement).value;
