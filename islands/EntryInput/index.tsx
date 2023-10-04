@@ -1,12 +1,13 @@
-import { Chiplist, Text } from 'lunchbox';
+import { Chiplist, Input, Text } from 'lunchbox';
+import { transition } from 'lunchbox/styles.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';
-import Bookmark from 'icons/bookmark.tsx';
+import IconBookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/EntryInput.ts';
 import { dbEntry } from 'db/entry.ts';
 import { useEffect, useRef } from 'preact/hooks';
-import { ENTRY_GRID } from 'styles';
+import { ENTRY_GRID, ICON_STANDARD } from 'styles';
 
 export interface iEntryInput {
   entry: dbEntry;
@@ -14,7 +15,7 @@ export interface iEntryInput {
 }
 
 export function EntryInput(props: iEntryInput) {
-  const refTextarea = useRef<HTMLSpanElement>();
+  const refTextarea = useRef<HTMLSpanElement>(null);
 
   const {
     handleRemoveTag,
@@ -26,60 +27,50 @@ export function EntryInput(props: iEntryInput) {
     entryMark,
     tags,
     entryValue,
-    inputStep,
   } = Handlers(props);
 
   useEffect(() => {
     refTextarea.current?.focus();
-  }, []);
+    if (entryValue === '' && refTextarea.current) {
+      refTextarea.current.innerHTML = '';
+    }
+  }, [entryValue]);
 
   return (
     <div>
       <div class='isl-EntryInput-container' onKeyDown={handleConatinerKeyDown}>
-        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        {/* Textarea Row */}
-        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
         <div class={ENTRY_GRID}>
+          {/* Textarea Row */}
           <EntryTypeIndicator tags={tags} />
           <Text
             contentEditable
             onKeyUp={handleEntryInput}
             fref={refTextarea}
+            class='outline-none'
           />
-        </div>
-        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        {/* Entry Mark Row */}
-        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        <div
-          class={!(inputStep.includes('entrymark') || entryMark !== '')
-            ? 'isl-EntryInput-row_hidden'
-            : 'isl-EntryInput-row_hidden transition-appears-maxheight'}
-        >
-          <Bookmark class='w-5 pt-1.5' stroke={1} />
-          <input
+
+          {/* Entry Mark Row */}
+          <IconBookmark class={ICON_STANDARD} />
+          <Input
+            class='w-full'
             type='text'
-            class='comp-input isl-EntryInput-field'
             onKeyUp={handleEntryMarkInput}
             onFocus={handleFieldFocus('entrymark')}
             value={entryMark}
+            fwd={{ container: { nostyle: true } }}
           />
-        </div>
-        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        {/* Tags Row */}
-        {/* - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - */}
-        <div
-          class={!inputStep.includes('tags')
-            ? 'isl-EntryInput-row_hidden'
-            : 'isl-EntryInput-row_hidden transition-appears-maxheight'}
-        >
-          <IconTag class='w-5 pt-1.5' stroke={1} />
-          <input
+
+          {/* Tags Row */}
+          <IconTag class={ICON_STANDARD} />
+          <Input
+            class='w-full'
             type='text'
-            class='comp-input isl-EntryInput-field'
             onFocus={handleFieldFocus('tags')}
             onKeyUp={handleTagInput}
+            fwd={{ container: { nostyle: true } }}
           />
         </div>
+        {/* Tags Chiplist */}
         <Chiplist
           values={tags}
           onRemove={handleRemoveTag}

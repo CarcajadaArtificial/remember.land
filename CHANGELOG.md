@@ -1,10 +1,11 @@
 # Changelog
 
-## v0.1.6
+## v0.1.7
 
-- Added styles to `<EntryTypeIndicator/>`.
-- Updated `<EntryInput/>` to use a contenteditable instead of a textarea.
-- Added the `styles` module.
+- Added twind dependencies.
+- Updated general entry layout styles.
+- Updated the `<EntryInput/>` island to support a contenteditable `<div/>` and `<Input/>` components.
+- Updated the `<Navigation/>` component.
 
 ### Changes so far
 

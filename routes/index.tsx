@@ -1,7 +1,16 @@
 import { DateTime, datetime, diffInDays } from 'ptera';
 import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { Footer, Layout, Link, Main, Navigation, Panel, Text } from 'lunchbox';
+import {
+  Card,
+  Footer,
+  Layout,
+  Link,
+  Main,
+  Navigation,
+  Separator,
+  Text,
+} from 'lunchbox';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
 import { redirect } from 'redirect';
@@ -51,19 +60,21 @@ export default function Home(props: PageProps<HomePageData>) {
   const { today, appConfig, day_count_today } = props.data;
 
   return (
-    <div>
+    <>
       <Navigation class='py-3'>
-        <Text>{today.format('MMM d')}</Text>
-        <div class='flex gap-6'>
-          <Link href='/archive'>Archive</Link>
-        </div>
+        <Layout dashboard type='left'>
+          <Text>{today.format('MMM d')}</Text>
+          <div class='flex gap-6'>
+            <Link href='/archive'>Archive</Link>
+          </div>
+        </Layout>
       </Navigation>
       <Main
         data-starting_utc_date={appConfig?.startingUtcDate}
-        class='min-h-screen'
+        class='min-h-screen mt-10'
       >
-        <Layout type='full'>
-          <Panel>
+        <Layout dashboard type='left'>
+          <Card>
             <EntryInput
               entry={{
                 _id: '',
@@ -75,10 +86,7 @@ export default function Home(props: PageProps<HomePageData>) {
               }}
               onFocusOut={() => {}}
             />
-          </Panel>
-        </Layout>
-        <Layout class='pt-6' type='halves'>
-          <div class='grid gap-3'>
+            <Separator style='border: 0; border-top: 1px solid;' />
             <EntryList
               query={{
                 includes_tags: ['permanent'],
@@ -90,7 +98,7 @@ export default function Home(props: PageProps<HomePageData>) {
                 excludes_tags: ['task', 'event', 'permanent'],
               }}
             />
-          </div>
+          </Card>
           <div class='grid gap-3'>
             <EntryList
               query={{
@@ -110,6 +118,6 @@ export default function Home(props: PageProps<HomePageData>) {
         <div></div>
         <Link href='/signout'>SignOut</Link>
       </Footer>
-    </div>
+    </>
   );
 }

@@ -1,4 +1,4 @@
-import { Link, Navigation } from 'lunchbox';
+import { Layout, Link, Navigation } from 'lunchbox';
 import { datetime } from 'ptera';
 import { EntryQuery } from '../islands/EntryQuery/index.tsx';
 import { Handlers } from '$fresh/server.ts';
@@ -28,7 +28,9 @@ export default async function Archive() {
   return (
     <div>
       <Navigation class='py-3'>
-        <Link href='./'>{today.format('MMM d')}</Link>
+        <Layout dashboard type='left'>
+          <Link href='./'>{today.format('MMM d')}</Link>
+        </Layout>
       </Navigation>
       {appConfiguration
         ? <EntryQuery appConfiguration={appConfiguration} />

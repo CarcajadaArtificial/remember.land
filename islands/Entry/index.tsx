@@ -4,6 +4,7 @@ import { LargeKvEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import Handlers from 'handlers/Entry.ts';
 import { EntryInput } from '../EntryInput/index.tsx';
+import { ENTRY_GRID } from 'styles';
 
 export interface iEntryComponent {
   entry: Document<LargeKvEntry>;
@@ -56,7 +57,7 @@ export function Entry(props: iEntryComponent) {
           </div>
         )
         : null}
-      <div class='isl-entry-row'>
+      <div class={ENTRY_GRID}>
         <EntryTypeIndicator tags={tags} />
         {isMarkUrl
           ? (

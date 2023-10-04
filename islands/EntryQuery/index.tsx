@@ -18,7 +18,7 @@ export function EntryQuery(props: iEntryQuery) {
 
   return (
     <>
-      <Panel>
+      <Panel class='mt-10'>
         <Layout type='full'>
           <div class='py-3'>
             <div class='isl-EntryInput-row'>
