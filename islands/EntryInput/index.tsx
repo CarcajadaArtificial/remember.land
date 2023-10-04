@@ -47,6 +47,7 @@ export function EntryInput(props: iEntryInput) {
             onKeyUp={handleEntryInput}
             fref={refTextarea}
             class={`${ENTRY_INPUT_FIELD} px-1.5`}
+            style={{ lineBreak: 'anywhere' }}
           >
             {props.entry.content}
           </Text>

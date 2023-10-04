@@ -4,7 +4,6 @@ export const ENTRY_GRID = css`
   display: grid;
   grid-template-columns: var(--s-single) 1fr;
   gap: var(--s-half);
-  align-items: center;
   min-height: var(--s-one-and-half);
 `;
 
@@ -44,4 +43,5 @@ export const ENTRY_CONTAINER = css`
 export const ICON_STANDARD = css`
   width: var(--s-single);
   height: var(--s-single);
+  margin-top: var(--s-quarter);
 `;

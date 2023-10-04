@@ -64,7 +64,6 @@ export function Entry(props: iEntryComponent) {
             <Link
               tabIndex={-1}
               target='_blank'
-              nostyle
               class='isl-entry-link'
               href={entry_mark}
             >
@@ -81,7 +80,7 @@ export function Entry(props: iEntryComponent) {
       </div>
       {tags && tags.length > 0
         ? (
-          <div className='isl-entry-hidden'>
+          <div className='isl-entry-hidden mt-1.5'>
             <Chiplist class='ml-6' values={tags} />
           </div>
         )
