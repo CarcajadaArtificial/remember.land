@@ -1,6 +1,6 @@
 # Changelog
 
-## v0.1.9
+## v0.1.10
 
 - Minor UI fixes.
 
@@ -31,6 +31,7 @@
     - `<EntryInput/>`
       - [x] Use a contenteditable instead of a textarea.
       - [ ] This same component might be used to substitute EntryQuery, make the onSubmit action configurable to searching instead of submiting.
+      - [ ] `@media (pointer:none)` That changes the UI adding a submit button, an "add tag" button, and collapses into a floating icon menu on smaller screens.
     - `<EntryList/>`
       - [ ] Use loader component.
   - Backlog

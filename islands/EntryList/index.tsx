@@ -70,7 +70,7 @@ export function EntryList(props: iEntryList) {
   }
 
   return (
-    <div class='grid'>
+    <div class='grid gap-1.5'>
       {props.contributionCalendar
         ? (
           <ContributionCalendar

@@ -1,5 +1,5 @@
 import { Document } from 'kvdex';
-import { Chiplist, Link, Text } from 'lunchbox';
+import { Card, Chiplist, Link, Text } from 'lunchbox';
 import { LargeKvEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import Handlers from 'handlers/Entry.ts';
@@ -25,7 +25,7 @@ export function Entry(props: iEntryComponent) {
 
   if (editMode) {
     return (
-      <div class='clr-bg-panel-30'>
+      <Card>
         <EntryInput
           onFocusOut={onInputFocusOut}
           entry={{
@@ -37,7 +37,7 @@ export function Entry(props: iEntryComponent) {
             day_count: day_count,
           }}
         />
-      </div>
+      </Card>
     );
   }
 
@@ -50,33 +50,30 @@ export function Entry(props: iEntryComponent) {
       data-day_count={day_count}
       data-id={entry.id}
     >
-      {entry_mark
+      {entry_mark && isMarkUrl
         ? (
           <div className='isl-entry-hidden'>
-            <Text noMargins class='ml-8' type='small'>{entry_mark}</Text>
+            <Link tabIndex={-1}>
+              <Text noMargins class='ml-6' type='small'>
+                {entry_mark}
+              </Text>
+            </Link>
+          </div>
+        )
+        : entry_mark && !isMarkUrl
+        ? (
+          <div className='isl-entry-hidden'>
+            <Text noMargins class='ml-6' type='small'>{entry_mark}</Text>
           </div>
         )
         : null}
       <div class={ENTRY_GRID}>
         <EntryTypeIndicator tags={tags} />
-        {isMarkUrl
-          ? (
-            <Link
-              tabIndex={-1}
-              target='_blank'
-              class='isl-entry-link'
-              href={entry_mark}
-            >
-              {content}
-            </Link>
-          )
-          : (
-            <div>
-              <Text class={isTaskDone ? 'line-through' : undefined} noMargins>
-                {content}
-              </Text>
-            </div>
-          )}
+        <div>
+          <Text class={isTaskDone ? 'line-through' : undefined} noMargins>
+            {content}
+          </Text>
+        </div>
       </div>
       {tags && tags.length > 0
         ? (

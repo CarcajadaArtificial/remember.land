@@ -1,10 +1,10 @@
-import { Chiplist, Layout, Main, Panel } from 'lunchbox';
+import { Card, Chiplist, Layout, Main, Panel } from 'lunchbox';
 import { certainKeyPressed } from 'lunchbox/handlers.ts';
 import { EntryList } from '../EntryList/index.tsx';
 import { useState } from 'preact/hooks';
 import { updateEntryList } from 'signals';
 import IconTag from 'icons/tag.tsx';
-import AlignJustifiedTag from 'icons/align-justified.tsx';
+import IconAlignJustified from 'icons/align-justified.tsx';
 import { useTagList } from 'hooks';
 import { iApp } from 'db/index.ts';
 import { ENTRY_GRID, ENTRY_INPUT_FIELD } from 'styles';
@@ -19,61 +19,59 @@ export function EntryQuery(props: iEntryQuery) {
 
   return (
     <>
-      <Panel class='mt-10'>
-        <Layout type='full'>
-          <div class='py-3'>
-            <div class={ENTRY_GRID}>
-              <AlignJustifiedTag class='w-5 pt-1.5' stroke={1} />
-              <input
-                class={ENTRY_INPUT_FIELD}
-                type='text'
-                value={containsText}
-                onKeyUp={async (ev) => {
-                  await setContainsText(
-                    (ev.target as HTMLTextAreaElement).value,
-                  );
+      <Main class='mt-10'>
+        <Layout dashboard type='left'>
+          <>
+            <Card>
+              <div class={ENTRY_GRID}>
+                <IconAlignJustified class='w-5 pt-1.5' stroke={1} />
+                <input
+                  class={ENTRY_INPUT_FIELD}
+                  type='text'
+                  value={containsText}
+                  onKeyUp={async (ev) => {
+                    await setContainsText(
+                      (ev.target as HTMLTextAreaElement).value,
+                    );
+                    updateEntryList.value++;
+                  }}
+                />
+                <IconTag class='w-5 pt-1.5' stroke={1} />
+                <input
+                  type='text'
+                  class={ENTRY_INPUT_FIELD}
+                  onKeyUp={(ev: KeyboardEvent) => {
+                    return certainKeyPressed(ev, ['Enter'], (ev) => {
+                      const newValue = (ev.target as HTMLInputElement).value;
+                      if (newValue.replace(' ', '').length > 0) {
+                        updateIncludesTags([newValue], []);
+                      }
+                      (ev.target as HTMLInputElement).value = '';
+                      updateEntryList.value++;
+                    });
+                  }}
+                />
+              </div>
+              <Chiplist
+                values={includesTags}
+                onRemove={(ev: Event) => {
+                  const target = ev.target as HTMLButtonElement;
+                  const chipValue =
+                    (target.previousSibling as HTMLElement).innerHTML;
+                  updateIncludesTags([], [chipValue]);
                   updateEntryList.value++;
                 }}
+                class='ml-6 mt-1.5'
               />
-              <IconTag class='w-5 pt-1.5' stroke={1} />
-              <input
-                type='text'
-                class={ENTRY_INPUT_FIELD}
-                onKeyUp={(ev: KeyboardEvent) => {
-                  return certainKeyPressed(ev, ['Enter'], (ev) => {
-                    const newValue = (ev.target as HTMLInputElement).value;
-                    if (newValue.replace(' ', '').length > 0) {
-                      updateIncludesTags([newValue], []);
-                    }
-                    (ev.target as HTMLInputElement).value = '';
-                    updateEntryList.value++;
-                  });
-                }}
-              />
-            </div>
-            <Chiplist
-              values={includesTags}
-              onRemove={(ev: Event) => {
-                const target = ev.target as HTMLButtonElement;
-                const chipValue =
-                  (target.previousSibling as HTMLElement).innerHTML;
-                updateIncludesTags([], [chipValue]);
-                updateEntryList.value++;
+            </Card>
+            <EntryList
+              contributionCalendar
+              query={{
+                contains_text: containsText,
+                includes_tags: includesTags,
               }}
-              class='ml-6 mt-1.5'
             />
-          </div>
-        </Layout>
-      </Panel>
-      <Main>
-        <Layout type='full'>
-          <EntryList
-            contributionCalendar
-            query={{
-              contains_text: containsText,
-              includes_tags: includesTags,
-            }}
-          />
+          </>
         </Layout>
       </Main>
     </>

@@ -22,6 +22,7 @@ export const ENTRY_INPUT_FIELD = css`
 export const ENTRY_CONTAINER = css`
   outline: 0;
   padding-left: var(--s-single);
+  padding-right: var(--s-single);
   border-radius: var(--s-quarter);
 
   .isl-entry-hidden {
