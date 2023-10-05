@@ -19,60 +19,58 @@ export function EntryQuery(props: iEntryQuery) {
 
   return (
     <>
-      <Main class='mt-10'>
-        <Layout dashboard type='left'>
-          <>
-            <Card>
-              <div class={ENTRY_GRID}>
-                <IconAlignJustified class='w-5 pt-1.5' stroke={1} />
-                <input
-                  class={ENTRY_INPUT_FIELD}
-                  type='text'
-                  value={containsText}
-                  onKeyUp={async (ev) => {
-                    await setContainsText(
-                      (ev.target as HTMLTextAreaElement).value,
-                    );
-                    updateEntryList.value++;
-                  }}
-                />
-                <IconTag class='w-5 pt-1.5' stroke={1} />
-                <input
-                  type='text'
-                  class={ENTRY_INPUT_FIELD}
-                  onKeyUp={(ev: KeyboardEvent) => {
-                    return certainKeyPressed(ev, ['Enter'], (ev) => {
-                      const newValue = (ev.target as HTMLInputElement).value;
-                      if (newValue.replace(' ', '').length > 0) {
-                        updateIncludesTags([newValue], []);
-                      }
-                      (ev.target as HTMLInputElement).value = '';
-                      updateEntryList.value++;
-                    });
-                  }}
-                />
-              </div>
-              <Chiplist
-                values={includesTags}
-                onRemove={(ev: Event) => {
-                  const target = ev.target as HTMLButtonElement;
-                  const chipValue =
-                    (target.previousSibling as HTMLElement).innerHTML;
-                  updateIncludesTags([], [chipValue]);
+      <Main class='mt-10 grid gap-9'>
+        <Layout dashboard type='focus'>
+          <Card>
+            <div class={ENTRY_GRID}>
+              <IconAlignJustified class='w-5 pt-1.5' stroke={1} />
+              <input
+                class={ENTRY_INPUT_FIELD}
+                type='text'
+                value={containsText}
+                onKeyUp={async (ev) => {
+                  await setContainsText(
+                    (ev.target as HTMLTextAreaElement).value,
+                  );
                   updateEntryList.value++;
                 }}
-                class='ml-6 mt-1.5'
               />
-            </Card>
-            <EntryList
-              contributionCalendar
-              query={{
-                contains_text: containsText,
-                includes_tags: includesTags,
+              <IconTag class='w-5 pt-1.5' stroke={1} />
+              <input
+                type='text'
+                class={ENTRY_INPUT_FIELD}
+                onKeyUp={(ev: KeyboardEvent) => {
+                  return certainKeyPressed(ev, ['Enter'], (ev) => {
+                    const newValue = (ev.target as HTMLInputElement).value;
+                    if (newValue.replace(' ', '').length > 0) {
+                      updateIncludesTags([newValue], []);
+                    }
+                    (ev.target as HTMLInputElement).value = '';
+                    updateEntryList.value++;
+                  });
+                }}
+              />
+            </div>
+            <Chiplist
+              values={includesTags}
+              onRemove={(ev: Event) => {
+                const target = ev.target as HTMLButtonElement;
+                const chipValue =
+                  (target.previousSibling as HTMLElement).innerHTML;
+                updateIncludesTags([], [chipValue]);
+                updateEntryList.value++;
               }}
+              class='ml-6 mt-1.5'
             />
-          </>
+          </Card>
         </Layout>
+        <EntryList
+          contributionCalendar
+          query={{
+            contains_text: containsText,
+            includes_tags: includesTags,
+          }}
+        />
       </Main>
     </>
   );

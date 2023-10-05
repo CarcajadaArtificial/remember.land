@@ -71,31 +71,29 @@ export default function Home(props: PageProps<HomePageData>) {
       </Navigation>
       <Main
         data-starting_utc_date={appConfig?.startingUtcDate}
-        class='min-h-screen mt-10'
+        class='min-h-screen mt-10 flex flex-col gap-9'
       >
-        <Layout dashboard type='left'>
-          <div class='grid gap-6'>
-            <Card>
-              <EntryInput
-                entry={{
-                  _id: '',
-                  content: '',
-                  entry_mark: '',
-                  tags: [],
-                  utc_created_at: new Date().toUTCString(),
-                  day_count: day_count_today,
-                }}
-                onFocusOut={() => {}}
-              />
-            </Card>
-            <EntryList
-              query={{
-                created_on_day_count: day_count_today,
-                excludes_tags: ['task', 'event', 'permanent'],
+        <Layout dashboard type='focus'>
+          <Card>
+            <EntryInput
+              entry={{
+                _id: '',
+                content: '',
+                entry_mark: '',
+                tags: [],
+                utc_created_at: new Date().toUTCString(),
+                day_count: day_count_today,
               }}
+              onFocusOut={() => {}}
             />
-          </div>
+          </Card>
         </Layout>
+        <EntryList
+          query={{
+            created_on_day_count: day_count_today,
+            excludes_tags: ['task', 'event', 'permanent'],
+          }}
+        />
       </Main>
       <Footer layout_type='right'>
         <div></div>

@@ -5,6 +5,7 @@ import { updateEntryList } from 'signals';
 import { bring } from 'utils';
 import { type findReq } from 'api/entries/find.tsx';
 import { Document } from 'kvdex';
+import { Layout } from 'lunchbox';
 import {
   ContributionCalendar,
   ContributionLevel,
@@ -70,17 +71,21 @@ export function EntryList(props: iEntryList) {
   }
 
   return (
-    <div class='grid gap-1.5'>
-      {props.contributionCalendar
-        ? (
-          <ContributionCalendar
-            contributionMap={entriesToContributions(entries)}
-            startDateUtc={firstEntry.value.utc_created_at}
-            endDateUtc={new Date().toUTCString()}
-          />
-        )
-        : <></>}
-      {entries.map((entry) => <Entry entry={entry} />)}
-    </div>
+    <Layout dashboard type='left'>
+      <div class='grid gap-1.5'>
+        {entries.map((entry) => <Entry entry={entry} />)}
+      </div>
+      <div>
+        {props.contributionCalendar
+          ? (
+            <ContributionCalendar
+              contributionMap={entriesToContributions(entries)}
+              startDateUtc={firstEntry.value.utc_created_at}
+              endDateUtc={new Date().toUTCString()}
+            />
+          )
+          : <></>}
+      </div>
+    </Layout>
   );
 }

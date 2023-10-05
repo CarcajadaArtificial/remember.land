@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.10
+## v0.1.11
 
-- Minor UI fixes.
+- Added a Layout to the `<EntryList/>` island.
 
 ### Changes so far
 
@@ -34,6 +34,7 @@
       - [ ] `@media (pointer:none)` That changes the UI adding a submit button, an "add tag" button, and collapses into a floating icon menu on smaller screens.
     - `<EntryList/>`
       - [ ] Use loader component.
+      - [ ] Change datetime to ptera.
   - Backlog
     - [x] Include single password authentication method.
     - [x] Include FileDB database.
