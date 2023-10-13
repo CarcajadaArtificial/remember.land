@@ -4,7 +4,6 @@ import { db } from './index.ts';
 
 export interface iTag {
   name: string;
-  subtags: string[];
 }
 
 export type dbTag = dbItem<iTag, string>;
@@ -22,6 +21,13 @@ export const getAllTags = async () => await db.tags.getMany();
 export const getTag = async (id: Deno.KvKeyPart) => await db.tags.find(id);
 
 export const addTag = async (tag: LargeKvTag) => {
+  if (
+    (await db.tags.getMany({ filter: (doc) => doc.value.name === tag.name }))
+      .result.length >= 1
+  ) {
+    return null;
+  }
+
   return await db.tags.add(tag);
 };
 export const deleteTag = async (id: Deno.KvKeyPart) => {

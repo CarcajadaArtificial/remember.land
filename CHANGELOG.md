@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.17
+## v0.1.18
 
-- Renamed Entry db API management from .tsx files to .ts
+- Added a function that creates db documents for Tags based on all the currently set tags,
 
 ### Changes so far
 

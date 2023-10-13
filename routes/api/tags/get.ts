@@ -4,7 +4,7 @@ import { iTag } from 'db/tag.ts';
 import { WithSession } from 'fresh_session';
 import { findTags, iQueryTags } from 'db/tag.ts';
 
-export type findReq = {
+export type findTagReq = {
   query: iQueryTags;
 };
 
@@ -20,7 +20,7 @@ export const handler: Handlers<
     if (!ctx.state.session.get('isSignedIn')) {
       return new Response(JSON.stringify({}));
     }
-    const { query } = await req.json() as findReq;
+    const { query } = await req.json() as findTagReq;
     const tags = await findTags(query);
     return new Response(JSON.stringify(tags.result));
   },

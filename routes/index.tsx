@@ -1,16 +1,7 @@
 import { DateTime, datetime, diffInDays } from 'ptera';
 import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
-import {
-  Card,
-  Footer,
-  Layout,
-  Link,
-  Main,
-  Navigation,
-  Separator,
-  Text,
-} from 'lunchbox';
+import { Card, Footer, Layout, Link, Main, Navigation, Text } from 'lunchbox';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
 import TagUpdater from '../islands/TagUpdater/index.tsx';
@@ -52,7 +43,6 @@ export const handler: Handlers<
       day_count_today: day_count_today,
     };
 
-    // console.log(pageData);
     return ctx.render(pageData);
   },
 };
@@ -92,8 +82,8 @@ export default function Home(props: PageProps<HomePageData>) {
         </Layout>
         <EntryList
           query={{
-            created_on_day_count: day_count_today,
-            excludes_tags: ['task', 'event', 'permanent'],
+            // created_on_day_count: day_count_today,
+            // excludes_tags: ['task', 'event', 'permanent'],
           }}
         />
       </Main>

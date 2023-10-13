@@ -4,7 +4,7 @@ import { iEntry } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
 import { findEntries, iQueryEntries } from 'db/entry.ts';
 
-export type findReq = {
+export type findEntryReq = {
   query: iQueryEntries;
 };
 
@@ -20,7 +20,7 @@ export const handler: Handlers<
     if (!ctx.state.session.get('isSignedIn')) {
       return new Response(JSON.stringify({}));
     }
-    const { query } = await req.json() as findReq;
+    const { query } = await req.json() as findEntryReq;
     const entries = await findEntries(query);
     return new Response(JSON.stringify(entries.result));
   },

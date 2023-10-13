@@ -1,8 +1,10 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Button, Layout, Text } from 'lunchbox';
 import { bring } from 'utils';
-import { type findReq } from 'api/entries/get.ts';
+import { type findEntryReq } from 'api/entries/get.ts';
+import { type findTagReq } from 'api/tags/get.ts';
 import { LargeKvEntry } from 'db/entry.ts';
+import { docTag, iTag, LargeKvTag } from 'db/tag.ts';
 import { docEntry, iEntry } from 'db/entry.ts';
 import { Document } from 'kvdex';
 import { DbResults } from 'tilia/src/types.ts';
@@ -10,9 +12,10 @@ import { DbResults } from 'tilia/src/types.ts';
 export default function TagUpdater() {
   const [entries, setEntries] = useState<Document<LargeKvEntry>[]>([]);
   const [tags, setTags] = useState<string[]>([]);
+  const [dbTags, setDBTags] = useState<Document<LargeKvTag>[]>([]);
 
   useEffect(() => {
-    bring<findReq, Document<LargeKvEntry>[]>('/api/entries/get', 'POST', {
+    bring<findEntryReq, Document<LargeKvEntry>[]>('/api/entries/get', 'POST', {
       query: {},
     }, 'Find entries error.')
       .then((res) => {
@@ -25,6 +28,14 @@ export default function TagUpdater() {
               },
             ),
           );
+        }
+      });
+    bring<findTagReq, Document<LargeKvTag>[]>('/api/tags/get', 'POST', {
+      query: {},
+    }, 'Find entries error.')
+      .then((res) => {
+        if (res) {
+          console.log(res);
         }
       });
   }, []);
@@ -54,20 +65,14 @@ export default function TagUpdater() {
         </Button>
         <Button
           onClick={(ev) => {
-            // entries.map(async (entry) => {
-            //   await bring<iEntry, DbResults<docEntry>>(
-            //     `/api/entries/${entry.id}/update`,
-            //     'POST',
-            //     {
-            //       utc_created_at: entry.value.utc_created_at,
-            //       content: entry.value.content,
-            //       tags: entry.value.tags.map((tag) => tag.replace(/ /g, '_')),
-            //       entry_mark: entry.value.entry_mark,
-            //       day_count: entry.value.day_count,
-            //     },
-            //     'Create entry error.',
-            //   );
-            // });
+            tags.map(async (tag) => {
+              await bring<iTag, DbResults<docTag>>(
+                `/api/tags/new`,
+                'POST',
+                { name: tag },
+                'Create entry error.',
+              );
+            });
           }}
         >
           Create Tag Documents
