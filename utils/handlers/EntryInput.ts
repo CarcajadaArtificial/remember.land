@@ -86,8 +86,8 @@ export default function (props: iEntryInput) {
   function handleTagInput(ev: KeyboardEvent) {
     return certainKeyPressed(ev, ['Enter'], (ev) => {
       const newValue = (ev.target as HTMLInputElement).value;
-      if (newValue.replace(' ', '').length > 0) {
-        updateTags([newValue], []);
+      if (newValue.replace(/ /g, '').length > 0) {
+        updateTags([newValue.replace(/ /g, '_')], []);
       }
       (ev.target as HTMLInputElement).value = '';
     });

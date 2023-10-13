@@ -18,6 +18,7 @@ import * as $$0 from './islands/Entry/index.tsx';
 import * as $$1 from './islands/EntryInput/index.tsx';
 import * as $$2 from './islands/EntryList/index.tsx';
 import * as $$3 from './islands/EntryQuery/index.tsx';
+import * as $$4 from './islands/TagUpdater/index.tsx';
 
 const manifest = {
   routes: {
@@ -39,6 +40,7 @@ const manifest = {
     './islands/EntryInput/index.tsx': $$1,
     './islands/EntryList/index.tsx': $$2,
     './islands/EntryQuery/index.tsx': $$3,
+    './islands/TagUpdater/index.tsx': $$4,
   },
   baseUrl: import.meta.url,
 };

@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.13
+## v0.1.14
 
-- Renamed `/api/entries/create` to `/api/entries/new` and `/api/entries/find` to `/api/entries/get`.
+- Added the `<TagUpdater/>` island. 
+- Updaed the `<EntryInput/>` island to replace space characters with underscores when adding a tag. 
 
 ### Changes so far
 
@@ -13,8 +14,8 @@
 
   - Features
     - Tag pages, autocomplete and utilities.
-      - [ ] Update prod db to remove spaces in tag names and changes them to underscores.
-      - [ ] Update the tag adding stystem to automatically change spaces to underscores.
+      - [x] Update prod db to remove spaces in tag names and changes them to underscores.
+      - [x] Update the tag adding stystem to automatically change spaces to underscores.
       - [ ] Create an interface and API for creating and getting tags.
       - [ ] Route `/api/tag/index.ts` responds with an array of all tags
       - [ ] Route `/api/tag/create.ts` creates a new tag and prevents name duplication

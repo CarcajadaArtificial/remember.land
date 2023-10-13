@@ -13,6 +13,7 @@ import {
 } from 'lunchbox';
 import { EntryInput } from '../islands/EntryInput/index.tsx';
 import { EntryList } from '../islands/EntryList/index.tsx';
+import TagUpdater from '../islands/TagUpdater/index.tsx';
 import { redirect } from 'redirect';
 import { getApp, iApp } from 'db/index.ts';
 
@@ -73,6 +74,7 @@ export default function Home(props: PageProps<HomePageData>) {
         data-starting_utc_date={appConfig?.startingUtcDate}
         class='min-h-screen mt-10 flex flex-col gap-9'
       >
+        <TagUpdater />
         <Layout dashboard type='focus'>
           <Card>
             <EntryInput
