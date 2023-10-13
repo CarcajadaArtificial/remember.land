@@ -28,17 +28,7 @@ export interface iQueryEntries {
   // include_all_tags: boolean
 }
 
-export interface LargeKvEntry extends LargeKvObject {
-  utc_created_at: string;
-  content: string;
-  tags: string[];
-  entry_mark: string;
-  day_count: number;
-  // north_ids: number[];
-  // south_ids: number[];
-  // west_ids: number[];
-  // east_ids: number[];
-}
+export type LargeKvEntry = iEntry & LargeKvObject;
 
 export const getAllEntries = async () => await db.entries.getMany();
 

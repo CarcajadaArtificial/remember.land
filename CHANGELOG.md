@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.14
+## v0.1.15
 
-- Added the `<TagUpdater/>` island. 
-- Updaed the `<EntryInput/>` island to replace space characters with underscores when adding a tag. 
+- Added an interface and API for creating and getting tags.
 
 ### Changes so far
 
@@ -16,7 +15,7 @@
     - Tag pages, autocomplete and utilities.
       - [x] Update prod db to remove spaces in tag names and changes them to underscores.
       - [x] Update the tag adding stystem to automatically change spaces to underscores.
-      - [ ] Create an interface and API for creating and getting tags.
+      - [x] Create an interface and API for creating and getting tags.
       - [ ] Route `/api/tag/index.ts` responds with an array of all tags
       - [ ] Route `/api/tag/create.ts` creates a new tag and prevents name duplication
       - [ ] Route `/api/tag/get/[name].ts` responds with all the entries that match that tag.
@@ -36,6 +35,7 @@
     - `<EntryList/>`
       - [ ] Use loader component.
       - [ ] Change datetime to ptera.
+      - [ ] Move `<ContributionCalendar/>` inside a new Layout before the list of entries.
   - Backlog
     - [x] Include single password authentication method.
     - [x] Include FileDB database.
