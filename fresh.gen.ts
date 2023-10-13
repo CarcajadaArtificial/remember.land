@@ -8,8 +8,8 @@ import * as $2 from './routes/_middleware.tsx';
 import * as $3 from './routes/api/entries/[id]/delete.tsx';
 import * as $4 from './routes/api/entries/[id]/index.tsx';
 import * as $5 from './routes/api/entries/[id]/update.tsx';
-import * as $6 from './routes/api/entries/create.tsx';
-import * as $7 from './routes/api/entries/find.tsx';
+import * as $6 from './routes/api/entries/get.tsx';
+import * as $7 from './routes/api/entries/new.tsx';
 import * as $8 from './routes/archive.tsx';
 import * as $9 from './routes/index.tsx';
 import * as $10 from './routes/signin.tsx';
@@ -27,8 +27,8 @@ const manifest = {
     './routes/api/entries/[id]/delete.tsx': $3,
     './routes/api/entries/[id]/index.tsx': $4,
     './routes/api/entries/[id]/update.tsx': $5,
-    './routes/api/entries/create.tsx': $6,
-    './routes/api/entries/find.tsx': $7,
+    './routes/api/entries/get.tsx': $6,
+    './routes/api/entries/new.tsx': $7,
     './routes/archive.tsx': $8,
     './routes/index.tsx': $9,
     './routes/signin.tsx': $10,

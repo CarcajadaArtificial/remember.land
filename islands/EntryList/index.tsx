@@ -3,7 +3,7 @@ import { Entry } from '../Entry/index.tsx';
 import { iQueryEntries, LargeKvEntry } from 'db/entry.ts';
 import { updateEntryList } from 'signals';
 import { bring } from 'utils';
-import { type findReq } from 'api/entries/find.tsx';
+import { type findReq } from 'api/entries/get.tsx';
 import { Document } from 'kvdex';
 import { Layout } from 'lunchbox';
 import {
@@ -48,7 +48,7 @@ export function EntryList(props: iEntryList) {
   const [firstEntry, setFirstEntry] = useState<Document<LargeKvEntry>>();
 
   useEffect(() => {
-    bring<findReq, Document<LargeKvEntry>[]>('/api/entries/find', 'POST', {
+    bring<findReq, Document<LargeKvEntry>[]>('/api/entries/get', 'POST', {
       query: props.query,
     }, 'Find entries error.')
       .then((res) => {

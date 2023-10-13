@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.12
+## v0.1.13
 
-- Minor interface updates on the `<Entry/>` island.
-- Updated deno to version `1.37.1`.
+- Renamed `/api/entries/create` to `/api/entries/new` and `/api/entries/find` to `/api/entries/get`.
 
 ### Changes so far
 

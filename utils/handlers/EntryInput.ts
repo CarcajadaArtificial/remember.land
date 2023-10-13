@@ -22,7 +22,7 @@ export default function (props: iEntryInput) {
   async function setEntry() {
     const setApiUrl = entry._id
       ? `/api/entries/${entry._id}/update`
-      : '/api/entries/create';
+      : '/api/entries/new';
 
     await bring<iEntry, DbResults<docEntry>>(setApiUrl, 'POST', {
       utc_created_at: entry.utc_created_at,
