@@ -10,10 +10,15 @@ import * as $4 from './routes/api/entries/[id]/index.tsx';
 import * as $5 from './routes/api/entries/[id]/update.tsx';
 import * as $6 from './routes/api/entries/get.tsx';
 import * as $7 from './routes/api/entries/new.tsx';
-import * as $8 from './routes/archive.tsx';
-import * as $9 from './routes/index.tsx';
-import * as $10 from './routes/signin.tsx';
-import * as $11 from './routes/signout.tsx';
+import * as $8 from './routes/api/tags/[id]/delete.ts';
+import * as $9 from './routes/api/tags/[id]/index.ts';
+import * as $10 from './routes/api/tags/[id]/update.ts';
+import * as $11 from './routes/api/tags/get.ts';
+import * as $12 from './routes/api/tags/new.ts';
+import * as $13 from './routes/archive.tsx';
+import * as $14 from './routes/index.tsx';
+import * as $15 from './routes/signin.tsx';
+import * as $16 from './routes/signout.tsx';
 import * as $$0 from './islands/Entry/index.tsx';
 import * as $$1 from './islands/EntryInput/index.tsx';
 import * as $$2 from './islands/EntryList/index.tsx';
@@ -30,10 +35,15 @@ const manifest = {
     './routes/api/entries/[id]/update.tsx': $5,
     './routes/api/entries/get.tsx': $6,
     './routes/api/entries/new.tsx': $7,
-    './routes/archive.tsx': $8,
-    './routes/index.tsx': $9,
-    './routes/signin.tsx': $10,
-    './routes/signout.tsx': $11,
+    './routes/api/tags/[id]/delete.ts': $8,
+    './routes/api/tags/[id]/index.ts': $9,
+    './routes/api/tags/[id]/update.ts': $10,
+    './routes/api/tags/get.ts': $11,
+    './routes/api/tags/new.ts': $12,
+    './routes/archive.tsx': $13,
+    './routes/index.tsx': $14,
+    './routes/signin.tsx': $15,
+    './routes/signout.tsx': $16,
   },
   islands: {
     './islands/Entry/index.tsx': $$0,

@@ -30,7 +30,7 @@ export const deleteTag = async (id: Deno.KvKeyPart) => {
 export const updateTag = async (id: Deno.KvKeyPart, tag: LargeKvTag) =>
   await db.tags.update(id, tag);
 
-export const findEntries = async (query: iQueryTags) => {
+export const findTags = async (query: iQueryTags) => {
   return await db.tags.getMany({
     filter: (doc) =>
       !(query.contains_text &&

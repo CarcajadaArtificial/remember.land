@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.15
+## v0.1.16
 
-- Added an interface and API for creating and getting tags.
+- Added tag db management api routes.
 
 ### Changes so far
 
@@ -16,9 +16,11 @@
       - [x] Update prod db to remove spaces in tag names and changes them to underscores.
       - [x] Update the tag adding stystem to automatically change spaces to underscores.
       - [x] Create an interface and API for creating and getting tags.
-      - [ ] Route `/api/tag/index.ts` responds with an array of all tags
-      - [ ] Route `/api/tag/create.ts` creates a new tag and prevents name duplication
-      - [ ] Route `/api/tag/get/[name].ts` responds with all the entries that match that tag.
+      - [x] Route `/api/tag/get.ts` responds with an array of tags that match the query.
+      - [x] Route `/api/tag/new.ts` creates a new tag and prevents name duplication
+      - [ ] Route `/api/tag/[id]/index.ts` responds with the tag and all the entries that have it.
+      - [x] Route `/api/tag/[id]/delete.ts` deletes this tag from all entries and from the tags db.
+      - [x] Route `/api/tag/[id]/update.ts` deletes this tag from all entries and from the tags db.
       - [ ] Route `/tag/index.ts` that shows all tags.
       - [ ] Route `/tag/[name].ts` that shows all entries of that certain tag.
     - Create threads of entries.
@@ -44,7 +46,7 @@
     - [ ] Add equally smooth mobile experience.
     - [ ] Add a middleware file in /routes/api for all auth redirection and responding {} when not signed in.
     - [ ] Make type safe all requests and responses in the API.
-    - [ ] Add a Navigation 
+    - [ ] Revamp 404 error page.
     - [ ] Add n queries as argument to findEntries.
       - Returns n lists of entries, instead of calling and filtering n times all entries.
 

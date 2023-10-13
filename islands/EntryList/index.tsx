@@ -10,7 +10,7 @@ import {
   ContributionCalendar,
   ContributionLevel,
 } from 'components/ContributionCalendar/index.tsx';
-import { datetime } from 'https://deno.land/x/ptera@v1.0.2/datetime.ts';
+import { datetime } from 'ptera';
 
 export interface iEntryList {
   query: iQueryEntries;
