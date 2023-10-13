@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.11
+## v0.1.12
 
-- Added a Layout to the `<EntryList/>` island.
+- Minor interface updates on the `<Entry/>` island.
+- Updated deno to version `1.37.1`.
 
 ### Changes so far
 
@@ -43,6 +44,7 @@
     - [ ] Add equally smooth mobile experience.
     - [ ] Add a middleware file in /routes/api for all auth redirection and responding {} when not signed in.
     - [ ] Make type safe all requests and responses in the API.
+    - [ ] Add a Navigation 
     - [ ] Add n queries as argument to findEntries.
       - Returns n lists of entries, instead of calling and filtering n times all entries.
 

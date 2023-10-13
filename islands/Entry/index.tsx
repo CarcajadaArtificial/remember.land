@@ -54,7 +54,12 @@ export function Entry(props: iEntryComponent) {
         ? (
           <div className='isl-entry-hidden'>
             <Link tabIndex={-1}>
-              <Text noMargins class='ml-6' type='small'>
+              <Text
+                noMargins
+                class='ml-6'
+                type='small'
+                style={{ lineHeight: '1.1rem' }}
+              >
                 {entry_mark}
               </Text>
             </Link>
@@ -63,21 +68,33 @@ export function Entry(props: iEntryComponent) {
         : entry_mark && !isMarkUrl
         ? (
           <div className='isl-entry-hidden'>
-            <Text noMargins class='ml-6' type='small'>{entry_mark}</Text>
+            <Text
+              noMargins
+              class='ml-6'
+              type='small'
+              style={{ lineHeight: '1.1rem' }}
+            >
+              {entry_mark}
+            </Text>
           </div>
         )
         : null}
       <div class={ENTRY_GRID}>
         <EntryTypeIndicator tags={tags} />
-        <div>
-          <Text class={isTaskDone ? 'line-through' : undefined} noMargins>
-            {content}
-          </Text>
-        </div>
+        <Text
+          class={isTaskDone
+            ? 'line-through'
+            : isMarkUrl
+            ? 'underline'
+            : undefined}
+          noMargins
+        >
+          {content}
+        </Text>
       </div>
       {tags && tags.length > 0
         ? (
-          <div className='isl-entry-hidden mt-1.5'>
+          <div className='isl-entry-hidden mt-1'>
             <Chiplist class='ml-6' values={tags} />
           </div>
         )

@@ -24,6 +24,8 @@ export const ENTRY_CONTAINER = css`
   padding-left: var(--s-single);
   padding-right: var(--s-single);
   border-radius: var(--s-quarter);
+  display: grid;
+  gap: var(--s-quarter);
 
   .isl-entry-hidden {
     display: none;

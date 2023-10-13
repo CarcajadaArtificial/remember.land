@@ -5,27 +5,16 @@
     "update": "deno run -A -r https://fresh.deno.dev/update .",
     "update:imports": "deno run -A -r https://deno.land/x/update/mod.ts ./deno.json"
   },
-  "lint": {
-    "rules": {
-      "tags": ["fresh", "recommended"]
-    },
-    "exclude": ["_fresh"]
-  },
-  "compilerOptions": {
-    "jsx": "react-jsx",
-    "jsxImportSource": "preact"
-  },
-  "fmt": {
-    "exclude": ["*.md", "**/*.md", "_fresh"],
-    "singleQuote": true
-  },
+  "lint": { "rules": { "tags": ["fresh", "recommended"] } },
+  "compilerOptions": { "jsx": "react-jsx", "jsxImportSource": "preact" },
+  "fmt": { "exclude": ["*.md", "**/*.md"], "singleQuote": true },
   "imports": {
-    "$fresh/": "https://deno.land/x/fresh@1.4.3/",
-    "preact": "https://esm.sh/preact@10.15.1",
-    "preact/": "https://esm.sh/preact@10.15.1/",
-    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.1",
-    "@preact/signals": "https://esm.sh/*@preact/signals@1.1.3",
-    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.2.3",
+    "$fresh/": "https://deno.land/x/fresh@1.5.1/",
+    "preact": "https://esm.sh/preact@10.18.1",
+    "preact/": "https://esm.sh/preact@10.18.1/",
+    "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.2",
+    "@preact/signals": "https://esm.sh/*@preact/signals@1.2.1",
+    "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.0",
     "twind": "https://esm.sh/twind@0.16.19",
     "twind/": "https://esm.sh/twind@0.16.19/",
     "twind-preset-tailwind/": "https://esm.sh/@twind/preset-tailwind@1.1.4/",
@@ -52,5 +41,6 @@
     "api/": "./routes/api/",
     "islands/": "./islands/",
     "components/": "./components/"
-  }
+  },
+  "exclude": ["**/_fresh/*"]
 }

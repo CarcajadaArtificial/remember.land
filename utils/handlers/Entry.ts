@@ -8,7 +8,7 @@ export default function (props: iEntryComponent) {
   const { entry_mark } = entry.value;
   const _id = entry.id;
   const [editMode, setEditMode] = useState<boolean>(false);
-  const isMarkUrl = entry_mark && isURL(entry_mark);
+  const isMarkUrl: boolean = entry_mark !== '' && isURL(entry_mark);
 
   function onInputFocusOut() {
     setEditMode(false);
