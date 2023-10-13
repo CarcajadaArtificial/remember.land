@@ -5,11 +5,11 @@
 import * as $0 from './routes/_404.tsx';
 import * as $1 from './routes/_app.tsx';
 import * as $2 from './routes/_middleware.tsx';
-import * as $3 from './routes/api/entries/[id]/delete.tsx';
-import * as $4 from './routes/api/entries/[id]/index.tsx';
-import * as $5 from './routes/api/entries/[id]/update.tsx';
-import * as $6 from './routes/api/entries/get.tsx';
-import * as $7 from './routes/api/entries/new.tsx';
+import * as $3 from './routes/api/entries/[id]/delete.ts';
+import * as $4 from './routes/api/entries/[id]/index.ts';
+import * as $5 from './routes/api/entries/[id]/update.ts';
+import * as $6 from './routes/api/entries/get.ts';
+import * as $7 from './routes/api/entries/new.ts';
 import * as $8 from './routes/api/tags/[id]/delete.ts';
 import * as $9 from './routes/api/tags/[id]/index.ts';
 import * as $10 from './routes/api/tags/[id]/update.ts';
@@ -30,11 +30,11 @@ const manifest = {
     './routes/_404.tsx': $0,
     './routes/_app.tsx': $1,
     './routes/_middleware.tsx': $2,
-    './routes/api/entries/[id]/delete.tsx': $3,
-    './routes/api/entries/[id]/index.tsx': $4,
-    './routes/api/entries/[id]/update.tsx': $5,
-    './routes/api/entries/get.tsx': $6,
-    './routes/api/entries/new.tsx': $7,
+    './routes/api/entries/[id]/delete.ts': $3,
+    './routes/api/entries/[id]/index.ts': $4,
+    './routes/api/entries/[id]/update.ts': $5,
+    './routes/api/entries/get.ts': $6,
+    './routes/api/entries/new.ts': $7,
     './routes/api/tags/[id]/delete.ts': $8,
     './routes/api/tags/[id]/index.ts': $9,
     './routes/api/tags/[id]/update.ts': $10,

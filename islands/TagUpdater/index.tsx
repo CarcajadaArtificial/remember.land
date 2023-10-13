@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'preact/hooks';
 import { Button, Layout, Text } from 'lunchbox';
 import { bring } from 'utils';
-import { type findReq } from 'api/entries/get.tsx';
+import { type findReq } from 'api/entries/get.ts';
 import { LargeKvEntry } from 'db/entry.ts';
 import { docEntry, iEntry } from 'db/entry.ts';
 import { Document } from 'kvdex';

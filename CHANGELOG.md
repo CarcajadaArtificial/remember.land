@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.16
+## v0.1.17
 
-- Added tag db management api routes.
+- Renamed Entry db API management from .tsx files to .ts
 
 ### Changes so far
 
