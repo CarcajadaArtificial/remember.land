@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.18
+## v0.1.19
 
-- Added a function that creates db documents for Tags based on all the currently set tags,
+- Added a function that updates entries to have tag ids instead of names.
 
 ### Changes so far
 

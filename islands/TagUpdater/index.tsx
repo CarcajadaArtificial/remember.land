@@ -30,14 +30,6 @@ export default function TagUpdater() {
           );
         }
       });
-    bring<findTagReq, Document<LargeKvTag>[]>('/api/tags/get', 'POST', {
-      query: {},
-    }, 'Find entries error.')
-      .then((res) => {
-        if (res) {
-          console.log(res);
-        }
-      });
   }, []);
 
   return (
@@ -76,6 +68,62 @@ export default function TagUpdater() {
           }}
         >
           Create Tag Documents
+        </Button>
+
+        <Button
+          onClick={(ev) => {
+            entries.map(async (entry) => {
+              const tagIds = await Promise.all(
+                entry.value.tags.map(async (tag) => {
+                  const resTags = await bring<
+                    findTagReq,
+                    Document<LargeKvTag>[]
+                  >(
+                    '/api/tags/get',
+                    'POST',
+                    {
+                      query: {
+                        contains_text: tag,
+                      },
+                    },
+                    'Find entries error.',
+                  )
+                    .then((res) => {
+                      if (res) {
+                        return res;
+                      }
+                    });
+
+                  if (resTags === undefined) {
+                    console.error('Error, no tag db doc found');
+                  } else if (resTags.length === 0) {
+                    console.log('Tag already indexed');
+                  } else if (resTags.length > 1) {
+                    console.error('Error, multiple tags found');
+                  } else {
+                    return resTags[0].id;
+                  }
+                }),
+              );
+
+              if (tagIds.filter((value) => value !== undefined).length > 0) {
+                await bring<iEntry, DbResults<docEntry>>(
+                  `/api/entries/${entry.id}/update`,
+                  'POST',
+                  {
+                    utc_created_at: entry.value.utc_created_at,
+                    content: entry.value.content,
+                    tags: tagIds.map((id) => id!.toString()),
+                    entry_mark: entry.value.entry_mark,
+                    day_count: entry.value.day_count,
+                  },
+                  'Create entry error.',
+                );
+              }
+            });
+          }}
+        >
+          Convert entry tags to ids
         </Button>
       </div>
       <>

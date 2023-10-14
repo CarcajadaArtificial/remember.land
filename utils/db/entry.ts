@@ -35,6 +35,14 @@ export const getAllEntries = async () => await db.entries.getMany();
 export const getEntry = async (id: Deno.KvKeyPart) => await db.entries.find(id);
 
 export const addEntry = async (entry: LargeKvEntry) => {
+  // Replaces the entry's tags names to ids.
+  entry.tags = await Promise.all(
+    entry.tags.map(async (tag) =>
+      (await db.tags.getMany({ filter: (doc) => doc.value.name === tag }))
+        .result[0].id.toString()
+    ),
+  );
+
   return await db.entries.add(entry);
 };
 export const deleteEntry = async (id: Deno.KvKeyPart) => {
