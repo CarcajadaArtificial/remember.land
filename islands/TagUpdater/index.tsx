@@ -2,10 +2,9 @@ import { useState } from 'preact/hooks';
 import { Button, Layout, Text } from 'lunchbox';
 import { bring } from 'utils';
 import { type findTagReq } from 'api/tags/get.ts';
-import { docTag, iTag, LargeKvTag } from 'db/tag.ts';
-import { docEntry, iEntry, LargeKvEntry } from 'db/entry.ts';
+import { iTag, LargeKvTag } from 'db/tag.ts';
+import { iEntry, LargeKvEntry } from 'db/entry.ts';
 import { Document } from 'kvdex';
-import { DbResults } from 'tilia/src/types.ts';
 
 interface iTagUpdater {
   entries: Document<LargeKvEntry>[];
@@ -31,7 +30,7 @@ export default function TagUpdater(props: iTagUpdater) {
         <Button
           onClick={(ev) => {
             entries.map(async (entry) => {
-              await bring<iEntry, DbResults<docEntry>>(
+              await bring<iEntry>(
                 `/api/entries/${entry.id}/update`,
                 'POST',
                 {
@@ -51,7 +50,7 @@ export default function TagUpdater(props: iTagUpdater) {
         <Button
           onClick={(ev) => {
             tagsInEntries.map(async (tag) => {
-              await bring<iTag, DbResults<docTag>>(
+              await bring<iTag>(
                 `/api/tags/new`,
                 'POST',
                 { name: tag },
@@ -100,7 +99,7 @@ export default function TagUpdater(props: iTagUpdater) {
               );
 
               if (tagIds.filter((value) => value !== undefined).length > 0) {
-                await bring<iEntry, DbResults<docEntry>>(
+                await bring<iEntry>(
                   `/api/entries/${entry.id}/update`,
                   'POST',
                   {

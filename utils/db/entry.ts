@@ -1,5 +1,5 @@
 import { LargeKvObject } from 'kvdex';
-import { dbItem, docItem } from 'types';
+import { dbItem } from 'types';
 import { db } from './index.ts';
 
 export interface iEntry {
@@ -15,8 +15,6 @@ export interface iEntry {
 }
 
 export type dbEntry = dbItem<iEntry, string>;
-
-export type docEntry = docItem<iEntry>;
 
 export interface iQueryEntries {
   contains_text?: string;

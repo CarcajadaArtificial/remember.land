@@ -8,7 +8,7 @@ export const isURL = (str: string): boolean =>
 export const isAllUndefined = (obj: Record<string, unknown>): boolean =>
   Object.values(obj).every((val) => val === undefined);
 
-export async function bring<Req, Res>(
+export async function bring<Req, Res = unknown>(
   url: string,
   method: 'POST' | 'GET',
   body: Req,

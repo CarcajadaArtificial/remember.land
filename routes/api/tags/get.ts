@@ -1,19 +1,16 @@
 import { type Handlers } from '$fresh/server.ts';
-import { DbResults } from 'tilia/src/types.ts';
-import { iTag } from 'db/tag.ts';
 import { WithSession } from 'fresh_session';
-import { findTags, iQueryTags } from 'db/tag.ts';
+import { findTags, iQueryTags, LargeKvTag } from 'db/tag.ts';
+import { Document } from 'kvdex';
 
 export type findTagReq = {
   query: iQueryTags;
 };
 
-export type findRes = DbResults<iTag>;
-
-type Data = { session: Record<string, string> };
+export type findTagRes = Document<LargeKvTag>[];
 
 export const handler: Handlers<
-  Data,
+  { session: Record<string, string> },
   WithSession
 > = {
   async POST(req, ctx) {
@@ -21,7 +18,7 @@ export const handler: Handlers<
       return new Response(JSON.stringify({}));
     }
     const { query } = await req.json() as findTagReq;
-    const tags = await findTags(query);
-    return new Response(JSON.stringify(tags.result));
+    const tags = (await findTags(query)).result;
+    return new Response(JSON.stringify(tags));
   },
 };

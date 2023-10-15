@@ -1,9 +1,9 @@
 # Changelog
 
-## v0.1.22
+## v0.1.23
 
-- Renamed the `<Entry/>` island to `<EntryEdit/>`.
-- Removed traces of some scss files.
+- Renamed the Entry handler to EntryEdit.
+- Removed traces of Tilia DB and docTypes.
 
 ### Changes so far
 

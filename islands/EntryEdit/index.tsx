@@ -2,8 +2,8 @@ import { Document } from 'kvdex';
 import { Card, Chiplist, Link, Text } from 'lunchbox';
 import { LargeKvEntry } from 'db/entry.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
-import Handlers from 'handlers/Entry.ts';
-import { EntryInput } from '../EntryInput/index.tsx';
+import Handlers from 'handlers/EntryEdit.ts';
+import { EntryInput } from 'islands/EntryInput/index.tsx';
 import { ENTRY_CONTAINER, ENTRY_GRID } from 'styles';
 
 export interface iEntryComponent {

@@ -26,7 +26,6 @@
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
     "icons/": "https://deno.land/x/tabler_icons_tsx@0.0.4/tsx/",
     "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts",
-    "tilia/": "https://deno.land/x/tilia@0.1.2/",
     "kvdex": "https://deno.land/x/kvdex@v0.12.6/mod.ts",
     "resin": "https://deno.land/x/resin@v0.1.6/mod.ts",
     "types": "./utils/types.ts",

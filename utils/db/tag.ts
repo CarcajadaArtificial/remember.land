@@ -1,5 +1,5 @@
 import { LargeKvObject } from 'kvdex';
-import { dbItem, docItem } from 'types';
+import { dbItem } from 'types';
 import { db } from './index.ts';
 
 export interface iTag {
@@ -7,8 +7,6 @@ export interface iTag {
 }
 
 export type dbTag = dbItem<iTag, string>;
-
-export type docTag = docItem<iTag>;
 
 export interface iQueryTags {
   contains_text?: string;

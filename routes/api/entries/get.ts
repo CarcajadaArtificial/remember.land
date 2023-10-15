@@ -1,19 +1,16 @@
 import { type Handlers } from '$fresh/server.ts';
-import { DbResults } from 'tilia/src/types.ts';
-import { iEntry } from 'db/entry.ts';
 import { WithSession } from 'fresh_session';
-import { findEntries, iQueryEntries } from 'db/entry.ts';
+import { findEntries, iQueryEntries, LargeKvEntry } from 'db/entry.ts';
+import { Document } from 'kvdex';
 
 export type findEntryReq = {
   query: iQueryEntries;
 };
 
-export type findRes = DbResults<iEntry>;
-
-type Data = { session: Record<string, string> };
+export type findEntryRes = Document<LargeKvEntry>[];
 
 export const handler: Handlers<
-  Data,
+  { session: Record<string, string> },
   WithSession
 > = {
   async POST(req, ctx) {
@@ -21,7 +18,7 @@ export const handler: Handlers<
       return new Response(JSON.stringify({}));
     }
     const { query } = await req.json() as findEntryReq;
-    const entries = await findEntries(query);
-    return new Response(JSON.stringify(entries.result));
+    const entries = (await findEntries(query)).result;
+    return new Response(JSON.stringify(entries));
   },
 };

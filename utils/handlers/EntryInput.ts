@@ -4,8 +4,7 @@ import { useTagList } from 'hooks';
 import { bring, isURL } from 'utils';
 import { iEntryInput } from 'islands/EntryInput/index.tsx';
 import { updateEntryList } from 'signals';
-import { docEntry, iEntry } from 'db/entry.ts';
-import { DbResults } from 'tilia/src/types.ts';
+import { iEntry } from 'db/entry.ts';
 
 type Steps = 'entrymark' | 'tags';
 
@@ -24,7 +23,7 @@ export default function (props: iEntryInput) {
       ? `/api/entries/${entry._id}/update`
       : '/api/entries/new';
 
-    await bring<iEntry, DbResults<docEntry>>(setApiUrl, 'POST', {
+    await bring<iEntry>(setApiUrl, 'POST', {
       utc_created_at: entry.utc_created_at,
       content: entryValue,
       tags: tags,
