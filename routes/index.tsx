@@ -41,11 +41,11 @@ export const handler: Handlers<
     const day_count_today = diffInDays(startingDate, datetime());
     const entries = (await getAllEntries()).result;
     const tags = (await getAllTags()).result;
-    const tagDictionary = createDictionaryDocument<iTag>(tags);
-    const entriesWithTagNames = entries.map((entry) => {
-      entry.value.tags = entry.value.tags.map((tag) => tagDictionary[tag].name);
-      return entry;
-    });
+    // const tagDictionary = createDictionaryDocument<iTag>(tags);
+    // const entriesWithTagNames = entries.map((entry) => {
+    //   entry.value.tags = entry.value.tags.map((tag) => tagDictionary[tag].name);
+    //   return entry;
+    // });
 
     const pageData: HomePageData = {
       session: ctx.state.session.data,
@@ -53,7 +53,7 @@ export const handler: Handlers<
       appConfig,
       startingDate,
       day_count_today,
-      entries: entriesWithTagNames,
+      entries: entries,
       tags,
     };
 

@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.26
+## v0.1.27
 
-- Added tag name indexing to entries in home route.
+- Temporary undo of name indexing to entries in home route.
 
 ### Changes so far
 
