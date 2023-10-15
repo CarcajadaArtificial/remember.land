@@ -12,6 +12,32 @@ interface iContributionCalendar {
   contributionMap: Record<string, ContributionLevel>;
 }
 
+// function entriesToContributions(entries: Document<LargeKvEntry>[]) {
+//   const contributionCountMap: Record<string, number> = {};
+//   entries.forEach((entry) => {
+//     const entryDateTime = datetime(new Date(entry.value.utc_created_at));
+//     if (contributionCountMap[entryDateTime.toISODate()] >= 1) {
+//       contributionCountMap[entryDateTime.toISODate()]++;
+//     } else {
+//       contributionCountMap[entryDateTime.toISODate()] = 1;
+//     }
+//   });
+//   const contributionMap: Record<string, ContributionLevel> = {};
+//   Object.keys(contributionCountMap).forEach((contributionIsoDate) => {
+//     const contribution = contributionCountMap[contributionIsoDate];
+//     if (contribution === 0) {
+//       contributionMap[contributionIsoDate] = 'none';
+//     } else if (contribution <= 5) {
+//       contributionMap[contributionIsoDate] = 'low';
+//     } else if (contribution <= 10) {
+//       contributionMap[contributionIsoDate] = 'mid';
+//     } else {
+//       contributionMap[contributionIsoDate] = 'high';
+//     }
+//   });
+//   return contributionMap;
+// }
+
 export function ContributionCalendar(props: iContributionCalendar) {
   const startDateTime = datetime(new Date(props.startDateUtc));
   const endDateTime = datetime(new Date(props.endDateUtc));

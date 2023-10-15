@@ -2,9 +2,12 @@ import { DateTime, datetime, diffInDays } from 'ptera';
 import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { Card, Footer, Layout, Link, Main, Navigation, Text } from 'lunchbox';
-import { EntryInput } from '../islands/EntryInput/index.tsx';
-import { EntryList } from '../islands/EntryList/index.tsx';
-import TagUpdater from '../islands/TagUpdater/index.tsx';
+import { getAllEntries, LargeKvEntry } from 'db/entry.ts';
+import { getAllTags, LargeKvTag } from 'db/tag.ts';
+import { Document } from 'kvdex';
+import { EntryInput } from 'islands/EntryInput/index.tsx';
+import { EntryList } from 'components/EntryList/index.tsx';
+import TagUpdater from 'islands/TagUpdater/index.tsx';
 import { redirect } from 'redirect';
 import { getApp, iApp } from 'db/index.ts';
 
@@ -14,6 +17,8 @@ interface HomePageData {
   appConfig: iApp;
   startingDate: DateTime;
   day_count_today: number;
+  entries: Document<LargeKvEntry>[];
+  tags: Document<LargeKvTag>[];
 }
 
 export const handler: Handlers<
@@ -29,18 +34,22 @@ export const handler: Handlers<
     const appConfig = await getApp();
 
     if (appConfig === null) {
-      return redirect('/asdfg');
+      return redirect('/404');
     }
 
     const startingDate = datetime(new Date(appConfig.startingUtcDate));
     const day_count_today = diffInDays(startingDate, datetime());
+    const entries = (await getAllEntries()).result;
+    const tags = (await getAllTags()).result;
 
     const pageData: HomePageData = {
       session: ctx.state.session.data,
-      today: today,
-      appConfig: appConfig,
-      startingDate: startingDate,
-      day_count_today: day_count_today,
+      today,
+      appConfig,
+      startingDate,
+      day_count_today,
+      entries,
+      tags,
     };
 
     return ctx.render(pageData);
@@ -48,7 +57,7 @@ export const handler: Handlers<
 };
 
 export default function Home(props: PageProps<HomePageData>) {
-  const { today, appConfig, day_count_today } = props.data;
+  const { today, appConfig, day_count_today, entries, tags } = props.data;
 
   return (
     <>
@@ -64,9 +73,9 @@ export default function Home(props: PageProps<HomePageData>) {
         data-starting_utc_date={appConfig?.startingUtcDate}
         class='min-h-screen mt-10 flex flex-col gap-9'
       >
-        <TagUpdater />
+        <TagUpdater {...{ entries, tags }} />
         <Layout dashboard type='focus'>
-          <Card>
+          <Card class='mb-6'>
             <EntryInput
               entry={{
                 _id: '',
@@ -79,13 +88,8 @@ export default function Home(props: PageProps<HomePageData>) {
               onFocusOut={() => {}}
             />
           </Card>
+          <EntryList entries={entries} />
         </Layout>
-        <EntryList
-          query={{
-            // created_on_day_count: day_count_today,
-            // excludes_tags: ['task', 'event', 'permanent'],
-          }}
-        />
       </Main>
       <Footer layout_type='right'>
         <div></div>

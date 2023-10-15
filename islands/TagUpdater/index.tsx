@@ -1,36 +1,29 @@
-import { useEffect, useState } from 'preact/hooks';
+import { useState } from 'preact/hooks';
 import { Button, Layout, Text } from 'lunchbox';
 import { bring } from 'utils';
-import { type findEntryReq } from 'api/entries/get.ts';
 import { type findTagReq } from 'api/tags/get.ts';
-import { LargeKvEntry } from 'db/entry.ts';
 import { docTag, iTag, LargeKvTag } from 'db/tag.ts';
-import { docEntry, iEntry } from 'db/entry.ts';
+import { docEntry, iEntry, LargeKvEntry } from 'db/entry.ts';
 import { Document } from 'kvdex';
 import { DbResults } from 'tilia/src/types.ts';
 
-export default function TagUpdater() {
-  const [entries, setEntries] = useState<Document<LargeKvEntry>[]>([]);
-  const [tags, setTags] = useState<string[]>([]);
-  const [dbTags, setDBTags] = useState<Document<LargeKvTag>[]>([]);
+interface iTagUpdater {
+  entries: Document<LargeKvEntry>[];
+  tags: Document<LargeKvTag>[];
+}
 
-  useEffect(() => {
-    bring<findEntryReq, Document<LargeKvEntry>[]>('/api/entries/get', 'POST', {
-      query: {},
-    }, 'Find entries error.')
-      .then((res) => {
-        if (res) {
-          setEntries(res);
-          setTags(
-            res.flatMap((entry) => entry.value.tags).filter(
-              (value, index, self) => {
-                return self.indexOf(value) === index;
-              },
-            ),
-          );
-        }
-      });
-  }, []);
+export default function TagUpdater(props: iTagUpdater) {
+  const [entries, setEntries] = useState<Document<LargeKvEntry>[]>(
+    props.entries,
+  );
+  const [tagsInEntries, setTagsInEntries] = useState<string[]>(
+    entries.flatMap((entry) => entry.value.tags).filter(
+      (value, index, self) => {
+        return self.indexOf(value) === index;
+      },
+    ),
+  );
+  const [tagsInDB, setTagsInDB] = useState<Document<LargeKvTag>[]>(props.tags);
 
   return (
     <Layout type='halves'>
@@ -57,7 +50,7 @@ export default function TagUpdater() {
         </Button>
         <Button
           onClick={(ev) => {
-            tags.map(async (tag) => {
+            tagsInEntries.map(async (tag) => {
               await bring<iTag, DbResults<docTag>>(
                 `/api/tags/new`,
                 'POST',
@@ -128,7 +121,16 @@ export default function TagUpdater() {
       </div>
       <>
         <Text type='subheading' noMargins>Tags found:</Text>
-        {tags.map((tag) => <Text noMargins>{tag}</Text>)}
+        {tagsInEntries.map((tag) => <Text noMargins>{tag}</Text>)}
+        <Text type='subheading' noMargins>Tags Inside DB:</Text>
+        {tagsInDB.map((tag) => (
+          <>
+            <Text noMargins type='small'>{tag.id}</Text>
+            <Text noMargins>
+              {tag.value.name}
+            </Text>
+          </>
+        ))}
       </>
     </Layout>
   );

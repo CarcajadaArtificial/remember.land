@@ -1,8 +1,10 @@
 # Changelog
 
-## v0.1.20
+## v0.1.21
 
-- Added the `createDictionaryDocument()` utility function.
+- Moved the `<EntryList/>` island to the components directory.
+- Moved the `entriesToContributions()` function to the `<ContributionCalendar/>` component.
+- Removed traces of the `<EntryList/>` island in the route files.
 
 ### Changes so far
 

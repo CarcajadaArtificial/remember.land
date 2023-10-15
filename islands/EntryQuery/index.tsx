@@ -1,6 +1,5 @@
 import { Card, Chiplist, Layout, Main, Panel } from 'lunchbox';
 import { certainKeyPressed } from 'lunchbox/handlers.ts';
-import { EntryList } from '../EntryList/index.tsx';
 import { useState } from 'preact/hooks';
 import { updateEntryList } from 'signals';
 import IconTag from 'icons/tag.tsx';
@@ -64,13 +63,6 @@ export function EntryQuery(props: iEntryQuery) {
             />
           </Card>
         </Layout>
-        <EntryList
-          contributionCalendar
-          query={{
-            contains_text: containsText,
-            includes_tags: includesTags,
-          }}
-        />
       </Main>
     </>
   );
