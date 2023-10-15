@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.25
+## v0.1.26
 
-- Added the `<Entry/>` component.
-- Updated the `<EntryEdit/>` island to support the component.
+- Added tag name indexing to entries in home route.
 
 ### Changes so far
 
@@ -35,10 +34,6 @@
       - [x] Use a contenteditable instead of a textarea.
       - [ ] This same component might be used to substitute EntryQuery, make the onSubmit action configurable to searching instead of submiting.
       - [ ] `@media (pointer:none)` That changes the UI adding a submit button, an "add tag" button, and collapses into a floating icon menu on smaller screens.
-    - `<EntryList/>`
-      - [ ] Use loader component.
-      - [ ] Change datetime to ptera.
-      - [ ] Move `<ContributionCalendar/>` inside a new Layout before the list of entries.
   - Backlog
     - [x] Include single password authentication method.
     - [x] Include FileDB database.

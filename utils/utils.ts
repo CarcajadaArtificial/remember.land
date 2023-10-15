@@ -49,10 +49,10 @@ export function forEachInN(n: number, cb: (i: number) => void) {
   }
 }
 
-export const createDictionaryDocument = (
+export const createDictionaryDocument = <T>(
   documents: Document<KvValue>[],
 ) =>
-  documents.reduce((acc: { [key: string]: unknown }, doc) => {
-    acc[doc.id.toString()] = doc.value;
+  documents.reduce((acc: { [key: string]: T }, doc) => {
+    acc[doc.id.toString()] = doc.value as T;
     return acc;
   }, {});

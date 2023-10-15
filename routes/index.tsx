@@ -3,12 +3,13 @@ import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { Card, Footer, Layout, Link, Main, Navigation, Text } from 'lunchbox';
 import { dbEntry, getAllEntries } from 'db/entry.ts';
-import { dbTag, getAllTags } from 'db/tag.ts';
+import { dbTag, getAllTags, iTag } from 'db/tag.ts';
 import { EntryInput } from 'islands/EntryInput/index.tsx';
 import { EntryList } from 'components/EntryList/index.tsx';
 import TagUpdater from 'islands/TagUpdater/index.tsx';
 import { redirect } from 'redirect';
 import { getApp, iApp } from 'db/index.ts';
+import { createDictionaryDocument } from 'utils';
 
 interface HomePageData {
   session: Record<string, string>;
@@ -40,6 +41,11 @@ export const handler: Handlers<
     const day_count_today = diffInDays(startingDate, datetime());
     const entries = (await getAllEntries()).result;
     const tags = (await getAllTags()).result;
+    const tagDictionary = createDictionaryDocument<iTag>(tags);
+    const entriesWithTagNames = entries.map((entry) => {
+      entry.value.tags = entry.value.tags.map((tag) => tagDictionary[tag].name);
+      return entry;
+    });
 
     const pageData: HomePageData = {
       session: ctx.state.session.data,
@@ -47,7 +53,7 @@ export const handler: Handlers<
       appConfig,
       startingDate,
       day_count_today,
-      entries,
+      entries: entriesWithTagNames,
       tags,
     };
 
