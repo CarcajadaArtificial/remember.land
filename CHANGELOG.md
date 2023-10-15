@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.27
+## v0.1.28
 
-- Temporary undo of name indexing to entries in home route.
+- Redo of name indexing to entries in home route.
+- Removed the `<TagUpdater/>` island.
 
 ### Changes so far
 

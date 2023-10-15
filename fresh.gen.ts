@@ -22,7 +22,6 @@ import * as $16 from './routes/signout.tsx';
 import * as $$0 from './islands/EntryEdit/index.tsx';
 import * as $$1 from './islands/EntryInput/index.tsx';
 import * as $$2 from './islands/EntryQuery/index.tsx';
-import * as $$3 from './islands/TagUpdater/index.tsx';
 
 const manifest = {
   routes: {
@@ -48,7 +47,6 @@ const manifest = {
     './islands/EntryEdit/index.tsx': $$0,
     './islands/EntryInput/index.tsx': $$1,
     './islands/EntryQuery/index.tsx': $$2,
-    './islands/TagUpdater/index.tsx': $$3,
   },
   baseUrl: import.meta.url,
 };
