@@ -1,13 +1,13 @@
 import { type Handlers } from '$fresh/server.ts';
 import { WithSession } from 'fresh_session';
-import { findTags, iQueryTags, LargeKvTag } from 'db/tag.ts';
+import { dbTag, findTags, iQueryTags } from 'db/tag.ts';
 import { Document } from 'kvdex';
 
 export type findTagReq = {
   query: iQueryTags;
 };
 
-export type findTagRes = Document<LargeKvTag>[];
+export type findTagRes = dbTag[];
 
 export const handler: Handlers<
   { session: Record<string, string> },

@@ -2,17 +2,16 @@ import { useState } from 'preact/hooks';
 import { Button, Layout, Text } from 'lunchbox';
 import { bring } from 'utils';
 import { type findTagReq } from 'api/tags/get.ts';
-import { iTag, LargeKvTag } from 'db/tag.ts';
-import { iEntry, LargeKvEntry } from 'db/entry.ts';
-import { Document } from 'kvdex';
+import { dbTag, iTag } from 'db/tag.ts';
+import { dbEntry, iEntry } from 'db/entry.ts';
 
 interface iTagUpdater {
-  entries: Document<LargeKvEntry>[];
-  tags: Document<LargeKvTag>[];
+  entries: dbEntry[];
+  tags: dbTag[];
 }
 
 export default function TagUpdater(props: iTagUpdater) {
-  const [entries, setEntries] = useState<Document<LargeKvEntry>[]>(
+  const [entries, setEntries] = useState<dbEntry[]>(
     props.entries,
   );
   const [tagsInEntries, setTagsInEntries] = useState<string[]>(
@@ -22,7 +21,7 @@ export default function TagUpdater(props: iTagUpdater) {
       },
     ),
   );
-  const [tagsInDB, setTagsInDB] = useState<Document<LargeKvTag>[]>(props.tags);
+  const [tagsInDB, setTagsInDB] = useState<dbTag[]>(props.tags);
 
   return (
     <Layout type='halves'>
@@ -69,7 +68,7 @@ export default function TagUpdater(props: iTagUpdater) {
                 entry.value.tags.map(async (tag) => {
                   const resTags = await bring<
                     findTagReq,
-                    Document<LargeKvTag>[]
+                    dbTag[]
                   >(
                     '/api/tags/get',
                     'POST',

@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.23
+## v0.1.24
 
-- Renamed the Entry handler to EntryEdit.
-- Removed traces of Tilia DB and docTypes.
+- Cleaned up kvdex Document type in favor of a dbType.
 
 ### Changes so far
 

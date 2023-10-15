@@ -4,12 +4,12 @@ import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx'
 import IconTag from 'icons/tag.tsx';
 import IconBookmark from 'icons/bookmark.tsx';
 import Handlers from 'handlers/EntryInput.ts';
-import { dbEntry } from 'db/entry.ts';
+import { iEntry } from 'db/entry.ts';
 import { useEffect, useRef } from 'preact/hooks';
 import { ENTRY_GRID, ENTRY_INPUT_FIELD, ICON_STANDARD } from 'styles';
 
 export interface iEntryInput {
-  entry: dbEntry;
+  entry: iEntry & { _id: string };
   onFocusOut: () => void;
 }
 

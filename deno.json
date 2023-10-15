@@ -28,7 +28,6 @@
     "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts",
     "kvdex": "https://deno.land/x/kvdex@v0.12.6/mod.ts",
     "resin": "https://deno.land/x/resin@v0.1.6/mod.ts",
-    "types": "./utils/types.ts",
     "hooks": "./utils/hooks.ts",
     "signals": "./utils/signals.ts",
     "redirect": "./utils/redirect.ts",

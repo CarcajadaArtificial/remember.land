@@ -1,5 +1,4 @@
-import { LargeKvObject } from 'kvdex';
-import { dbItem } from 'types';
+import { Document, LargeKvObject } from 'kvdex';
 import { db } from './index.ts';
 
 export interface iEntry {
@@ -14,8 +13,6 @@ export interface iEntry {
   // east_ids: number[];
 }
 
-export type dbEntry = dbItem<iEntry, string>;
-
 export interface iQueryEntries {
   contains_text?: string;
   created_on_day_count?: number;
@@ -27,6 +24,8 @@ export interface iQueryEntries {
 }
 
 export type LargeKvEntry = iEntry & LargeKvObject;
+
+export type dbEntry = Document<LargeKvEntry>;
 
 export const getAllEntries = async () => await db.entries.getMany();
 

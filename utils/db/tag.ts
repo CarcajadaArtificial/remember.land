@@ -1,18 +1,17 @@
-import { LargeKvObject } from 'kvdex';
-import { dbItem } from 'types';
+import { Document, LargeKvObject } from 'kvdex';
 import { db } from './index.ts';
 
 export interface iTag {
   name: string;
 }
 
-export type dbTag = dbItem<iTag, string>;
-
 export interface iQueryTags {
   contains_text?: string;
 }
 
 export type LargeKvTag = iTag & LargeKvObject;
+
+export type dbTag = Document<LargeKvTag>;
 
 export const getAllTags = async () => await db.tags.getMany();
 

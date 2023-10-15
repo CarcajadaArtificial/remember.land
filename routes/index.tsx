@@ -2,9 +2,8 @@ import { DateTime, datetime, diffInDays } from 'ptera';
 import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { Card, Footer, Layout, Link, Main, Navigation, Text } from 'lunchbox';
-import { getAllEntries, LargeKvEntry } from 'db/entry.ts';
-import { getAllTags, LargeKvTag } from 'db/tag.ts';
-import { Document } from 'kvdex';
+import { dbEntry, getAllEntries } from 'db/entry.ts';
+import { dbTag, getAllTags } from 'db/tag.ts';
 import { EntryInput } from 'islands/EntryInput/index.tsx';
 import { EntryList } from 'components/EntryList/index.tsx';
 import TagUpdater from 'islands/TagUpdater/index.tsx';
@@ -17,8 +16,8 @@ interface HomePageData {
   appConfig: iApp;
   startingDate: DateTime;
   day_count_today: number;
-  entries: Document<LargeKvEntry>[];
-  tags: Document<LargeKvTag>[];
+  entries: dbEntry[];
+  tags: dbTag[];
 }
 
 export const handler: Handlers<

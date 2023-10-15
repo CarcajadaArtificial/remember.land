@@ -1,13 +1,12 @@
 import { type Handlers } from '$fresh/server.ts';
 import { WithSession } from 'fresh_session';
-import { findEntries, iQueryEntries, LargeKvEntry } from 'db/entry.ts';
-import { Document } from 'kvdex';
+import { dbEntry, findEntries, iQueryEntries } from 'db/entry.ts';
 
 export type findEntryReq = {
   query: iQueryEntries;
 };
 
-export type findEntryRes = Document<LargeKvEntry>[];
+export type findEntryRes = dbEntry[];
 
 export const handler: Handlers<
   { session: Record<string, string> },

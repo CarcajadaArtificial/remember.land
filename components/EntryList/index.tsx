@@ -1,9 +1,8 @@
-import { Document } from 'kvdex';
-import { LargeKvEntry } from 'db/entry.ts';
+import { dbEntry } from 'db/entry.ts';
 import { EntryEdit } from 'islands/EntryEdit/index.tsx';
 
 interface iEntryList {
-  entries: Document<LargeKvEntry>[];
+  entries: dbEntry[];
 }
 
 export function EntryList(props: iEntryList) {
