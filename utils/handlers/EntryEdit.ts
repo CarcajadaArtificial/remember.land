@@ -1,9 +1,9 @@
 import { useState } from 'preact/hooks';
 import { bring, isURL } from 'utils';
-import { iEntryComponent } from '../../islands/EntryEdit/index.tsx';
+import { iEntryEdit } from 'islands/EntryEdit/index.tsx';
 import { updateEntryList } from 'signals';
 
-export default function (props: iEntryComponent) {
+export default function (props: iEntryEdit) {
   const { entry } = props;
   const { entry_mark } = entry.value;
   const _id = entry.id;
@@ -39,6 +39,5 @@ export default function (props: iEntryComponent) {
     onInputFocusOut,
     onEntryContainerKeyUp,
     editMode,
-    isMarkUrl,
   };
 }

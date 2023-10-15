@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.24
+## v0.1.25
 
-- Cleaned up kvdex Document type in favor of a dbType.
+- Added the `<Entry/>` component.
+- Updated the `<EntryEdit/>` island to support the component.
 
 ### Changes so far
 

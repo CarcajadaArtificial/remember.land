@@ -1,0 +1,69 @@
+import { Chiplist, Link, Text } from 'lunchbox';
+import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
+import { ENTRY_GRID } from 'styles';
+import { dbEntry } from 'db/entry.ts';
+import { isURL } from 'utils';
+
+export interface iEntryComponent {
+  entry: dbEntry;
+}
+
+export function Entry(props: iEntryComponent) {
+  const { content, tags, entry_mark } = props.entry.value;
+  const isMarkUrl = entry_mark !== '' && isURL(entry_mark);
+  const isTaskDone = tags.includes('task') && tags.includes('done');
+
+  return (
+    <>
+      {entry_mark && isMarkUrl
+        ? (
+          <div className='isl-entry-hidden'>
+            <Link tabIndex={-1}>
+              <Text
+                noMargins
+                class='ml-6'
+                type='small'
+                style={{ lineHeight: '1.1rem' }}
+              >
+                {entry_mark}
+              </Text>
+            </Link>
+          </div>
+        )
+        : entry_mark && !isMarkUrl
+        ? (
+          <div className='isl-entry-hidden'>
+            <Text
+              noMargins
+              class='ml-6'
+              type='small'
+              style={{ lineHeight: '1.1rem' }}
+            >
+              {entry_mark}
+            </Text>
+          </div>
+        )
+        : null}
+      <div class={ENTRY_GRID}>
+        <EntryTypeIndicator tags={tags} />
+        <Text
+          class={isTaskDone
+            ? 'line-through'
+            : isMarkUrl
+            ? 'underline'
+            : undefined}
+          noMargins
+        >
+          {content}
+        </Text>
+      </div>
+      {tags && tags.length > 0
+        ? (
+          <div className='isl-entry-hidden mt-1'>
+            <Chiplist class='ml-6' values={tags} />
+          </div>
+        )
+        : null}
+    </>
+  );
+}

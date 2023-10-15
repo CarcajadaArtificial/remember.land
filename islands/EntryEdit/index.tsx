@@ -1,40 +1,27 @@
-import { Card, Chiplist, Link, Text } from 'lunchbox';
+import { Card } from 'lunchbox';
 import { dbEntry } from 'db/entry.ts';
-import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
+import { Entry } from 'components/Entry/index.tsx';
 import Handlers from 'handlers/EntryEdit.ts';
 import { EntryInput } from 'islands/EntryInput/index.tsx';
-import { ENTRY_CONTAINER, ENTRY_GRID } from 'styles';
+import { ENTRY_CONTAINER } from 'styles';
 
-export interface iEntryComponent {
+export interface iEntryEdit {
   entry: dbEntry;
 }
 
-export function EntryEdit(props: iEntryComponent) {
-  const { entry } = props;
-  const { content, tags, entry_mark, utc_created_at, day_count } = entry.value;
-
+export function EntryEdit(props: iEntryEdit) {
   const {
     onInputFocusOut,
     onEntryContainerKeyUp,
     editMode,
-    isMarkUrl,
   } = Handlers(props);
-
-  const isTaskDone = tags.includes('task') && tags.includes('done');
 
   if (editMode) {
     return (
       <Card>
         <EntryInput
           onFocusOut={onInputFocusOut}
-          entry={{
-            _id: String(entry.id),
-            content: content,
-            entry_mark: entry_mark,
-            tags: tags,
-            utc_created_at: utc_created_at,
-            day_count: day_count,
-          }}
+          entry={{ _id: props.entry.id.toString(), ...props.entry.value }}
         />
       </Card>
     );
@@ -45,59 +32,13 @@ export function EntryEdit(props: iEntryComponent) {
       onKeyUp={onEntryContainerKeyUp}
       tabIndex={0}
       class={ENTRY_CONTAINER}
-      data-utc_created_at={utc_created_at}
-      data-day_count={day_count}
-      data-id={entry.id}
+      data-utc_created_at={props.entry.value.utc_created_at}
+      data-day_count={props.entry.value.day_count}
+      data-id={props.entry.id}
     >
-      {entry_mark && isMarkUrl
-        ? (
-          <div className='isl-entry-hidden'>
-            <Link tabIndex={-1}>
-              <Text
-                noMargins
-                class='ml-6'
-                type='small'
-                style={{ lineHeight: '1.1rem' }}
-              >
-                {entry_mark}
-              </Text>
-            </Link>
-          </div>
-        )
-        : entry_mark && !isMarkUrl
-        ? (
-          <div className='isl-entry-hidden'>
-            <Text
-              noMargins
-              class='ml-6'
-              type='small'
-              style={{ lineHeight: '1.1rem' }}
-            >
-              {entry_mark}
-            </Text>
-          </div>
-        )
-        : null}
-      <div class={ENTRY_GRID}>
-        <EntryTypeIndicator tags={tags} />
-        <Text
-          class={isTaskDone
-            ? 'line-through'
-            : isMarkUrl
-            ? 'underline'
-            : undefined}
-          noMargins
-        >
-          {content}
-        </Text>
-      </div>
-      {tags && tags.length > 0
-        ? (
-          <div className='isl-entry-hidden mt-1'>
-            <Chiplist class='ml-6' values={tags} />
-          </div>
-        )
-        : null}
+      <Entry
+        entry={props.entry}
+      />
     </div>
   );
 }
