@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.19
+## v0.1.20
 
-- Added a function that updates entries to have tag ids instead of names.
+- Added the `createDictionaryDocument()` utility function.
 
 ### Changes so far
 
