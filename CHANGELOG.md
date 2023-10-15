@@ -1,10 +1,9 @@
 # Changelog
 
-## v0.1.21
+## v0.1.22
 
-- Moved the `<EntryList/>` island to the components directory.
-- Moved the `entriesToContributions()` function to the `<ContributionCalendar/>` component.
-- Removed traces of the `<EntryList/>` island in the route files.
+- Renamed the `<Entry/>` island to `<EntryEdit/>`.
+- Removed traces of some scss files.
 
 ### Changes so far
 

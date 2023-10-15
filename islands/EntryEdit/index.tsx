@@ -10,7 +10,7 @@ export interface iEntryComponent {
   entry: Document<LargeKvEntry>;
 }
 
-export function Entry(props: iEntryComponent) {
+export function EntryEdit(props: iEntryComponent) {
   const { entry } = props;
   const { content, tags, entry_mark, utc_created_at, day_count } = entry.value;
 

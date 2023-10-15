@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
 import { bring, isURL } from 'utils';
-import { iEntryComponent } from 'islands/Entry/index.tsx';
+import { iEntryComponent } from '../../islands/EntryEdit/index.tsx';
 import { updateEntryList } from 'signals';
 
 export default function (props: iEntryComponent) {

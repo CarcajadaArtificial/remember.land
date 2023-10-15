@@ -1,5 +1,4 @@
-import { Chiplist, Input, Text } from 'lunchbox';
-import { transition } from 'lunchbox/styles.ts';
+import { Chiplist, Text } from 'lunchbox';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';

@@ -1,6 +1,6 @@
 import { Document } from 'kvdex';
 import { LargeKvEntry } from 'db/entry.ts';
-import { Entry } from 'islands/Entry/index.tsx';
+import { EntryEdit } from 'islands/EntryEdit/index.tsx';
 
 interface iEntryList {
   entries: Document<LargeKvEntry>[];
@@ -9,7 +9,7 @@ interface iEntryList {
 export function EntryList(props: iEntryList) {
   return (
     <div class='grid gap-1.5'>
-      {props.entries.map((entry) => <Entry entry={entry} />)}
+      {props.entries.map((entry) => <EntryEdit entry={entry} />)}
     </div>
   );
 }
