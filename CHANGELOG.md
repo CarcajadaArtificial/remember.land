@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.30
+## v0.1.31
 
-- Added the `<Footer/>` component.
-- Added the `<TagQuery/>` island.
+- Removed the `<Footer/>` and `<Navigation/>` component in favor of the `<Page/>` component.
 
 ### Changes so far
 

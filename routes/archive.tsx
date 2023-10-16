@@ -1,38 +1,42 @@
-import { datetime } from 'ptera';
 import { EntryQuery } from 'islands/EntryQuery/index.tsx';
-import Navigation from 'components/Navigation/index.tsx';
-import Footer from 'components/Footer/index.tsx';
-import { Handlers } from '$fresh/server.ts';
+import Page from 'components/Page/index.tsx';
+import { Handlers, PageProps } from '$fresh/server.ts';
 import { redirect } from 'redirect';
 import { WithSession } from 'fresh_session';
-import { getApp } from 'db/index.ts';
+import { getApp, iApp } from 'db/index.ts';
 
-type Data = { session: Record<string, string> };
+type ArchivePageData = { session: Record<string, string>; appConfig: iApp };
 
 export const handler: Handlers<
-  Data,
+  ArchivePageData,
   WithSession
 > = {
-  GET(_req, ctx) {
-    return ctx.state.session.get('isSignedIn')
-      ? ctx.render({
-        session: ctx.state.session.data,
-      })
-      : redirect('/signin');
+  async GET(_req, ctx) {
+    if (!ctx.state.session.get('isSignedIn')) {
+      return redirect('/signin');
+    }
+
+    const appConfig = await getApp();
+
+    if (appConfig === null) {
+      return redirect('/404');
+    }
+
+    const pageData: ArchivePageData = {
+      session: ctx.state.session.data,
+      appConfig,
+    };
+
+    return ctx.render(pageData);
   },
 };
 
-export default async function Archive() {
-  const today = datetime(new Date());
-  const appConfiguration = await getApp();
+export default function Archive(props: PageProps<ArchivePageData>) {
+  const { appConfig } = props.data;
 
   return (
-    <>
-      <Navigation currentPage='archive' />
-      {appConfiguration
-        ? <EntryQuery appConfiguration={appConfiguration} />
-        : <>App Config Error</>}
-      <Footer />
-    </>
+    <Page appConfig={appConfig} currentPage='archive'>
+      <EntryQuery appConfiguration={appConfig} />
+    </Page>
   );
 }

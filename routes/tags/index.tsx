@@ -1,8 +1,6 @@
 import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { Link, Main } from 'lunchbox';
-import Navigation from 'components/Navigation/index.tsx';
-import Footer from 'components/Footer/index.tsx';
+import Page from 'components/Page/index.tsx';
 import TagQuery from 'islands/TagQuery/index.tsx';
 import { dbTag, getAllTags } from 'db/tag.ts';
 import { redirect } from 'redirect';
@@ -43,15 +41,8 @@ export default function TagHome(props: PageProps<HomePageData>) {
   const { appConfig, tags } = props.data;
 
   return (
-    <>
-      <Navigation currentPage='tags' />
-      <Main
-        data-starting_utc_date={appConfig?.startingUtcDate}
-        class='min-h-screen mt-10 flex flex-col gap-9'
-      >
-        <TagQuery tags={tags} />
-      </Main>
-      <Footer />
-    </>
+    <Page appConfig={appConfig} currentPage='tags'>
+      <TagQuery tags={tags} />
+    </Page>
   );
 }
