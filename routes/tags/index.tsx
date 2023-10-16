@@ -1,7 +1,9 @@
 import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { Footer, Link, Main } from 'lunchbox';
+import { Link, Main } from 'lunchbox';
 import Navigation from 'components/Navigation/index.tsx';
+import Footer from 'components/Footer/index.tsx';
+import TagQuery from 'islands/TagQuery/index.tsx';
 import { dbTag, getAllTags } from 'db/tag.ts';
 import { redirect } from 'redirect';
 import { getApp, iApp } from 'db/index.ts';
@@ -47,11 +49,9 @@ export default function TagHome(props: PageProps<HomePageData>) {
         data-starting_utc_date={appConfig?.startingUtcDate}
         class='min-h-screen mt-10 flex flex-col gap-9'
       >
+        <TagQuery tags={tags} />
       </Main>
-      <Footer layout_type='right'>
-        <div></div>
-        <Link href='/signout'>SignOut</Link>
-      </Footer>
+      <Footer />
     </>
   );
 }

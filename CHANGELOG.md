@@ -1,10 +1,9 @@
 # Changelog
 
-## v0.1.29
+## v0.1.30
 
-- Added the `<Navigation/>` component.
-- Added the `/tags` reoute
-- Added the `IndexedArray` interface and the `EntrySortFunctions` function dictionary.
+- Added the `<Footer/>` component.
+- Added the `<TagQuery/>` island.
 
 ### Changes so far
 

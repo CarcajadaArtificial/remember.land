@@ -1,12 +1,13 @@
 import { DateTime, datetime, diffInDays } from 'ptera';
 import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
-import { Card, Footer, Layout, Link, Main, Text } from 'lunchbox';
+import { Card, Layout, Link, Main, Text } from 'lunchbox';
 import { dbEntry, getAllEntries } from 'db/entry.ts';
 import { dbTag, getAllTags, iTag } from 'db/tag.ts';
 import { EntryInput } from 'islands/EntryInput/index.tsx';
 import { EntryList } from 'components/EntryList/index.tsx';
 import Navigation from 'components/Navigation/index.tsx';
+import Footer from 'components/Footer/index.tsx';
 import { redirect } from 'redirect';
 import { getApp, iApp } from 'db/index.ts';
 import { createDictionaryDocument } from 'utils';
@@ -88,10 +89,7 @@ export default function Home(props: PageProps<HomePageData>) {
           <EntryList entries={entries} />
         </Layout>
       </Main>
-      <Footer layout_type='right'>
-        <div></div>
-        <Link href='/signout'>SignOut</Link>
-      </Footer>
+      <Footer />
     </>
   );
 }

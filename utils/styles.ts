@@ -46,5 +46,5 @@ export const ENTRY_CONTAINER = css`
 export const ICON_STANDARD = css`
   width: var(--s-single);
   height: var(--s-single);
-  margin-top: var(--s-quarter);
+  margin-top: var(--s-three-eights);
 `;

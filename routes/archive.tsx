@@ -1,7 +1,7 @@
-import { Layout, Link } from 'lunchbox';
 import { datetime } from 'ptera';
 import { EntryQuery } from 'islands/EntryQuery/index.tsx';
 import Navigation from 'components/Navigation/index.tsx';
+import Footer from 'components/Footer/index.tsx';
 import { Handlers } from '$fresh/server.ts';
 import { redirect } from 'redirect';
 import { WithSession } from 'fresh_session';
@@ -27,11 +27,12 @@ export default async function Archive() {
   const appConfiguration = await getApp();
 
   return (
-    <div>
+    <>
       <Navigation currentPage='archive' />
       {appConfiguration
         ? <EntryQuery appConfiguration={appConfiguration} />
         : <>App Config Error</>}
-    </div>
+      <Footer />
+    </>
   );
 }
