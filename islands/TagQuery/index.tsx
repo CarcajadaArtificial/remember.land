@@ -1,5 +1,5 @@
 import { useEffect, useRef, useState } from 'preact/hooks';
-import { Card, Layout, Text } from 'lunchbox';
+import { Card, Layout, Link, Text } from 'lunchbox';
 import { dbTag } from 'db/tag.ts';
 import IconSearch from 'icons/search.tsx';
 import { ENTRY_GRID, ENTRY_INPUT_FIELD, ICON_STANDARD } from 'styles';
@@ -36,7 +36,9 @@ export default function (props: iTagQuery) {
       <div class='mt-6'>
         {tags.map((tag) => (
           <Text noMargins type='subheading'>
-            {tag.value.name}
+            <Link href={`./tags/${tag.value.name}`}>
+              {tag.value.name}
+            </Link>
           </Text>
         ))}
       </div>

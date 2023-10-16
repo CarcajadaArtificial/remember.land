@@ -1,8 +1,10 @@
 # Changelog
 
-## v0.1.31
+## v0.1.32
 
-- Removed the `<Footer/>` and `<Navigation/>` component in favor of the `<Page/>` component.
+- Added the `/tags/[name].tsx` route and added liks to them inside the `<TagQuery/>` island.
+- Minor fixes in the `<Entry/>` and `<EntryList/>` components.
+- Added the `indexEntries()` utility function.
 
 ### Changes so far
 

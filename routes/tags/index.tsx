@@ -6,14 +6,14 @@ import { dbTag, getAllTags } from 'db/tag.ts';
 import { redirect } from 'redirect';
 import { getApp, iApp } from 'db/index.ts';
 
-interface HomePageData {
+interface TagHomePageData {
   session: Record<string, string>;
   appConfig: iApp;
   tags: dbTag[];
 }
 
 export const handler: Handlers<
-  HomePageData,
+  TagHomePageData,
   WithSession
 > = {
   async GET(_req, ctx) {
@@ -27,7 +27,7 @@ export const handler: Handlers<
       return redirect('/404');
     }
 
-    const pageData: HomePageData = {
+    const pageData: TagHomePageData = {
       session: ctx.state.session.data,
       appConfig,
       tags: (await getAllTags()).result,
@@ -37,7 +37,7 @@ export const handler: Handlers<
   },
 };
 
-export default function TagHome(props: PageProps<HomePageData>) {
+export default function TagHome(props: PageProps<TagHomePageData>) {
   const { appConfig, tags } = props.data;
 
   return (

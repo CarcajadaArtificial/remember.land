@@ -1,4 +1,5 @@
 import { Chiplist, Link, Text } from 'lunchbox';
+import { cn } from 'lunchbox/utils.ts';
 import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
 import { ENTRY_GRID } from 'styles';
 import { dbEntry } from 'db/entry.ts';
@@ -47,11 +48,10 @@ export function Entry(props: iEntryComponent) {
       <div class={ENTRY_GRID}>
         <EntryTypeIndicator tags={tags} />
         <Text
-          class={isTaskDone
-            ? 'line-through'
-            : isMarkUrl
-            ? 'underline'
-            : undefined}
+          class={cn(
+            isTaskDone ? 'line-through' : isMarkUrl ? 'underline' : undefined,
+            'pt-0.5',
+          )}
           noMargins
         >
           {content}

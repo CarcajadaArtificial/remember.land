@@ -3,13 +3,13 @@ import { WithSession } from 'fresh_session';
 import { Handlers, PageProps } from '$fresh/server.ts';
 import { Card, Layout } from 'lunchbox';
 import { dbEntry, getAllEntries } from 'db/entry.ts';
-import { dbTag, getAllTags, iTag } from 'db/tag.ts';
+import { dbTag, getAllTags } from 'db/tag.ts';
+import { getApp, iApp } from 'db/index.ts';
 import { EntryInput } from 'islands/EntryInput/index.tsx';
 import { EntryList } from 'components/EntryList/index.tsx';
 import Page from 'components/Page/index.tsx';
 import { redirect } from 'redirect';
-import { getApp, iApp } from 'db/index.ts';
-import { createDictionaryDocument } from 'utils';
+import { indexEntries } from 'utils';
 
 interface HomePageData {
   session: Record<string, string>;
@@ -35,16 +35,12 @@ export const handler: Handlers<
 
     const entries = (await getAllEntries()).result;
     const tags = (await getAllTags()).result;
-    const tagDictionary = createDictionaryDocument<iTag>(tags);
-    const entriesWithTagNames = entries.map((entry) => {
-      entry.value.tags = entry.value.tags.map((tag) => tagDictionary[tag].name);
-      return entry;
-    });
+    const indexedEntries = indexEntries(entries, tags);
 
     const pageData: HomePageData = {
       session: ctx.state.session.data,
       appConfig,
-      entries: entriesWithTagNames,
+      entries: indexedEntries,
       tags,
     };
 

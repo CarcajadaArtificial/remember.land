@@ -7,7 +7,7 @@ interface iEntryList {
 
 export function EntryList(props: iEntryList) {
   return (
-    <div class='grid gap-1.5'>
+    <div class='grid gap-1'>
       {props.entries.map((entry) => <EntryEdit entry={entry} />)}
     </div>
   );

@@ -99,9 +99,11 @@ export const addEntry = async (entry: LargeKvEntry) => {
 
   return await db.entries.add(entry);
 };
+
 export const deleteEntry = async (id: Deno.KvKeyPart) => {
   await db.entries.delete(id);
 };
+
 export const updateEntry = async (id: Deno.KvKeyPart, entry: LargeKvEntry) =>
   await db.entries.update(id, entry);
 
