@@ -17,7 +17,7 @@ export const handler: Handlers<
       return new Response(JSON.stringify({}));
     }
     const { query } = await req.json() as findEntryReq;
-    const entries = (await findEntries(query)).result;
+    const entries = await findEntries(query);
     return new Response(JSON.stringify(entries));
   },
 };

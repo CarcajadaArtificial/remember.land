@@ -1,6 +1,7 @@
-import { Layout, Link, Navigation } from 'lunchbox';
+import { Layout, Link } from 'lunchbox';
 import { datetime } from 'ptera';
-import { EntryQuery } from '../islands/EntryQuery/index.tsx';
+import { EntryQuery } from 'islands/EntryQuery/index.tsx';
+import Navigation from 'components/Navigation/index.tsx';
 import { Handlers } from '$fresh/server.ts';
 import { redirect } from 'redirect';
 import { WithSession } from 'fresh_session';
@@ -27,11 +28,7 @@ export default async function Archive() {
 
   return (
     <div>
-      <Navigation class='py-3'>
-        <Layout dashboard type='left'>
-          <Link href='./'>{today.format('MMM d')}</Link>
-        </Layout>
-      </Navigation>
+      <Navigation currentPage='archive' />
       {appConfiguration
         ? <EntryQuery appConfiguration={appConfiguration} />
         : <>App Config Error</>}

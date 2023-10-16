@@ -1,9 +1,10 @@
 # Changelog
 
-## v0.1.28
+## v0.1.29
 
-- Redo of name indexing to entries in home route.
-- Removed the `<TagUpdater/>` island.
+- Added the `<Navigation/>` component.
+- Added the `/tags` reoute
+- Added the `IndexedArray` interface and the `EntrySortFunctions` function dictionary.
 
 ### Changes so far
 

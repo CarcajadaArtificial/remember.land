@@ -19,6 +19,7 @@ import * as $13 from './routes/archive.tsx';
 import * as $14 from './routes/index.tsx';
 import * as $15 from './routes/signin.tsx';
 import * as $16 from './routes/signout.tsx';
+import * as $17 from './routes/tags/index.tsx';
 import * as $$0 from './islands/EntryEdit/index.tsx';
 import * as $$1 from './islands/EntryInput/index.tsx';
 import * as $$2 from './islands/EntryQuery/index.tsx';
@@ -42,6 +43,7 @@ const manifest = {
     './routes/index.tsx': $14,
     './routes/signin.tsx': $15,
     './routes/signout.tsx': $16,
+    './routes/tags/index.tsx': $17,
   },
   islands: {
     './islands/EntryEdit/index.tsx': $$0,

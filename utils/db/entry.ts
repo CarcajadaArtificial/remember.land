@@ -7,10 +7,23 @@ export interface iEntry {
   tags: string[];
   entry_mark: string;
   day_count: number;
-  // north_ids: number[];
-  // south_ids: number[];
-  // west_ids: number[];
-  // east_ids: number[];
+  // north_entries: string[];
+  // south_entries: string[];
+  // west_entries: string[];
+  // east_entries: string[];
+}
+
+export interface iIndexedEntry {
+  _id: string;
+  utc_created_at: string;
+  content: string;
+  tags: string[];
+  entry_mark: string;
+  day_count: number;
+  // north_entries: iIndexedEntry[];
+  // south_entries: iIndexedEntry[];
+  // west_entries: iIndexedEntry[];
+  // east_entries: iIndexedEntry[];
 }
 
 export interface iQueryEntries {
@@ -22,6 +35,50 @@ export interface iQueryEntries {
   excludes_tags?: string[];
   // include_all_tags: boolean
 }
+
+export const EntrySortFunctions = {
+  content_alphabetically: (asc: boolean) => (a: dbEntry, b: dbEntry): number =>
+    asc
+      ? a.value.content.localeCompare(b.value.content)
+      : a.value.content.localeCompare(b.value.content) * -1,
+
+  content_byLength: (asc: boolean) => (a: dbEntry, b: dbEntry): number =>
+    asc
+      ? a.value.content.length - b.value.content.length
+      : b.value.content.length - a.value.content.length,
+
+  tags_alphabetically: (asc: boolean) => (a: dbEntry, b: dbEntry): number => {
+    const aTags = a.value.tags;
+    const bTags = b.value.tags;
+
+    return asc
+      ? aTags.sort().join('').localeCompare(bTags.sort().join(''))
+      : bTags.sort().join('').localeCompare(aTags.sort().join(''));
+  },
+
+  tags_byAmount: (asc: boolean) => (a: dbEntry, b: dbEntry): number => {
+    const aTags = a.value.tags;
+    const bTags = b.value.tags;
+
+    return asc ? aTags.length - bTags.length : bTags.length - aTags.length;
+  },
+
+  entryMark_alphabetically:
+    (asc: boolean) => (a: dbEntry, b: dbEntry): number =>
+      asc
+        ? a.value.entry_mark.localeCompare(b.value.entry_mark)
+        : a.value.entry_mark.localeCompare(b.value.entry_mark) * -1,
+
+  entry_mark_byLength: (asc: boolean) => (a: dbEntry, b: dbEntry): number =>
+    asc
+      ? a.value.entry_mark.length - b.value.entry_mark.length
+      : b.value.entry_mark.length - a.value.entry_mark.length,
+
+  day_count: (asc: boolean) => (a: dbEntry, b: dbEntry): number =>
+    asc
+      ? a.value.day_count - b.value.day_count
+      : b.value.day_count - a.value.day_count,
+};
 
 export type LargeKvEntry = iEntry & LargeKvObject;
 
@@ -49,7 +106,7 @@ export const updateEntry = async (id: Deno.KvKeyPart, entry: LargeKvEntry) =>
   await db.entries.update(id, entry);
 
 export const findEntries = async (query: iQueryEntries) => {
-  return await db.entries.getMany({
+  return (await db.entries.getMany({
     filter: (doc) => {
       const {
         contains_text,
@@ -86,5 +143,5 @@ export const findEntries = async (query: iQueryEntries) => {
         return true;
       }
     },
-  });
+  })).result.sort();
 };
