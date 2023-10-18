@@ -1,10 +1,8 @@
 # Changelog
 
-## v0.1.32
+## v0.1.33
 
-- Added the `/tags/[name].tsx` route and added liks to them inside the `<TagQuery/>` island.
-- Minor fixes in the `<Entry/>` and `<EntryList/>` components.
-- Added the `indexEntries()` utility function.
+- Added the `userEntryTag` db relationship model.
 
 ### Changes so far
 
@@ -23,8 +21,8 @@
       - [ ] Route `/api/tag/[id]/index.ts` responds with the tag and all the entries that have it.
       - [x] Route `/api/tag/[id]/delete.ts` deletes this tag from all entries and from the tags db.
       - [x] Route `/api/tag/[id]/update.ts` deletes this tag from all entries and from the tags db.
-      - [ ] Route `/tag/index.ts` that shows all tags.
-      - [ ] Route `/tag/[name].ts` that shows all entries of that certain tag.
+      - [x] Route `/tag/index.ts` that shows all tags.
+      - [x] Route `/tag/[name].ts` that shows all entries of that certain tag.
     - Create threads of entries.
     - Create similar/opposite relations between tags.
   - UI Revamp and upgrade to Lunchbox v0.3

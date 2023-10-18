@@ -7,23 +7,6 @@ export interface iEntry {
   tags: string[];
   entry_mark: string;
   day_count: number;
-  // north_entries: string[];
-  // south_entries: string[];
-  // west_entries: string[];
-  // east_entries: string[];
-}
-
-export interface iIndexedEntry {
-  _id: string;
-  utc_created_at: string;
-  content: string;
-  tags: string[];
-  entry_mark: string;
-  day_count: number;
-  // north_entries: iIndexedEntry[];
-  // south_entries: iIndexedEntry[];
-  // west_entries: iIndexedEntry[];
-  // east_entries: iIndexedEntry[];
 }
 
 export interface iQueryEntries {
@@ -36,7 +19,7 @@ export interface iQueryEntries {
   // include_all_tags: boolean
 }
 
-export const EntrySortFunctions = {
+export const SortEntriesBy = {
   content_alphabetically: (asc: boolean) => (a: dbEntry, b: dbEntry): number =>
     asc
       ? a.value.content.localeCompare(b.value.content)
@@ -46,22 +29,6 @@ export const EntrySortFunctions = {
     asc
       ? a.value.content.length - b.value.content.length
       : b.value.content.length - a.value.content.length,
-
-  tags_alphabetically: (asc: boolean) => (a: dbEntry, b: dbEntry): number => {
-    const aTags = a.value.tags;
-    const bTags = b.value.tags;
-
-    return asc
-      ? aTags.sort().join('').localeCompare(bTags.sort().join(''))
-      : bTags.sort().join('').localeCompare(aTags.sort().join(''));
-  },
-
-  tags_byAmount: (asc: boolean) => (a: dbEntry, b: dbEntry): number => {
-    const aTags = a.value.tags;
-    const bTags = b.value.tags;
-
-    return asc ? aTags.length - bTags.length : bTags.length - aTags.length;
-  },
 
   entryMark_alphabetically:
     (asc: boolean) => (a: dbEntry, b: dbEntry): number =>
