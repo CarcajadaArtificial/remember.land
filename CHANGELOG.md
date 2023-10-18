@@ -1,13 +1,14 @@
 # Changelog
 
-## v0.1.33
+## v0.1.34
 
-- Added the `userEntryTag` db relationship model.
+- Changed `deno.json` to `deno.jsonc` and added comments.
+- Updated Deno and Fresh.
 
 ### Changes so far
 
 - Added the Lunchbox fonts.
-- Removed static styles.
+- Removed static styles in favor of css-in-js.
 
 ### v0.2
 
