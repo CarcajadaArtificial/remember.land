@@ -1,8 +1,10 @@
 # Changelog
 
-## v0.1.35
+## v0.1.37
 
-- Updated Deno from 1.37.1 to 1.40.4 and Fresh from 1.5.2 to 1.6.5.
+- Added GitHub OAuth implementation.
+- Added User management to the db.
+- Added the AuthButtom component.
 
 ### Changes so far
 

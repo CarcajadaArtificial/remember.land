@@ -15,35 +15,37 @@
   Imports
   * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * */
   "imports": {
+    "@/": "./",
     "$fresh/": "https://deno.land/x/fresh@1.6.5/",
     "preact": "https://esm.sh/preact@10.19.2",
     "preact/": "https://esm.sh/preact@10.19.2/",
     "preact-render-to-string": "https://esm.sh/*preact-render-to-string@6.2.2",
     "@preact/signals": "https://esm.sh/*@preact/signals@1.2.1",
     "@preact/signals-core": "https://esm.sh/*@preact/signals-core@1.5.0",
-    "twind": "https://esm.sh/twind@0.16.19",
-    "twind/": "https://esm.sh/twind@0.16.19/",
-    // "twind-preset-tailwind/": "https://esm.sh/@twind/preset-tailwind@1.1.4/",
-    "twind-preset-ext": "https://esm.sh/@twind/preset-ext@1.0.7/",
-    "@twind/core": "https://esm.sh/@twind/core@1.1.3",
-    "@twind/preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4/",
-    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7/",
-    "$std/": "https://deno.land/std@0.203.0/",
+    "twind": "https://esm.sh/twind@0.16.19", // To remove
+    "twind/": "https://esm.sh/twind@0.16.19/", // To remove
+    "twind-preset-ext": "https://esm.sh/@twind/preset-ext@1.0.7/", // To remove
+    "@twind/core": "https://esm.sh/@twind/core@1.1.3", // To remove
+    "@twind/preset-tailwind": "https://esm.sh/@twind/preset-tailwind@1.1.4/", // To remove
+    "@twind/preset-autoprefix": "https://esm.sh/@twind/preset-autoprefix@1.0.7/", // To remove
+    "std/": "https://deno.land/std@0.208.0/",
     /* UI Components */
     "lunchbox": "https://deno.land/x/lunchbox@v0.3.4/mod.ts",
     "lunchbox/": "https://deno.land/x/lunchbox@v0.3.4/src/",
-    "icons/": "https://deno.land/x/tabler_icons_tsx@0.0.4/tsx/",
+    "icons/": "https://deno.land/x/tabler_icons_tsx@0.0.5/tsx/",
     /* CSS-in-JS */
     "resin": "https://deno.land/x/resin@v0.1.6/mod.ts",
     /* Database and authentication */
-    "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts",
-    "kvdex": "https://deno.land/x/kvdex@v0.12.6/mod.ts",
+    "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts", // To remove
+    "kvdex": "https://deno.land/x/kvdex@v0.12.6/mod.ts", // To remove
+    "kv_oauth/": "https://deno.land/x/deno_kv_oauth@v0.9.1/",
     /* Other imports */
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
     /* Local import shorthands */
     "db/": "./utils/db/",
     "handlers/": "./utils/handlers/",
     "hooks": "./utils/hooks.ts",
+    "http": "./utils/http.ts",
     "redirect": "./utils/redirect.ts",
     "signals": "./utils/signals.ts",
     "styles": "./utils/styles.ts",

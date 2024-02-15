@@ -4,7 +4,6 @@
 
 import * as $_404 from './routes/_404.tsx';
 import * as $_app from './routes/_app.tsx';
-import * as $_middleware from './routes/_middleware.tsx';
 import * as $api_entries_id_delete from './routes/api/entries/[id]/delete.ts';
 import * as $api_entries_id_index from './routes/api/entries/[id]/index.ts';
 import * as $api_entries_id_update from './routes/api/entries/[id]/update.ts';
@@ -31,7 +30,6 @@ const manifest = {
   routes: {
     './routes/_404.tsx': $_404,
     './routes/_app.tsx': $_app,
-    './routes/_middleware.tsx': $_middleware,
     './routes/api/entries/[id]/delete.ts': $api_entries_id_delete,
     './routes/api/entries/[id]/index.ts': $api_entries_id_index,
     './routes/api/entries/[id]/update.ts': $api_entries_id_update,

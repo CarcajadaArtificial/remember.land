@@ -1,7 +1,7 @@
 import { kvdex, KvObject, largeCollection } from 'kvdex';
-import { LargeKvEntry } from 'db/entry.ts';
-import { LargeKvTag } from 'db/tag.ts';
 import { adjustToLastHour } from 'utils';
+import type { LargeKvEntry } from 'db/entry.ts';
+import type { LargeKvTag } from 'db/tag.ts';
 
 export const kv = await Deno.openKv();
 
