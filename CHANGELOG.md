@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.34
+## v0.1.35
 
-- Changed `deno.json` to `deno.jsonc` and added comments.
-- Updated Deno and Fresh.
+- Updated Deno from 1.37.1 to 1.40.4 and Fresh from 1.5.2 to 1.6.5.
 
 ### Changes so far
 
