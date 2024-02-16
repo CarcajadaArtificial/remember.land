@@ -16,8 +16,6 @@ import * as $api_tags_get from './routes/api/tags/get.ts';
 import * as $api_tags_new from './routes/api/tags/new.ts';
 import * as $archive from './routes/archive.tsx';
 import * as $index from './routes/index.tsx';
-import * as $signin from './routes/signin.tsx';
-import * as $signout from './routes/signout.tsx';
 import * as $tags_name_ from './routes/tags/[name].tsx';
 import * as $tags_index from './routes/tags/index.tsx';
 import * as $EntryEdit_index from './islands/EntryEdit/index.tsx';
@@ -42,8 +40,6 @@ const manifest = {
     './routes/api/tags/new.ts': $api_tags_new,
     './routes/archive.tsx': $archive,
     './routes/index.tsx': $index,
-    './routes/signin.tsx': $signin,
-    './routes/signout.tsx': $signout,
     './routes/tags/[name].tsx': $tags_name_,
     './routes/tags/index.tsx': $tags_index,
   },

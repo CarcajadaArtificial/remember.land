@@ -13,9 +13,7 @@ import type { SignedInState } from '@/plugins/session.ts';
 import AuthButton from '@/components/AuthButton/index.tsx';
 import { redirect } from '@/utils/http.ts';
 
-const HomeSignedOut = (
-  props: {},
-): JSX.Element => (
+const HomeSignedOut = (): JSX.Element => (
   <>
     <Header banner layout_type='left'>
       <Text type='display'>

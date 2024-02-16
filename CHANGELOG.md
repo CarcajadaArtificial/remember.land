@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.38
+## v0.1.39
 
-- Added session management.
+- Added session guards.
+- Removed signin and signout routes, both where abstracted to the session plugin.
 
 ### Changes so far
 

@@ -3,7 +3,7 @@ import { Plugin } from '$fresh/server.ts';
 import type { FreshContext } from '$fresh/server.ts';
 import { getSessionId } from 'kv_oauth/mod.ts';
 import { getUserBySession, type iUser } from '@/utils/db/user.ts';
-import { redirect, UnauthorizedError } from '@/utils/http.ts';
+import { UnauthorizedError } from '@/utils/http.ts';
 
 export interface State {
   sessionUser?: iUser;
