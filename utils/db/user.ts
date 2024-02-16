@@ -140,3 +140,30 @@ export async function getUser(id: string) {
   const res = await kv.get<iUser>(['users', id]);
   return res.value;
 }
+
+/**
+ * Gets the user with the given session ID from the database. The first attempt
+ * is done with eventual consistency. If that returns `null`, the second
+ * attempt is done with strong consistency. This is done for performance
+ * reasons, as this function is called in every route request for checking
+ * whether the session user is signed in.
+ *
+ * @example
+ * ```ts
+ * import { getUserBySession } from "@/utils/db.ts";
+ *
+ * const user = await getUserBySession("xxx");
+ * user?.login; // Returns "jack"
+ * user?.sessionId; // Returns "xxx"
+ * user?.isSubscribed; // Returns false
+ * ```
+ */
+export async function getUserBySession(sessionId: string) {
+  const key = ['users_by_session', sessionId];
+  const eventualRes = await kv.get<iUser>(key, {
+    consistency: 'eventual',
+  });
+  if (eventualRes.value !== null) return eventualRes.value;
+  const res = await kv.get<iUser>(key);
+  return res.value;
+}

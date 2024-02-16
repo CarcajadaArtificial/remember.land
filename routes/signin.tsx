@@ -1,4 +1,4 @@
-import { Header, Input, Layout, Text } from 'lunchbox';
+import { Header, Layout, Text } from 'lunchbox';
 import AuthButton from '@/components/AuthButton/index.tsx';
 // import { Handlers, PageProps } from '$fresh/server.ts';
 // import { redirect } from 'redirect';

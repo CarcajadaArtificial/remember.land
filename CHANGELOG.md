@@ -1,10 +1,8 @@
 # Changelog
 
-## v0.1.37
+## v0.1.38
 
-- Added GitHub OAuth implementation.
-- Added User management to the db.
-- Added the AuthButtom component.
+- Added session management.
 
 ### Changes so far
 
