@@ -29,6 +29,8 @@ export async function createUser(user: iUser) {
   const usersKey = ['users', user.id];
   const usersBySessionKey = ['users_by_session', user.sessionId];
 
+  console.log('created user');
+
   const atomicOp = kv.atomic()
     .check({ key: usersKey, versionstamp: null })
     .check({ key: usersBySessionKey, versionstamp: null })
@@ -128,17 +130,20 @@ export async function updateUserSession(user: iUser, sessionId: string) {
  *
  * @example
  * ```ts
- * import { getUser } from "@/utils/db.ts";
+ * import { getUserByLogin } from "@/utils/db.ts";
  *
- * const user = await getUser("jack");
+ * const user = await getUserByLogin("jack");
  * user?.login; // Returns "jack"
  * user?.sessionId; // Returns "xxx"
  * user?.isSubscribed; // Returns false
  * ```
  */
-export async function getUser(id: string) {
-  const res = await kv.get<iUser>(['users', id]);
-  return res.value;
+export async function getUserByLogin(login: string) {
+  const users = kv.list<iUser>({ prefix: ['users'] });
+  for await (const user of users) {
+    if (user.value.login === login) return user.value;
+  }
+  return null;
 }
 
 /**

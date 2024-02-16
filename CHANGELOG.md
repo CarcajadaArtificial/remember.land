@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.39
+## v0.1.40
 
-- Added session guards.
-- Removed signin and signout routes, both where abstracted to the session plugin.
+- Fixed the multiple users created on signin issue.
 
 ### Changes so far
 

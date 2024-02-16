@@ -7,7 +7,7 @@ import {
 } from 'kv_oauth/mod.ts';
 import {
   createUser,
-  getUser,
+  getUserByLogin,
   type iUser,
   updateUserSession,
 } from '@/utils/db/user.ts';
@@ -30,7 +30,7 @@ export default {
         );
 
         const githubUser = await getGitHubUser(tokens.accessToken);
-        const user = await getUser(githubUser.login);
+        const user = await getUserByLogin(githubUser.login);
 
         if (user === null) {
           const user: iUser = {
