@@ -1,4 +1,4 @@
-import { kv } from '@/utils/db/index.ts';
+import { kv, KvApp } from '@/utils/db/index.ts';
 
 export type AuthProviders = 'GitHub' | 'Google' | 'Auth0';
 
@@ -20,7 +20,7 @@ export interface iUser {
  *
  * await createUser({
  *   login: "john",
- *   sessionId: crypto.randomUUID(),
+ *   sessionId: ulid(),
  *   isSubscribed: false,
  * });
  * ```
@@ -57,7 +57,7 @@ export async function createUser(user: iUser) {
  *
  * await updateUser({
  *   login: "john",
- *   sessionId: crypto.randomUUID(),
+ *   sessionId: ulid(),
  *   isSubscribed: false,
  * });
  * ```
@@ -162,12 +162,13 @@ export async function getUserByLogin(login: string) {
  */
 export async function getUserBySession(sessionId: string) {
   const userBySessionKey = ['users_by_session', sessionId];
-  const eventualRes2 = await kv.get<string>(userBySessionKey, {
+  const userId = (await kv.get<string>(userBySessionKey, {
     consistency: 'eventual',
-  });
-  if (eventualRes2.value !== null) {
-    return await kv.get<iUser>(['users', eventualRes2.value]);
+  })).value;
+
+  if (userId !== null) {
+    const user = await kv.get<iUser>(['users', userId]);
+    if (user.value && user.versionstamp) return user.value;
   }
-  const res = await kv.get<iUser>(userBySessionKey);
-  return res.value;
+  return null;
 }

@@ -11,6 +11,7 @@ import {
   type iUser,
   updateUserSession,
 } from '@/utils/db/user.ts';
+import { ulid } from 'ulid';
 // import { isStripeEnabled, stripe } from "@/utils/stripe.ts";
 import { getGitHubUser } from '@/utils/auth/github.ts';
 
@@ -34,7 +35,7 @@ export default {
 
         if (user === null) {
           const user: iUser = {
-            id: crypto.randomUUID(),
+            id: ulid(),
             login: githubUser.login,
             sessionId,
             isSubscribed: false,

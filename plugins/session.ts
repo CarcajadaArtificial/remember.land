@@ -31,9 +31,7 @@ async function setSessionState(
   const sessionId = getSessionId(req);
   if (sessionId === undefined) return await ctx.next();
   const user = await getUserBySession(sessionId);
-  if (user === null) return await ctx.next();
-
-  ctx.state.sessionUser = user;
+  if (user) ctx.state.sessionUser = user;
 
   return await ctx.next();
 }

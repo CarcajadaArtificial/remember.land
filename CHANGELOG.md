@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.41
+## v0.1.42
 
-- Changed `"users_by_session"` to store only the user's id instead of a duplicate of the whole user model.
+- Fixed `getUserBySession()` on the case where the user's value can be null.
+- Changed `crypto.randomUUID()` to `ulid()`.
 
 ### Changes so far
 

@@ -39,6 +39,7 @@
     "fresh_session": "https://deno.land/x/fresh_session@0.2.2/mod.ts", // To remove
     "kvdex": "https://deno.land/x/kvdex@v0.12.6/mod.ts", // To remove
     "kv_oauth/": "https://deno.land/x/deno_kv_oauth@v0.9.1/",
+    "ulid": "https://deno.land/std@0.217.0/ulid/mod.ts",
     /* Other imports */
     "ptera": "https://deno.land/x/ptera@v1.0.2/mod.ts",
     /* Local import shorthands */
