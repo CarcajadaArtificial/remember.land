@@ -1,14 +1,17 @@
 # Changelog
 
-## v0.1.42
+## v0.1.43
 
-- Fixed `getUserBySession()` on the case where the user's value can be null.
-- Changed `crypto.randomUUID()` to `ulid()`.
+- Removed test routes.
+- Updated imports and removed the uneeded ones.
+- Updated db models, removed kvdex.
+- Updated components and islands to have new models.
 
 ### Changes so far
 
 - Added the Lunchbox fonts.
 - Removed static styles in favor of css-in-js.
+- Added user authentication with GitHub OAuth.
 
 ### v0.2
 

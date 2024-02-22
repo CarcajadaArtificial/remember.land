@@ -1,19 +1,24 @@
+import { useEffect, useRef } from 'preact/hooks';
 import { Chiplist, Text } from 'lunchbox';
-import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
-import { EntryLengthIndicator } from 'components/EntryLengthIndicator/index.tsx';
 import IconTag from 'icons/tag.tsx';
 import IconBookmark from 'icons/bookmark.tsx';
-import Handlers from 'handlers/EntryInput.ts';
-import { iEntry } from 'db/entry.ts';
-import { useEffect, useRef } from 'preact/hooks';
-import { ENTRY_GRID, ENTRY_INPUT_FIELD, ICON_STANDARD } from 'styles';
+import Handlers from '@/utils/handlers/EntryInput.ts';
+import { iEntry } from '@/utils/db/entry.ts';
+import EntryTypeIndicator from '@/components/EntryTypeIndicator/index.tsx';
+import EntryLengthIndicator from '@/components/EntryLengthIndicator/index.tsx';
+import {
+  ENTRY_GRID,
+  ENTRY_INPUT_FIELD,
+  ICON_STANDARD,
+} from '@/utils/styles.ts';
 
 export interface iEntryInput {
-  entry: iEntry & { _id: string };
+  entry: iEntry;
+  entryId: string;
   onFocusOut: () => void;
 }
 
-export function EntryInput(props: iEntryInput) {
+export default function EntryInput(props: iEntryInput) {
   const refTextarea = useRef<HTMLSpanElement>(null);
 
   const {

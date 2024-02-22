@@ -1,12 +1,10 @@
 import { ComponentChildren, JSX } from 'preact';
 import { Footer, Layout, Link, Main, Navigation, Text } from 'lunchbox';
 import { datetime } from 'ptera';
-import { iApp } from 'db/index.ts';
 
 interface iPage {
   children: ComponentChildren;
   currentPage?: 'home' | 'archive' | 'tags' | 'other';
-  appConfig: iApp;
 }
 
 const LinkOrNot = (
@@ -16,8 +14,8 @@ const LinkOrNot = (
     ? <Link href={props.href}>{props.text}</Link>
     : <Text>{props.text}</Text>;
 
-export default function (props: iPage) {
-  const { appConfig, children, currentPage } = props;
+export default function Page(props: iPage) {
+  const { children, currentPage } = props;
   return (
     <>
       <Navigation>
@@ -43,14 +41,11 @@ export default function (props: iPage) {
           </div>
         </Layout>
       </Navigation>
-      <Main
-        data-starting_utc_date={appConfig.startingUtcDate}
-        class='min-h-screen mt-10 flex flex-col gap-9'
-      >
+      <Main class='min-h-screen mt-10 flex flex-col gap-9'>
         {children}
       </Main>
       <Footer layout_type='right'>
-        <Text noMargins>v0.1.42</Text>
+        <Text noMargins>v0.1.43</Text>
         <Link href='/signout'>SignOut</Link>
       </Footer>
     </>

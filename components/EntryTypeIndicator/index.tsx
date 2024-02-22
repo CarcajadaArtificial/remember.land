@@ -3,13 +3,13 @@ import IconMinus from 'icons/minus.tsx';
 import IconCircle from 'icons/circle.tsx';
 import IconSquare from 'icons/square.tsx';
 import IconCheckbox from 'icons/checkbox.tsx';
-import { ICON_STANDARD } from 'styles';
+import { ICON_STANDARD } from '@/utils/styles.ts';
 
 interface iEntryTypeIndicator {
   tags?: string[];
 }
 
-export function EntryTypeIndicator(props: iEntryTypeIndicator) {
+export default function EntryTypeIndicator(props: iEntryTypeIndicator) {
   const { tags } = props;
 
   if (!tags) {

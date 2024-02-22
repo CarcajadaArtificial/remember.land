@@ -1,6 +1,6 @@
 import { JSX } from 'preact';
 import { datetime, diffInDays } from 'ptera';
-import { forEachInN, isLastDayOfMonth } from 'utils';
+import { forEachInN, isLastDayOfMonth } from '@/utils/utils.ts';
 import { Text } from 'lunchbox';
 import { ContributionCalendarBlock } from './components/ContributionCalendarBlock.tsx';
 

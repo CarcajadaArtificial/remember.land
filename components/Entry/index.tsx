@@ -1,22 +1,22 @@
 import { Chiplist, Link, Text } from 'lunchbox';
 import { cn } from 'lunchbox/utils.ts';
-import { EntryTypeIndicator } from 'components/EntryTypeIndicator/index.tsx';
-import { ENTRY_GRID } from 'styles';
-import { dbEntry } from 'db/entry.ts';
-import { isURL } from 'utils';
+import EntryTypeIndicator from '@/components/EntryTypeIndicator/index.tsx';
+import { ENTRY_GRID } from '@/utils/styles.ts';
+import { iEntry } from '@/utils/db/entry.ts';
+import { isURL } from '@/utils/utils.ts';
 
 export interface iEntryComponent {
-  entry: dbEntry;
+  entry: iEntry;
 }
 
-export function Entry(props: iEntryComponent) {
-  const { content, tags, entry_mark } = props.entry.value;
-  const isMarkUrl = entry_mark !== '' && isURL(entry_mark);
-  const isTaskDone = tags.includes('task') && tags.includes('done');
+export default function Entry(props: iEntryComponent) {
+  const { content, tagIds, mark } = props.entry;
+  const isMarkUrl = mark !== '' && isURL(mark);
+  const isTaskDone = tagIds.includes('task') && tagIds.includes('done');
 
   return (
     <>
-      {entry_mark && isMarkUrl
+      {mark && isMarkUrl
         ? (
           <div className='isl-entry-hidden'>
             <Link tabIndex={-1}>
@@ -26,12 +26,12 @@ export function Entry(props: iEntryComponent) {
                 type='small'
                 style={{ lineHeight: '1.1rem' }}
               >
-                {entry_mark}
+                {mark}
               </Text>
             </Link>
           </div>
         )
-        : entry_mark && !isMarkUrl
+        : mark && !isMarkUrl
         ? (
           <div className='isl-entry-hidden'>
             <Text
@@ -40,13 +40,13 @@ export function Entry(props: iEntryComponent) {
               type='small'
               style={{ lineHeight: '1.1rem' }}
             >
-              {entry_mark}
+              {mark}
             </Text>
           </div>
         )
         : null}
       <div class={ENTRY_GRID}>
-        <EntryTypeIndicator tags={tags} />
+        <EntryTypeIndicator tags={tagIds} />
         <Text
           class={cn(
             isTaskDone ? 'line-through' : isMarkUrl ? 'underline' : undefined,
@@ -57,10 +57,10 @@ export function Entry(props: iEntryComponent) {
           {content}
         </Text>
       </div>
-      {tags && tags.length > 0
+      {tagIds && tagIds.length > 0
         ? (
           <div className='isl-entry-hidden mt-1'>
-            <Chiplist class='ml-6' values={tags} />
+            <Chiplist class='ml-6' values={tagIds} />
           </div>
         )
         : null}

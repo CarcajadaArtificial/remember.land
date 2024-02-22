@@ -1,43 +1,43 @@
 import { certainKeyPressed } from 'lunchbox/handlers.ts';
 import { useState } from 'preact/hooks';
-import { useTagList } from 'hooks';
-import { bring, isURL } from 'utils';
-import { iEntryInput } from 'islands/EntryInput/index.tsx';
-import { iEntry } from 'db/entry.ts';
+import { useTagList } from '@/utils/hooks.ts';
+import { bring, isURL } from '@/utils/utils.ts';
+import { iEntryInput } from '@/islands/EntryInput/index.tsx';
+import { iEntry } from '@/utils/db/entry.ts';
 
 type Steps = 'entrymark' | 'tags';
 
 export default function (props: iEntryInput) {
-  const { entry, onFocusOut } = props;
-  const [tags, updateTags] = useTagList(entry.tags);
+  const { entry, entryId, onFocusOut } = props;
+  const [tagIds, updateTagIds] = useTagList(entry.tagIds);
+  const [entryMark, setEntryMark] = useState<string>(entry.mark);
   const [entryValue, setEntryValue] = useState<string>(entry.content);
-  const [entryMark, setEntryMark] = useState<string>(entry.entry_mark);
   const [
     inputStep,
     setInputStep,
   ] = useState<(Steps)[]>([]);
 
   async function setEntry() {
-    const setApiUrl = entry._id
-      ? `/api/entries/${entry._id}/update`
+    const setApiUrl = entryId
+      ? `/api/entries/${entryId}/update`
       : '/api/entries/new';
 
     await bring<iEntry>(
       setApiUrl,
       'POST',
       {
-        utc_created_at: entry.utc_created_at,
+        createdAtUTC: entry.createdAtUTC,
         content: entryValue,
-        tags: tags,
-        entry_mark: entryMark,
-        day_count: entry.day_count,
+        tagIds: tagIds,
+        mark: entryMark,
+        dayCount: entry.dayCount,
       },
       'Create entry error.',
     );
 
     setEntryValue('');
     setEntryMark('');
-    updateTags([], tags);
+    updateTagIds([], tagIds);
     setInputStep([]);
   }
 
@@ -50,22 +50,22 @@ export default function (props: iEntryInput) {
     ) {
       switch (value[0]) {
         case '-':
-          updateTags([], ['permanent', 'event', 'done', 'task']);
+          updateTagIds([], ['permanent', 'event', 'done', 'task']);
           break;
         case '*':
-          updateTags(['permanent'], ['event', 'done', 'task']);
+          updateTagIds(['permanent'], ['event', 'done', 'task']);
           break;
         case 'x':
-          if (tags.includes('done')) {
-            updateTags([], ['permanent', 'event', 'done']);
-          } else if (tags.includes('task')) {
-            updateTags(['done'], ['permanent', 'event']);
+          if (tagIds.includes('done')) {
+            updateTagIds([], ['permanent', 'event', 'done']);
+          } else if (tagIds.includes('task')) {
+            updateTagIds(['done'], ['permanent', 'event']);
           } else {
-            updateTags(['task'], ['permanent', 'event']);
+            updateTagIds(['task'], ['permanent', 'event']);
           }
           break;
         case 'o':
-          updateTags(['event'], ['permanent', 'task', 'done']);
+          updateTagIds(['event'], ['permanent', 'task', 'done']);
           break;
         default:
           break;
@@ -78,9 +78,9 @@ export default function (props: iEntryInput) {
     }
 
     if (value.includes('?')) {
-      updateTags(['question'], []);
-    } else if (tags.includes('question')) {
-      updateTags([], ['question']);
+      updateTagIds(['question'], []);
+    } else if (tagIds.includes('question')) {
+      updateTagIds([], ['question']);
     }
   }
 
@@ -88,7 +88,7 @@ export default function (props: iEntryInput) {
     return certainKeyPressed(ev, ['Enter'], (ev) => {
       const newValue = (ev.target as HTMLInputElement).value;
       if (newValue.replace(/ /g, '').length > 0) {
-        updateTags([newValue.replace(/ /g, '_')], []);
+        updateTagIds([newValue.replace(/ /g, '_')], []);
       }
       (ev.target as HTMLInputElement).value = '';
     });
@@ -97,7 +97,7 @@ export default function (props: iEntryInput) {
   function handleRemoveTag(ev: Event) {
     const target = ev.target as HTMLButtonElement;
     const chipValue = (target.previousSibling as HTMLElement).innerHTML;
-    updateTags([], [chipValue]);
+    updateTagIds([], [chipValue]);
   }
 
   const handleFieldFocus = (step: Steps) => (_ev: Event) => {
@@ -109,16 +109,16 @@ export default function (props: iEntryInput) {
   };
 
   function handleEntryMarkInput(ev: KeyboardEvent) {
-    const entry_mark = (ev.target as HTMLInputElement).value;
-    const isMarkUrl = isURL(entry_mark);
+    const mark = (ev.target as HTMLInputElement).value;
+    const isMarkUrl = isURL(mark);
 
-    if (isMarkUrl && !tags.includes('link')) {
-      updateTags(['link'], []);
-    } else if (!isMarkUrl && tags.includes('link')) {
-      updateTags([], ['link']);
+    if (isMarkUrl && !tagIds.includes('link')) {
+      updateTagIds(['link'], []);
+    } else if (!isMarkUrl && tagIds.includes('link')) {
+      updateTagIds([], ['link']);
     }
 
-    setEntryMark(entry_mark);
+    setEntryMark(mark);
   }
 
   function handleConatinerKeyDown(ev: KeyboardEvent) {
@@ -142,7 +142,7 @@ export default function (props: iEntryInput) {
     handleConatinerKeyDown,
     entryMark,
     entryValue,
-    tags,
+    tagIds,
     inputStep,
   };
 }

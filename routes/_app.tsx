@@ -1,8 +1,9 @@
 import { Stylesheet } from 'lunchbox';
-import { AppProps } from '$fresh/server.ts';
+import type { State } from '@/plugins/session.ts';
+import { defineApp } from '$fresh/server.ts';
 import { Head } from '$fresh/runtime.ts';
 
-export default function App({ Component }: AppProps) {
+export default defineApp<State>((_, ctx) => {
   return (
     <>
       <Head>
@@ -10,8 +11,8 @@ export default function App({ Component }: AppProps) {
         <Stylesheet />
       </Head>
       <body class='clr-bg-panel clr-txt-base txt-paragraph'>
-        <Component />
+        <ctx.Component />
       </body>
     </>
   );
-}
+});

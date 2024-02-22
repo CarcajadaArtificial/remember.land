@@ -2,7 +2,7 @@ interface iEntryLengthIndicator {
   length: number;
 }
 
-export function EntryLengthIndicator(props: iEntryLengthIndicator) {
+export default function EntryLengthIndicator(props: iEntryLengthIndicator) {
   const { length } = props;
   const maxLength = 280;
 

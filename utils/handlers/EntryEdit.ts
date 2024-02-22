@@ -1,14 +1,13 @@
 import { useState } from 'preact/hooks';
-import { bring, isURL } from 'utils';
-import { iEntryEdit } from 'islands/EntryEdit/index.tsx';
-import { updateEntryList } from 'signals';
+import { bring, isURL } from '@/utils/utils.ts';
+import { iEntryEdit } from '@/islands/EntryEdit/index.tsx';
+import { updateEntryList } from '@/utils/signals.ts';
 
 export default function (props: iEntryEdit) {
-  const { entry } = props;
-  const { entry_mark } = entry.value;
-  const _id = entry.id;
+  const { entry, entryId } = props;
+  const { mark } = entry;
   const [editMode, setEditMode] = useState<boolean>(false);
-  const isMarkUrl: boolean = entry_mark !== '' && isURL(entry_mark);
+  const isMarkUrl: boolean = mark !== '' && isURL(mark);
 
   function onInputFocusOut() {
     setEditMode(false);
@@ -18,14 +17,14 @@ export default function (props: iEntryEdit) {
     if (ev.shiftKey && ev.key === 'Enter') {
       setEditMode(true);
     } else if (isMarkUrl && ev.key === 'Enter') {
-      window.open(entry_mark, '_blank');
+      window.open(mark, '_blank');
     } else if (
-      _id && ev.key === 'Backspace' &&
+      entryId && ev.key === 'Backspace' &&
       window.confirm('Are you sure you want to delete this entry?')
     ) {
       // deno-lint-ignore ban-types
       bring<{}, {}>(
-        `/api/entries/${_id}/delete`,
+        `/api/entries/${entryId}/delete`,
         'POST',
         {},
         'Delete entry error.',

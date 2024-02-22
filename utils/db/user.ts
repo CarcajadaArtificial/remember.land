@@ -1,4 +1,4 @@
-import { kv, KvApp } from '@/utils/db/index.ts';
+import { kv } from '@/utils/db/index.ts';
 
 export type AuthProviders = 'GitHub' | 'Google' | 'Auth0';
 

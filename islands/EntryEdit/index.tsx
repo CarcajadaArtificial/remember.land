@@ -1,12 +1,13 @@
 import { Card } from 'lunchbox';
-import { dbEntry } from 'db/entry.ts';
-import { Entry } from 'components/Entry/index.tsx';
-import Handlers from 'handlers/EntryEdit.ts';
-import { EntryInput } from 'islands/EntryInput/index.tsx';
-import { ENTRY_CONTAINER } from 'styles';
+import { iEntry } from '@/utils/db/entry.ts';
+import Entry from '@/components/Entry/index.tsx';
+import Handlers from '@/utils/handlers/EntryEdit.ts';
+import EntryInput from '@/islands/EntryInput/index.tsx';
+import { ENTRY_CONTAINER } from '@/utils/styles.ts';
 
 export interface iEntryEdit {
-  entry: dbEntry;
+  entry: iEntry;
+  entryId: string;
 }
 
 export function EntryEdit(props: iEntryEdit) {
@@ -21,7 +22,7 @@ export function EntryEdit(props: iEntryEdit) {
       <Card>
         <EntryInput
           onFocusOut={onInputFocusOut}
-          entry={{ _id: props.entry.id.toString(), ...props.entry.value }}
+          {...props}
         />
       </Card>
     );
@@ -32,13 +33,11 @@ export function EntryEdit(props: iEntryEdit) {
       onKeyUp={onEntryContainerKeyUp}
       tabIndex={0}
       class={ENTRY_CONTAINER}
-      data-utc_created_at={props.entry.value.utc_created_at}
-      data-day_count={props.entry.value.day_count}
-      data-id={props.entry.id}
+      data-utc_created_at={props.entry.createdAtUTC}
+      data-day_count={props.entry.dayCount}
+      data-id={props.entryId}
     >
-      <Entry
-        entry={props.entry}
-      />
+      <Entry entry={props.entry} />
     </div>
   );
 }

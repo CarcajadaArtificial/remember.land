@@ -14,14 +14,9 @@ import * as $api_tags_id_index from './routes/api/tags/[id]/index.ts';
 import * as $api_tags_id_update from './routes/api/tags/[id]/update.ts';
 import * as $api_tags_get from './routes/api/tags/get.ts';
 import * as $api_tags_new from './routes/api/tags/new.ts';
-import * as $archive from './routes/archive.tsx';
 import * as $index from './routes/index.tsx';
-import * as $tags_name_ from './routes/tags/[name].tsx';
-import * as $tags_index from './routes/tags/index.tsx';
 import * as $EntryEdit_index from './islands/EntryEdit/index.tsx';
 import * as $EntryInput_index from './islands/EntryInput/index.tsx';
-import * as $EntryQuery_index from './islands/EntryQuery/index.tsx';
-import * as $TagQuery_index from './islands/TagQuery/index.tsx';
 import { type Manifest } from '$fresh/server.ts';
 
 const manifest = {
@@ -38,16 +33,11 @@ const manifest = {
     './routes/api/tags/[id]/update.ts': $api_tags_id_update,
     './routes/api/tags/get.ts': $api_tags_get,
     './routes/api/tags/new.ts': $api_tags_new,
-    './routes/archive.tsx': $archive,
     './routes/index.tsx': $index,
-    './routes/tags/[name].tsx': $tags_name_,
-    './routes/tags/index.tsx': $tags_index,
   },
   islands: {
     './islands/EntryEdit/index.tsx': $EntryEdit_index,
     './islands/EntryInput/index.tsx': $EntryInput_index,
-    './islands/EntryQuery/index.tsx': $EntryQuery_index,
-    './islands/TagQuery/index.tsx': $TagQuery_index,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

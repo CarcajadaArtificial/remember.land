@@ -1,7 +1,4 @@
 import { DateTime } from 'ptera';
-import { Document, KvValue } from 'kvdex';
-import { dbEntry } from 'db/entry.ts';
-import { dbTag, iTag } from 'db/tag.ts';
 
 export const isURL = (str: string): boolean =>
   (str.length >= 7 && str.substring(0, 7) === 'http://') ||
@@ -51,18 +48,18 @@ export function forEachInN(n: number, cb: (i: number) => void) {
   }
 }
 
-export const createDictionaryDocument = <T>(
-  documents: Document<KvValue>[],
-) =>
-  documents.reduce((acc: { [key: string]: T }, doc) => {
-    acc[doc.id.toString()] = doc.value as T;
-    return acc;
-  }, {});
+// export const createDictionaryDocument = <T>(
+//   documents: Document<KvValue>[],
+// ) =>
+//   documents.reduce((acc: { [key: string]: T }, doc) => {
+//     acc[doc.id.toString()] = doc.value as T;
+//     return acc;
+//   }, {});
 
-export const indexEntries = (entries: dbEntry[], tags: dbTag[]) =>
-  entries.map((entry) => {
-    entry.value.tags = entry.value.tags.map((tag) =>
-      createDictionaryDocument<iTag>(tags)[tag].name
-    );
-    return entry;
-  });
+// export const indexEntries = (entries: dbEntry[], tags: dbTag[]) =>
+//   entries.map((entry) => {
+//     entry.value.tags = entry.value.tags.map((tag) =>
+//       createDictionaryDocument<iTag>(tags)[tag].name
+//     );
+//     return entry;
+//   });
