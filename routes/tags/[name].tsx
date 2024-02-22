@@ -56,8 +56,6 @@ export const handler: Handlers<
 export default function TagName(props: PageProps<TagNamePageData>) {
   const { appConfig, name, entries } = props.data;
 
-  console.log(entries);
-
   return (
     <Page appConfig={appConfig} currentPage='tags'>
       <Layout type='center'>

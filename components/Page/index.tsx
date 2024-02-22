@@ -50,7 +50,7 @@ export default function (props: iPage) {
         {children}
       </Main>
       <Footer layout_type='right'>
-        <Text noMargins>v0.1.40</Text>
+        <Text noMargins>v0.1.41</Text>
         <Link href='/signout'>SignOut</Link>
       </Footer>
     </>

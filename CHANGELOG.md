@@ -1,8 +1,8 @@
 # Changelog
 
-## v0.1.40
+## v0.1.41
 
-- Fixed the multiple users created on signin issue.
+- Changed `"users_by_session"` to store only the user's id instead of a duplicate of the whole user model.
 
 ### Changes so far
 

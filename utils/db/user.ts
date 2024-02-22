@@ -29,23 +29,20 @@ export async function createUser(user: iUser) {
   const usersKey = ['users', user.id];
   const usersBySessionKey = ['users_by_session', user.sessionId];
 
-  console.log('created user');
-
   const atomicOp = kv.atomic()
     .check({ key: usersKey, versionstamp: null })
-    .check({ key: usersBySessionKey, versionstamp: null })
     .set(usersKey, user)
-    .set(usersBySessionKey, user);
+    .set(usersBySessionKey, user.id);
 
-  if (user.stripeCustomerId !== undefined) {
-    const usersByStripeCustomerKey = [
-      'users_by_stripe_customer',
-      user.stripeCustomerId,
-    ];
-    atomicOp
-      .check({ key: usersByStripeCustomerKey, versionstamp: null })
-      .set(usersByStripeCustomerKey, user);
-  }
+  // if (user.stripeCustomerId !== undefined) {
+  //   const usersByStripeCustomerKey = [
+  //     'users_by_stripe_customer',
+  //     user.stripeCustomerId,
+  //   ];
+  //   atomicOp
+  //     .check({ key: usersByStripeCustomerKey, versionstamp: null })
+  //     .set(usersByStripeCustomerKey, user);
+  // }
 
   const res = await atomicOp.commit();
   if (!res.ok) throw new Error('Failed to create user');
@@ -71,16 +68,16 @@ export async function updateUser(user: iUser) {
 
   const atomicOp = kv.atomic()
     .set(usersKey, user)
-    .set(usersBySessionKey, user);
+    .set(usersBySessionKey, user.id);
 
-  if (user.stripeCustomerId !== undefined) {
-    const usersByStripeCustomerKey = [
-      'users_by_stripe_customer',
-      user.stripeCustomerId,
-    ];
-    atomicOp
-      .set(usersByStripeCustomerKey, user);
-  }
+  // if (user.stripeCustomerId !== undefined) {
+  //   const usersByStripeCustomerKey = [
+  //     'users_by_stripe_customer',
+  //     user.stripeCustomerId,
+  //   ];
+  //   atomicOp
+  //     .set(usersByStripeCustomerKey, user);
+  // }
 
   const res = await atomicOp.commit();
   if (!res.ok) throw new Error('Failed to update user');
@@ -110,7 +107,7 @@ export async function updateUserSession(user: iUser, sessionId: string) {
     .set(userKey, newUser)
     .delete(oldUserBySessionKey)
     .check({ key: newUserBySessionKey, versionstamp: null })
-    .set(newUserBySessionKey, newUser);
+    .set(newUserBySessionKey, newUser.id);
 
   // if (user.stripeCustomerId !== undefined) {
   //   const usersByStripeCustomerKey = [
@@ -164,11 +161,13 @@ export async function getUserByLogin(login: string) {
  * ```
  */
 export async function getUserBySession(sessionId: string) {
-  const key = ['users_by_session', sessionId];
-  const eventualRes = await kv.get<iUser>(key, {
+  const userBySessionKey = ['users_by_session', sessionId];
+  const eventualRes2 = await kv.get<string>(userBySessionKey, {
     consistency: 'eventual',
   });
-  if (eventualRes.value !== null) return eventualRes.value;
-  const res = await kv.get<iUser>(key);
+  if (eventualRes2.value !== null) {
+    return await kv.get<iUser>(['users', eventualRes2.value]);
+  }
+  const res = await kv.get<iUser>(userBySessionKey);
   return res.value;
 }
