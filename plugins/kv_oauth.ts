@@ -39,6 +39,7 @@ export default {
             login: githubUser.login,
             sessionId,
             isSubscribed: false,
+            createdAtUTC: new Date().toUTCString(),
           };
           await createUser(user);
         } else {

@@ -29,7 +29,7 @@ export default function EntryInput(props: iEntryInput) {
     handleFieldFocus,
     handleConatinerKeyDown,
     entryMark,
-    tags,
+    tagIds,
     entryValue,
   } = Handlers(props);
 
@@ -45,7 +45,7 @@ export default function EntryInput(props: iEntryInput) {
       <div class='isl-EntryInput-container' onKeyDown={handleConatinerKeyDown}>
         <div class={ENTRY_GRID}>
           {/* Textarea Row */}
-          <EntryTypeIndicator tags={tags} />
+          <EntryTypeIndicator tags={tagIds} />
           <Text
             contentEditable
             onKeyUp={handleEntryInput}
@@ -77,7 +77,7 @@ export default function EntryInput(props: iEntryInput) {
         </div>
         {/* Tags Chiplist */}
         <Chiplist
-          values={tags}
+          values={tagIds}
           onRemove={handleRemoveTag}
           class='ml-6 mt-1.5'
         />

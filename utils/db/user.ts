@@ -7,7 +7,8 @@ export interface iUser {
   login: string;
   sessionId: string;
   isSubscribed: boolean;
-  stripeCustomerId?: string;
+  createdAtUTC: string;
+  // stripeCustomerId: string;
 }
 
 /**

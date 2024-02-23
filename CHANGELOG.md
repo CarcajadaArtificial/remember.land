@@ -1,11 +1,8 @@
 # Changelog
 
-## v0.1.43
+## v0.1.44
 
-- Removed test routes.
-- Updated imports and removed the uneeded ones.
-- Updated db models, removed kvdex.
-- Updated components and islands to have new models.
+- Added `createdAtUTC` to the user model.
 
 ### Changes so far
 
