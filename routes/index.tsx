@@ -5,6 +5,7 @@ import { Code, Header, Layout, Main, Text } from 'lunchbox';
 import type { SignedInState } from '@/plugins/session.ts';
 import Page from '@/components/Page/index.tsx';
 import AuthButton from '@/components/AuthButton/index.tsx';
+import EntryInput from '@/islands/EntryInput/index.tsx';
 
 const HomeSignedOut = (): JSX.Element => (
   <>
@@ -34,6 +35,17 @@ export default defineRoute<SignedInState>((_req, ctx) => {
   return (
     <Page currentPage='home'>
       <Layout dashboard type='focus'>
+        <EntryInput
+          userTags={[]}
+          entry={{
+            id: '',
+            createdAtUTC: new Date().toUTCString(),
+            content: '',
+            tagIds: [],
+            mark: '',
+            dayCount: 0,
+          }}
+        />
       </Layout>
     </Page>
   );

@@ -1,23 +1,47 @@
 import { useState } from 'preact/hooks';
+import { iEntry } from '@/utils/db/entry.ts';
+import { iTag } from '@/utils/db/tag.ts';
 
-/**
- * This custom hook makes interacting with a list of tags much easier. Instead of having to interact directly with `setTags()` by passing it a new array every time, `updateTags()` gives an quick way to add and remove tags with a single function call.
- */
-export const useTagList: (def_value: string[]) => [
-  tags: string[],
-  updateTags: (tagsToAdd: string[], tagsToRemove: string[]) => void,
-] = (def_value: string[]) => {
-  const [tags, setTags] = useState<string[]>(def_value);
+export interface EntryInputState {
+  entry: iEntry;
+  userTags: iTag[];
+  setEntry: (newEntryData: Partial<iEntry>) => void;
+  addUserTag: (newTag: iTag) => void;
+  updateEntryTags: (idsToAdd: string[], idsToRemove: string[]) => void;
+}
 
-  const updateTags = (tagsToAdd: string[], tagsToRemove: string[]) => {
-    const tagsRemoved = tags.filter((tag) => !tagsToRemove.includes(tag));
+export function createEntryInputState(
+  userTags: iTag[],
+  entry: iEntry,
+): EntryInputState {
+  const [stateEntry, setstateEntry] = useState<iEntry>(entry);
+  const [stateUserTags, setstateUserTags] = useState<iTag[]>(
+    userTags,
+  );
+
+  const updateEntry = (newEntryData: Partial<iEntry>) =>
+    setstateEntry({ ...stateEntry, ...newEntryData });
+
+  const addUserTag = (newTag: iTag) =>
+    setstateUserTags([...stateUserTags, newTag]);
+
+  const updateEntryTags = (idsToAdd: string[], idsToRemove: string[]) => {
+    const tagsRemoved = stateEntry.tagIds.filter((tag) =>
+      !idsToRemove.includes(tag)
+    );
     const tagsAdded = tagsRemoved.concat(
-      tagsToAdd.filter((potentialDuplicateTag) =>
+      idsToAdd.filter((potentialDuplicateTag) =>
         tagsRemoved.indexOf(potentialDuplicateTag) < 0
       ),
     );
-    setTags(tagsAdded);
+    updateEntry({ tagIds: tagsAdded });
   };
 
-  return [tags, updateTags];
-};
+  return {
+    entry: stateEntry,
+    userTags: stateUserTags,
+    setEntry: updateEntry,
+    updateEntryTags,
+    addUserTag,
+  };
+}

@@ -1,4 +1,5 @@
 export interface iEntry {
+  id: string;
   createdAtUTC: string;
   content: string;
   tagIds: string[];

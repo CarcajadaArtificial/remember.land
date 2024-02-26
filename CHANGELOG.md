@@ -1,8 +1,10 @@
 # Changelog
 
-## v0.1.44
+## v0.1.45
 
-- Added `createdAtUTC` to the user model.
+- Added the `createEntryInputState` hook.
+- Added the `EntryInput/InputContent` subisland.
+- Added `id` property to the `iEntry` and `iTag` models.
 
 ### Changes so far
 
