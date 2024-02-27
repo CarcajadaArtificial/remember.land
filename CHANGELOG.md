@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.48
+## v0.1.49
 
-- Added `/tags` route.
-- Added the `EditTag` island.
+- Added the `EditTag` keyboard and click interactivity.
 
 ### Changes so far
 

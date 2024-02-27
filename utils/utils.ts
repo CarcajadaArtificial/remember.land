@@ -48,6 +48,38 @@ export function forEachInN(n: number, cb: (i: number) => void) {
   }
 }
 
+/**
+ * This function handles a keyboard interaction coined "super enter". This is when you press the
+ * key combinations Ctrl+Enter on windows and Cmd+Enter on mac. Optionally, one can also add a callback
+ * to the pressing of the first key for an incremental interaction, with two states one by pressing
+ * ctrl/cmd and another by pressing enter afterwards.
+ *
+ * Interactions
+ *
+ * @param {Function} cbOnEnter
+ *   This function is to be executed when the key combo ctrl/cmd + Enter is pressed.
+ *
+ * @param {Function} cbOnEnter
+ *  *[Optional]* This function is to be executed when the first key (ctrl/cmd) is pressed.
+ *
+ * @returns {Function}
+ *  Event handler function using the passed callbacks.
+ */
+export const onSuperEnter = (
+  cbOnEnter: () => void,
+  cbOnCtrl?: () => void,
+) =>
+(ev: KeyboardEvent) => {
+  if (ev.metaKey || ev.ctrlKey) {
+    if (cbOnCtrl) {
+      cbOnCtrl();
+    }
+    if (ev.key === 'Enter') {
+      cbOnEnter();
+    }
+  }
+};
+
 // export const createDictionaryDocument = <T>(
 //   documents: Document<KvValue>[],
 // ) =>
