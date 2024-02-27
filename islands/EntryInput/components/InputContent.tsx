@@ -3,20 +3,11 @@ import { Text } from 'lunchbox';
 import { ENTRY_INPUT_FIELD } from '@/utils/styles.ts';
 import { EntryInputState } from '@/utils/hooks.ts';
 
-export default function EntryInput(props: EntryInputState) {
+export default function InputContent(props: EntryInputState) {
   const { entry, setEntry, updateEntryTags, userTags } = props;
-  // const standardTagIds = {
-  //   permanent:
-  //     userTags.filter((userTag) => userTag.value.name === 'permanent')[0].key,
-  //   event: userTags.filter((userTag) => userTag.value.name === 'event')[0].key,
-  //   done: userTags.filter((userTag) => userTag.value.name === 'done')[0].key,
-  //   task: userTags.filter((userTag) => userTag.value.name === 'task')[0].key,
-  //   question:
-  //     userTags.filter((userTag) => userTag.value.name === 'question')[0].key,
-  // };
   const refInputContent = useRef<HTMLSpanElement>(null);
 
-  function handleEntryInput(ev: KeyboardEvent) {
+  function handleInputContent(ev: KeyboardEvent) {
     const value = (ev.target as HTMLSpanElement).innerText;
     setEntry({ content: value });
 
@@ -73,7 +64,7 @@ export default function EntryInput(props: EntryInputState) {
       fref={refInputContent}
       class={`${ENTRY_INPUT_FIELD} px-1.5`}
       style={{ lineBreak: 'anywhere' }}
-      onkeydown={handleEntryInput}
+      onkeydown={handleInputContent}
     >
       {entry.content}
     </Text>

@@ -1,10 +1,8 @@
 # Changelog
 
-## v0.1.45
+## v0.1.46
 
-- Added the `createEntryInputState` hook.
-- Added the `EntryInput/InputContent` subisland.
-- Added `id` property to the `iEntry` and `iTag` models.
+- Added the `EntryInput/InputMark` subisland.
 
 ### Changes so far
 
@@ -14,40 +12,28 @@
 
 ### v0.2
 
-  - Features
-    - Tag pages, autocomplete and utilities.
-      - [x] Update prod db to remove spaces in tag names and changes them to underscores.
-      - [x] Update the tag adding stystem to automatically change spaces to underscores.
-      - [x] Create an interface and API for creating and getting tags.
-      - [x] Route `/api/tag/get.ts` responds with an array of tags that match the query.
-      - [x] Route `/api/tag/new.ts` creates a new tag and prevents name duplication
-      - [ ] Route `/api/tag/[id]/index.ts` responds with the tag and all the entries that have it.
-      - [x] Route `/api/tag/[id]/delete.ts` deletes this tag from all entries and from the tags db.
-      - [x] Route `/api/tag/[id]/update.ts` deletes this tag from all entries and from the tags db.
-      - [x] Route `/tag/index.ts` that shows all tags.
-      - [x] Route `/tag/[name].ts` that shows all entries of that certain tag.
-    - Create threads of entries.
-    - Create similar/opposite relations between tags.
-  - UI Revamp and upgrade to Lunchbox v0.3
-    - `<Contribution Calendar/>`
-      - [ ] Add css-in-js styles.
-    - `<EntryTypeIndicator/>`
-      - [x] Use tabler icons instead of characters.
-    - `<EntryInput/>`
-      - [x] Use a contenteditable instead of a textarea.
-      - [ ] This same component might be used to substitute EntryQuery, make the onSubmit action configurable to searching instead of submiting.
-      - [ ] `@media (pointer:none)` That changes the UI adding a submit button, an "add tag" button, and collapses into a floating icon menu on smaller screens.
+  - Islands
+    - `<EntryInput />`
+      - [x] Input Content and mark.
+      - [ ] Create a new tag on input.
+      - [ ] Remove tags from entry
+      - [ ] Automatically add tags on content shortcuts.
+      - [ ] Autocomplete existing tags.
+      - [ ] Automatically add the link tag when a mark is a link.
+      - [ ] Create entry in db when pressiong Cmd+Enter, TBD on mobile, maybe double enter.
+      - [ ] Adapt to mobile.
+    - `<Entry />`
+      - [ ] Add hovering and "shift" interaction for expanded information.
+      - [ ] Keystroke for copying the id, tapping a button on mobile.
+    - `<EditableEntry />`
+      - [ ] Switch between Entry and EntryInput after Shift+Enter
+      - [ ] Deletes an entry after pressing backspace and confirming.
   - Backlog
-    - [x] Include single password authentication method.
-    - [x] Include FileDB database.
-    - [x] Fix entry x overflow on long single words.
+    - [ ] Add css-in-js styles to `<Contribution Calendar/>`
+    - [ ] Create standard entry tags on account creation.
     - [ ] Parse the EntryMark as a possible date for events and tasks.
-    - [ ] Add equally smooth mobile experience.
-    - [ ] Add a middleware file in /routes/api for all auth redirection and responding {} when not signed in.
     - [ ] Make type safe all requests and responses in the API.
     - [ ] Revamp 404 error page.
-    - [ ] Add n queries as argument to findEntries.
-      - Returns n lists of entries, instead of calling and filtering n times all entries.
 
 ### v0.3
 

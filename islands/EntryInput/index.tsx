@@ -11,6 +11,7 @@ import {
   ICON_STANDARD,
 } from '@/utils/styles.ts';
 import InputContent from './components/InputContent.tsx';
+import InputMark from './components/InputMark.tsx';
 import { createEntryInputState } from '@/utils/hooks.ts';
 
 export interface iEntryInput {
@@ -30,6 +31,8 @@ export default function EntryInput(props: iEntryInput) {
     state.entry.tagIds.includes(userTag.id)
   );
 
+  // console.log(state.entry);
+
   return (
     <Card>
       <div class='isl-EntryInput-container'>
@@ -38,17 +41,8 @@ export default function EntryInput(props: iEntryInput) {
             tags={entryTags.map((entryTag) => entryTag.name)}
           />
           <InputContent {...state} />
-          {
-            /*
           <IconBookmark class={ICON_STANDARD} />
-          <input
-            class={`${ENTRY_INPUT_FIELD} px-1.5`}
-            type='text'
-            // onKeyUp={handleEntryMarkInput}
-            // onFocus={handleFieldFocus('entrymark')}
-            // value={entryMark}
-          /> */
-          }
+          <InputMark {...state} />
         </div>
       </div>
       <EntryLengthIndicator length={0} />
