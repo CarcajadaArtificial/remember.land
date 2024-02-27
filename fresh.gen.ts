@@ -18,6 +18,7 @@ import * as $index from './routes/index.tsx';
 import * as $EntryEdit_index from './islands/EntryEdit/index.tsx';
 import * as $EntryInput_components_InputContent from './islands/EntryInput/components/InputContent.tsx';
 import * as $EntryInput_components_InputMark from './islands/EntryInput/components/InputMark.tsx';
+import * as $EntryInput_components_InputTags from './islands/EntryInput/components/InputTags.tsx';
 import * as $EntryInput_index from './islands/EntryInput/index.tsx';
 import { type Manifest } from '$fresh/server.ts';
 
@@ -43,6 +44,8 @@ const manifest = {
       $EntryInput_components_InputContent,
     './islands/EntryInput/components/InputMark.tsx':
       $EntryInput_components_InputMark,
+    './islands/EntryInput/components/InputTags.tsx':
+      $EntryInput_components_InputTags,
     './islands/EntryInput/index.tsx': $EntryInput_index,
   },
   baseUrl: import.meta.url,

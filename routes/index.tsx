@@ -6,6 +6,8 @@ import type { SignedInState } from '@/plugins/session.ts';
 import Page from '@/components/Page/index.tsx';
 import AuthButton from '@/components/AuthButton/index.tsx';
 import EntryInput from '@/islands/EntryInput/index.tsx';
+import { getTags } from '@/utils/db/tag.ts';
+import { kvIteratorToEntryArray } from '@/utils/db/index.ts';
 
 const HomeSignedOut = (): JSX.Element => (
   <>
@@ -24,19 +26,24 @@ const HomeSignedOut = (): JSX.Element => (
   </>
 );
 
-export default defineRoute<SignedInState>((_req, ctx) => {
+export default defineRoute<SignedInState>(async (_req, ctx) => {
+  const user = ctx.state.sessionUser;
+  if (!(user !== undefined)) return <HomeSignedOut />;
+
   // const day_count_today = diffInDays(
   //   datetime(new Date(appConfig.startingUtcDate)),
   //   datetime(),
   // );
 
-  if (!(ctx.state.sessionUser !== undefined)) return <HomeSignedOut />;
+  const userTags = (await kvIteratorToEntryArray(getTags(user.id))).map(
+    (kvEntryTag) => kvEntryTag.value
+  );
 
   return (
     <Page currentPage='home'>
       <Layout dashboard type='focus'>
         <EntryInput
-          userTags={[]}
+          userTags={userTags}
           entry={{
             id: '',
             createdAtUTC: new Date().toUTCString(),

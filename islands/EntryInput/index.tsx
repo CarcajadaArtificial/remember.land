@@ -12,6 +12,7 @@ import {
 } from '@/utils/styles.ts';
 import InputContent from './components/InputContent.tsx';
 import InputMark from './components/InputMark.tsx';
+import InputTags from './components/InputTags.tsx';
 import { createEntryInputState } from '@/utils/hooks.ts';
 
 export interface iEntryInput {
@@ -31,8 +32,6 @@ export default function EntryInput(props: iEntryInput) {
     state.entry.tagIds.includes(userTag.id)
   );
 
-  // console.log(state.entry);
-
   return (
     <Card>
       <div class='isl-EntryInput-container'>
@@ -43,6 +42,8 @@ export default function EntryInput(props: iEntryInput) {
           <InputContent {...state} />
           <IconBookmark class={ICON_STANDARD} />
           <InputMark {...state} />
+          <IconTag class={ICON_STANDARD} />
+          <InputTags {...state} />
         </div>
       </div>
       <EntryLengthIndicator length={0} />

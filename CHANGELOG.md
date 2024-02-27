@@ -1,8 +1,11 @@
 # Changelog
 
-## v0.1.46
+## v0.1.47
 
-- Added the `EntryInput/InputMark` subisland.
+- Added `EntryInput/InputTags` subisland.
+- Added Tag database module with `createTags` and `getTags`.
+- Added creation of standard tags on account creation.
+- Added the utility function `kvIteratorToEntryArray`.
 
 ### Changes so far
 
@@ -30,8 +33,7 @@
       - [ ] Deletes an entry after pressing backspace and confirming.
   - Backlog
     - [ ] Add css-in-js styles to `<Contribution Calendar/>`
-    - [ ] Create standard entry tags on account creation.
-    - [ ] Parse the EntryMark as a possible date for events and tasks.
+    - [x] Create standard entry tags on account creation.
     - [ ] Make type safe all requests and responses in the API.
     - [ ] Revamp 404 error page.
 

@@ -11,6 +11,7 @@ import {
   type iUser,
   updateUserSession,
 } from '@/utils/db/user.ts';
+import { createTag } from '@/utils/db/tag.ts';
 import { ulid } from 'ulid';
 // import { isStripeEnabled, stripe } from "@/utils/stripe.ts";
 import { getGitHubUser } from '@/utils/auth/github.ts';
@@ -42,6 +43,12 @@ export default {
             createdAtUTC: new Date().toUTCString(),
           };
           await createUser(user);
+          await createTag({ id: ulid(), name: 'event' }, user.id);
+          await createTag({ id: ulid(), name: 'task' }, user.id);
+          await createTag({ id: ulid(), name: 'done' }, user.id);
+          await createTag({ id: ulid(), name: 'important' }, user.id);
+          await createTag({ id: ulid(), name: 'question' }, user.id);
+          await createTag({ id: ulid(), name: 'link' }, user.id);
         } else {
           await updateUserSession(user, sessionId);
         }

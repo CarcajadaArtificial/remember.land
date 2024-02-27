@@ -17,22 +17,22 @@ export default function InputContent(props: EntryInputState) {
     ) {
       switch (value[0]) {
         case '-':
-          // updateTagIds([], ['permanent', 'event', 'done', 'task']);
+          // updateTagIds([], ['important', 'event', 'done', 'task']);
           break;
         case '*':
-          // updateTagIds(['permanent'], ['event', 'done', 'task']);
+          // updateTagIds(['important'], ['event', 'done', 'task']);
           break;
         case 'x':
           // if (tagIds.includes('done')) {
-          //   updateTagIds([], ['permanent', 'event', 'done']);
+          //   updateTagIds([], ['important', 'event', 'done']);
           // } else if (tagIds.includes('task')) {
-          //   updateTagIds(['done'], ['permanent', 'event']);
+          //   updateTagIds(['done'], ['important', 'event']);
           // } else {
-          //   updateTagIds(['task'], ['permanent', 'event']);
+          //   updateTagIds(['task'], ['important', 'event']);
           // }
           break;
         case 'o':
-          // updateTagIds(['event'], ['permanent', 'task', 'done']);
+          // updateTagIds(['event'], ['important', 'task', 'done']);
           break;
         default:
           break;
