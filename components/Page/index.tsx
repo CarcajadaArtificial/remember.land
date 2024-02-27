@@ -28,11 +28,13 @@ export default function Page(props: iPage) {
                 href='./'
               />
             </div>
-            <LinkOrNot
+            {
+              /* <LinkOrNot
               isLink={currentPage !== 'archive'}
               href='/archive'
               text='Archive'
-            />
+            /> */
+            }
             <LinkOrNot
               isLink={currentPage !== 'tags'}
               href='/tags'
@@ -45,7 +47,7 @@ export default function Page(props: iPage) {
         {children}
       </Main>
       <Footer layout_type='right'>
-        <Text noMargins>v0.1.47</Text>
+        <Text noMargins>v0.1.48</Text>
         <Link href='/signout'>SignOut</Link>
       </Footer>
     </>

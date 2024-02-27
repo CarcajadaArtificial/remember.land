@@ -1,11 +1,9 @@
 # Changelog
 
-## v0.1.47
+## v0.1.48
 
-- Added `EntryInput/InputTags` subisland.
-- Added Tag database module with `createTags` and `getTags`.
-- Added creation of standard tags on account creation.
-- Added the utility function `kvIteratorToEntryArray`.
+- Added `/tags` route.
+- Added the `EditTag` island.
 
 ### Changes so far
 

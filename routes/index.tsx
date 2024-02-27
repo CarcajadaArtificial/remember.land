@@ -17,7 +17,6 @@ const HomeSignedOut = (): JSX.Element => (
       </Text>
     </Header>
     <Main layout_type='left'>
-      <></>
       <div>
         <Text type='subheading' noMargins>SignIn</Text>
         <AuthButton provider='GitHub' />
@@ -36,7 +35,7 @@ export default defineRoute<SignedInState>(async (_req, ctx) => {
   // );
 
   const userTags = (await kvIteratorToEntryArray(getTags(user.id))).map(
-    (kvEntryTag) => kvEntryTag.value
+    (kvEntryTag) => kvEntryTag.value,
   );
 
   return (

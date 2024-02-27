@@ -15,11 +15,13 @@ import * as $api_tags_id_update from './routes/api/tags/[id]/update.ts';
 import * as $api_tags_get from './routes/api/tags/get.ts';
 import * as $api_tags_new from './routes/api/tags/new.ts';
 import * as $index from './routes/index.tsx';
+import * as $tags from './routes/tags.tsx';
 import * as $EntryEdit_index from './islands/EntryEdit/index.tsx';
 import * as $EntryInput_components_InputContent from './islands/EntryInput/components/InputContent.tsx';
 import * as $EntryInput_components_InputMark from './islands/EntryInput/components/InputMark.tsx';
 import * as $EntryInput_components_InputTags from './islands/EntryInput/components/InputTags.tsx';
 import * as $EntryInput_index from './islands/EntryInput/index.tsx';
+import * as $TagEdit_index from './islands/TagEdit/index.tsx';
 import { type Manifest } from '$fresh/server.ts';
 
 const manifest = {
@@ -37,6 +39,7 @@ const manifest = {
     './routes/api/tags/get.ts': $api_tags_get,
     './routes/api/tags/new.ts': $api_tags_new,
     './routes/index.tsx': $index,
+    './routes/tags.tsx': $tags,
   },
   islands: {
     './islands/EntryEdit/index.tsx': $EntryEdit_index,
@@ -47,6 +50,7 @@ const manifest = {
     './islands/EntryInput/components/InputTags.tsx':
       $EntryInput_components_InputTags,
     './islands/EntryInput/index.tsx': $EntryInput_index,
+    './islands/TagEdit/index.tsx': $TagEdit_index,
   },
   baseUrl: import.meta.url,
 } satisfies Manifest;

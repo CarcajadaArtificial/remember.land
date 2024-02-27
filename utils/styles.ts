@@ -48,3 +48,13 @@ export const ICON_STANDARD = css`
   height: var(--s-single);
   margin-top: var(--s-three-eights);
 `;
+
+export const ENTRY_FOCUS_HOVER_BG = css`
+  &:hover {
+    background-color: var(--clr-bg-panel-15);
+  }
+  &:focus {
+    background-color: var(--clr-bg-panel-35);
+    outline: 0;
+  }
+`;
