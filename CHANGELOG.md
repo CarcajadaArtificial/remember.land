@@ -1,8 +1,9 @@
 # Changelog
 
-## v0.1.49
+## v0.1.50
 
-- Added the `EditTag` keyboard and click interactivity.
+- Added a DTO model for the API requests.
+- Added the tag creation functionality inside EntryInput.
 
 ### Changes so far
 

@@ -1,6 +1,6 @@
 import { useState } from 'preact/hooks';
-import { iEntry } from '@/utils/db/entry.ts';
-import { iTag } from '@/utils/db/tag.ts';
+import { iEntry } from '@/utils/dto.ts';
+import { iTag } from '@/utils/dto.ts';
 
 export interface EntryInputState {
   entry: iEntry;

@@ -69,5 +69,9 @@ export default {
       path: '/archive',
       middleware: { handler: ensureSignedIn },
     },
+    {
+      path: '/api/tag/new',
+      middleware: { handler: ensureSignedIn },
+    },
   ],
 } as Plugin<State>;

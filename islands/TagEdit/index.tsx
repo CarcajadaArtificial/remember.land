@@ -2,7 +2,7 @@ import { useRef, useState } from 'preact/hooks';
 import { Text } from 'lunchbox';
 import { css } from 'resin';
 import IconHash from 'icons/hash.tsx';
-import { iTag } from '@/utils/db/tag.ts';
+import { iTag } from '@/utils/dto.ts';
 import {
   ENTRY_FOCUS_HOVER_BG,
   ENTRY_GRID,

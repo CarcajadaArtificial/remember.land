@@ -47,6 +47,7 @@ export const ICON_STANDARD = css`
   width: var(--s-single);
   height: var(--s-single);
   margin-top: var(--s-three-eights);
+  margin-right: var(--s-quarter);
 `;
 
 export const ENTRY_FOCUS_HOVER_BG = css`

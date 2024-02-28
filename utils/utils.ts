@@ -1,12 +1,15 @@
 import { DateTime } from 'ptera';
 
+/** @todo Write documentation. */
 export const isURL = (str: string): boolean =>
   (str.length >= 7 && str.substring(0, 7) === 'http://') ||
   (str.length >= 8 && str.substring(0, 8) === 'https://');
 
+/** @todo Write documentation. */
 export const isAllUndefined = (obj: Record<string, unknown>): boolean =>
   Object.values(obj).every((val) => val === undefined);
 
+/** @todo Write documentation. */
 export async function bring<Req, Res = unknown>(
   url: string,
   method: 'POST' | 'GET',
@@ -31,6 +34,7 @@ export async function bring<Req, Res = unknown>(
   return responseJson;
 }
 
+/** @todo Write documentation. */
 export function adjustToLastHour(date: Date, hour: number) {
   if (date.getHours() < hour) {
     date.setDate(date.getDate() - 1);
@@ -39,9 +43,11 @@ export function adjustToLastHour(date: Date, hour: number) {
   return date;
 }
 
+/** @todo Write documentation. */
 export const isLastDayOfMonth = (date: DateTime) =>
   date.add({ day: 1 }).day === 1;
 
+/** @todo Write documentation. */
 export function forEachInN(n: number, cb: (i: number) => void) {
   for (let i = 0; i < n; i++) {
     cb(i);
@@ -64,6 +70,8 @@ export function forEachInN(n: number, cb: (i: number) => void) {
  *
  * @returns {Function}
  *  Event handler function using the passed callbacks.
+ *
+ * @todo Detect operating system to choose between ev.metaKey and ev.ctrlKey.
  */
 export const onSuperEnter = (
   cbOnEnter: () => void,

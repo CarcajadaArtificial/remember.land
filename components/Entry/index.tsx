@@ -2,7 +2,7 @@ import { Chiplist, Link, Text } from 'lunchbox';
 import { cn } from 'lunchbox/utils.ts';
 import EntryTypeIndicator from '@/components/EntryTypeIndicator/index.tsx';
 import { ENTRY_GRID } from '@/utils/styles.ts';
-import { iEntry } from '@/utils/db/entry.ts';
+import { iEntry } from '@/utils/dto.ts';
 import { isURL } from '@/utils/utils.ts';
 
 export interface iEntryComponent {

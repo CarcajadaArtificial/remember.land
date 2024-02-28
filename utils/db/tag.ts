@@ -1,14 +1,7 @@
 import { kv } from '@/utils/db/index.ts';
+import { iTag } from '@/utils/dto.ts';
 
-export interface iTag {
-  id: string;
-  name: string;
-}
-
-export interface iQueryTags {
-  containsText?: string;
-}
-
+/** @todo Write documentation */
 export async function createTag(tag: iTag, userId: string) {
   const tagKey = ['users', userId, 'tags', tag.id];
 
@@ -20,6 +13,7 @@ export async function createTag(tag: iTag, userId: string) {
   if (!res.ok) throw new Error('Failed to create tag');
 }
 
+/** @todo Write documentation */
 export function getTags(userId: string) {
   return kv.list<iTag>({ prefix: ['users', userId, 'tags'] });
 }

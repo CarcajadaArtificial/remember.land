@@ -1,12 +1,3 @@
-export interface iEntry {
-  id: string;
-  createdAtUTC: string;
-  content: string;
-  tagIds: string[];
-  mark: string;
-  dayCount: number;
-}
-
 export interface iQueryEntries {
   containsText?: string;
   createdOnDayCount?: number;

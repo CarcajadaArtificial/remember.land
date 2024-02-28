@@ -1,5 +1,5 @@
 import { Card } from 'lunchbox';
-import { iEntry } from '@/utils/db/entry.ts';
+import type { iEntry } from '@/utils/dto.ts';
 import Entry from '@/components/Entry/index.tsx';
 import Handlers from '@/utils/handlers/EntryEdit.ts';
 import EntryInput from '@/islands/EntryInput/index.tsx';
