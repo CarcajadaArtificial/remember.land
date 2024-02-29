@@ -1,9 +1,8 @@
 # Changelog
 
-## v0.1.50
+## v0.1.51
 
-- Added a DTO model for the API requests.
-- Added the tag creation functionality inside EntryInput.
+- Added tag renaming functionality.
 
 ### Changes so far
 

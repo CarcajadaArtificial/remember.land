@@ -9,9 +9,7 @@ import * as $api_entries_id_index from './routes/api/entries/[id]/index.ts';
 import * as $api_entries_id_update from './routes/api/entries/[id]/update.ts';
 import * as $api_entries_get from './routes/api/entries/get.ts';
 import * as $api_entries_new from './routes/api/entries/new.ts';
-import * as $api_tags_id_delete from './routes/api/tags/[id]/delete.ts';
-import * as $api_tags_id_index from './routes/api/tags/[id]/index.ts';
-import * as $api_tags_id_update from './routes/api/tags/[id]/update.ts';
+import * as $api_tags_edit from './routes/api/tags/edit.ts';
 import * as $api_tags_get from './routes/api/tags/get.ts';
 import * as $api_tags_new from './routes/api/tags/new.ts';
 import * as $index from './routes/index.tsx';
@@ -33,9 +31,7 @@ const manifest = {
     './routes/api/entries/[id]/update.ts': $api_entries_id_update,
     './routes/api/entries/get.ts': $api_entries_get,
     './routes/api/entries/new.ts': $api_entries_new,
-    './routes/api/tags/[id]/delete.ts': $api_tags_id_delete,
-    './routes/api/tags/[id]/index.ts': $api_tags_id_index,
-    './routes/api/tags/[id]/update.ts': $api_tags_id_update,
+    './routes/api/tags/edit.ts': $api_tags_edit,
     './routes/api/tags/get.ts': $api_tags_get,
     './routes/api/tags/new.ts': $api_tags_new,
     './routes/index.tsx': $index,

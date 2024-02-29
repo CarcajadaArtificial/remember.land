@@ -17,3 +17,7 @@ export async function createTag(tag: iTag, userId: string) {
 export function getTags(userId: string) {
   return kv.list<iTag>({ prefix: ['users', userId, 'tags'] });
 }
+
+export async function editTag(tag: iTag, userId: string) {
+  console.log(tag, userId);
+}
